@@ -58,19 +58,21 @@
     <Compile Include="DataContext\Config\TopicConfig.cs" />
     <Compile Include="DataContext\Config\UserConfig.cs" />
     <Compile Include="DataContext\ForumContext.cs" />
-    <Compile Include="ProfileDtoModels\Mapper\ForumDtoMapper.cs" />
-    <Compile Include="ProfileDtoModels\QueryObjects\ForumDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomRepository\ForumRepository.cs" />
     <Compile Include="Repository\Pagination.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForumApplication.DataTransferObjects\ForumApplication.DataTransferObjects.csproj">
+      <Project>{d256c0f8-9498-40c0-87d4-2074118905ff}</Project>
+      <Name>ForumApplication.DataTransferObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForumApplication.Domain\ForumApplication.Domain.csproj">
       <Project>{799f2ca7-c43d-4e14-b2dc-0ca9eabe5b0f}</Project>
       <Name>ForumApplication.Domain</Name>

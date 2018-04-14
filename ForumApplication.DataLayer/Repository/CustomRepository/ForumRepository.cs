@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ForumApplication.DataAccessLayer.DataContext;
 using System.Data.Entity;
-using ForumApplication.DataLayer.ProfileDtoModels.QueryObjects;
-using ForumApplication.DataLayer.ProfileDtoModels.Mapper;
+using ForumApplication.DataLayer.Interfaces;
+using ForumApplication.DataTransferObjects;
 
 namespace ForumApplication.DataLayer.Repository.CustomRepository
 {
@@ -18,26 +18,31 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
 
         }
 
-        public List<Forum> GetAllIncludeReferences()
+        public IList<ForumDto> GetAllIncludeReferences()
         {
-            return DbSet.Include(f => f.SectionLists
+            List<Forum> ListofForum  = DbSet.Include(f => f.SectionLists
             .Select(x => x.Sections
             .Select(s => s.Topics
-            .Select(t => t.Posts)))).ToList();
+            .Select(t => t.Posts)
+            )))
+            .Include(u => u.User)
+            .ToList();
+
+            return AutoMapper.Mapper.Map<IList<ForumDto>>(ListofForum);
+
         }
 
-        public Forum GetByIDIncludeReferences(int id)
+        public ForumDto GetByIDIncludeReferences(int id)
         {
-            return DbSet.Include(f => f.SectionLists
-            .Select(x => x.Sections
-            .Select(s => s.Topics
-            .Select(t => t.Posts)))).SingleOrDefault(x => x.Id == id);
-        }
+            Forum ForumElement =  DbSet.Include(f => f.SectionLists
+                .Select(x => x.Sections
+                .Select(s => s.Topics
+                .Select(t => t.Posts)
+                )))
+            .Include(u => u.User)
+            .SingleOrDefault(forum => forum.Id == id);
 
-        public ForumDto GetForumDto(int id)
-        {
-            ForumDtoMapper dtoMapper = new ForumDtoMapper();
-            return dtoMapper.SelectForumDto(GetByIDIncludeReferences(id));
-        }
+            return AutoMapper.Mapper.Map<ForumDto>(ForumElement);
+        } 
     }
 }

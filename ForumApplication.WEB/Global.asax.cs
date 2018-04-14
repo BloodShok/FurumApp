@@ -7,10 +7,8 @@ using System.Web.Routing;
 using ForumApplication.Infrastructure.IoC;
 using Ninject;
 using AutoMapper;
-using ForumApplication.DataLayer.ProfileDtoModels.QueryObjects;
 using ForumApplication.WEB.Models;
-using ForumApplication.Infrastructure.MapperConfig;
-
+using ForumApplication.DataTransferObjects.Profile;
 namespace ForumApplication.WEB
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -20,7 +18,10 @@ namespace ForumApplication.WEB
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DependencyResolver.SetResolver(new ServiceLocator(new StandardKernel()));
-            MappingConfiguration.Initialize();
+            AutoMapper.Mapper.Initialize(conf =>
+                            {
+                                conf.AddProfile(new ForumProfile());
+                            });
         }
     }
 }

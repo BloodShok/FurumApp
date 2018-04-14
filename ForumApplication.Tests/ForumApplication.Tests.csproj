@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,6 +56,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -106,9 +110,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataAccessLayer.csproj">
+    <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataLayer.csproj">
       <Project>{2e9ceea9-d518-4da9-b3b4-e811ed7b6130}</Project>
-      <Name>ForumApplication.DataAccessLayer</Name>
+      <Name>ForumApplication.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForumApplication.Domain\ForumApplication.Domain.csproj">
       <Project>{799f2ca7-c43d-4e14-b2dc-0ca9eabe5b0f}</Project>

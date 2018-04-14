@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.Tests", "ForumApplication.Tests\ForumApplication.Tests.csproj", "{737EF25A-1DD9-437D-8941-9B625B23C529}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.DataAccessLayer", "ForumApplication.DataLayer\ForumApplication.DataAccessLayer.csproj", "{2E9CEEA9-D518-4DA9-B3B4-E811ED7B6130}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.DataLayer", "ForumApplication.DataLayer\ForumApplication.DataLayer.csproj", "{2E9CEEA9-D518-4DA9-B3B4-E811ED7B6130}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.Infrastructure", "ForumApplication.Infrastructure\ForumApplication.Infrastructure.csproj", "{7D0ED18E-0A85-4B4C-BCB0-E0E3D6564929}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.ServiceLay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.WEB", "ForumApplication.WEB\ForumApplication.WEB.csproj", "{F60C5080-A712-41BB-804B-3E50A63BC63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.ProfileDto", "ForumApplication.ProfileDto\ForumApplication.ProfileDto.csproj", "{4416257F-384A-4FF0-BA6F-99B4E88F56EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumApplication.DataTransferObjects", "ForumApplication.DataTransferObjects\ForumApplication.DataTransferObjects.csproj", "{D256C0F8-9498-40C0-87D4-2074118905FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{F60C5080-A712-41BB-804B-3E50A63BC63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60C5080-A712-41BB-804B-3E50A63BC63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60C5080-A712-41BB-804B-3E50A63BC63A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4416257F-384A-4FF0-BA6F-99B4E88F56EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4416257F-384A-4FF0-BA6F-99B4E88F56EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4416257F-384A-4FF0-BA6F-99B4E88F56EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4416257F-384A-4FF0-BA6F-99B4E88F56EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D256C0F8-9498-40C0-87D4-2074118905FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D256C0F8-9498-40C0-87D4-2074118905FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D256C0F8-9498-40C0-87D4-2074118905FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D256C0F8-9498-40C0-87D4-2074118905FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

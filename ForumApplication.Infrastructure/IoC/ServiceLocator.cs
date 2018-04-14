@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using ForumApplication.DataAccessLayer.DataContext;
+using ForumApplication.ServiceLayer.ForumService;
 using Ninject;
 
 namespace ForumApplication.Infrastructure.IoC
@@ -31,6 +32,7 @@ namespace ForumApplication.Infrastructure.IoC
         public void AddBinding()
         {
             _kernel.Bind<DbContext>().To<ForumContext>();
+            _kernel.Bind<IForumService>().To <ForumService>();
         }
     }
 }

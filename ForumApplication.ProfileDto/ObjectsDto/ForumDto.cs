@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApplication.DataLayer.ProfileDtoModels.QueryObjects
+namespace ForumApplication.ProfileDto.ObjectsDto
 {
     public class ForumDto
     {

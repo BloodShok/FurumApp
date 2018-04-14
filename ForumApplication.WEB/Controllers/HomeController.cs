@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ForumApplication.DataLayer.ProfileDtoModels.QueryObjects;
 using ForumApplication.ServiceLayer.ForumService;
 using ForumApplication.WEB.Models;
 using System;
@@ -14,25 +13,16 @@ namespace ForumApplication.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        DbContext _context;
-        public HomeController(DbContext context)
+        IForumService _forumService;
+        public HomeController(IForumService service)
         {
-            _context = context;
+            _forumService = service;
         }
         // GET: Home
-        public ActionResult Index()
+        public ActionResult ShowForumList()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index(int id)
-        {
-            ConcretForumDto dorumDto = new ConcretForumDto(_context);
-
-            var item = Mapper.Map<ForumDto, ForumViewModel>(dorumDto.SelectForumDto(id));
-
-            return View("Forum",item);
+            var listofForums = _forumService.GetAllForumElements();
+            return View("ShowForumList",listofForums);
         }
     }
 }

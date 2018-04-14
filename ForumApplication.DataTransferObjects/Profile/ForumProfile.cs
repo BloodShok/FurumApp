@@ -1,25 +1,22 @@
-﻿using ForumApplication.DataLayer.ProfileDtoModels.QueryObjects;
-using ForumApplication.Domain.Entitys;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using ForumApplication.DataTransferObjects;
+using ForumApplication.Domain.Entitys;
 
-
-namespace ForumApplication.Infrastructure.MapperConfig
+namespace ForumApplication.DataTransferObjects.Profile
 {
-    public static class MappingConfiguration
+   public class ForumProfile : AutoMapper.Profile
     {
-        public static void Initialize()
+        public ForumProfile()
         {
-            AutoMapper.Mapper.Initialize(x =>
-            {
-                x.CreateMap<Forum, ForumDto>()
+            CreateMap<Forum, ForumDto>()
                 .ForMember("UserName", opt => opt.MapFrom(forum => forum.User.Login))
                 .ForMember("CountOfPosts", opt => opt.MapFrom(forum => CountOfPosts(forum)))
                 .ForMember("CountOfTopics", opt => opt.MapFrom(forum => CountOfTopics(forum)));
-            });
         }
 
         private static int CountOfPosts(Forum ForumBase)
@@ -44,4 +41,5 @@ namespace ForumApplication.Infrastructure.MapperConfig
             return sumofPosts;
         }
     }
+    
 }

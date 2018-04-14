@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IoC\ServiceLocator.cs" />
-    <Compile Include="MapperConfig\MappingConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,13 +93,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataAccessLayer.csproj">
+    <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataLayer.csproj">
       <Project>{2e9ceea9-d518-4da9-b3b4-e811ed7b6130}</Project>
-      <Name>ForumApplication.DataAccessLayer</Name>
+      <Name>ForumApplication.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForumApplication.Domain\ForumApplication.Domain.csproj">
       <Project>{799F2CA7-C43D-4E14-B2DC-0CA9EABE5B0F}</Project>
       <Name>ForumApplication.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApplication.ServiceLayer\ForumApplication.ServiceLayer.csproj">
+      <Project>{B32A66CC-5DA7-4EE0-875F-1DA1CEF3C12A}</Project>
+      <Name>ForumApplication.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

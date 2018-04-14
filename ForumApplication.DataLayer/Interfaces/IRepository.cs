@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApplication.DataLayer.Repository
+namespace ForumApplication.DataLayer.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {
