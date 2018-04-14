@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,6 +69,7 @@
     <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -116,12 +120,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ForumViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Forum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,20 +137,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataAccessLayer.csproj">
-      <Project>{2e9ceea9-d518-4da9-b3b4-e811ed7b6130}</Project>
+      <Project>{2E9CEEA9-D518-4DA9-B3B4-E811ED7B6130}</Project>
       <Name>ForumApplication.DataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ForumApplication.Domain\ForumApplication.Domain.csproj">
-      <Project>{799f2ca7-c43d-4e14-b2dc-0ca9eabe5b0f}</Project>
-      <Name>ForumApplication.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\ForumApplication.Infrastructure\ForumApplication.Infrastructure.csproj">
       <Project>{7d0ed18e-0a85-4b4c-bcb0-e0e3d6564929}</Project>
       <Name>ForumApplication.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApplication.ServiceLayer\ForumApplication.ServiceLayer.csproj">
+      <Project>{b32a66cc-5da7-4ee0-875f-1da1cef3c12a}</Project>
+      <Name>ForumApplication.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

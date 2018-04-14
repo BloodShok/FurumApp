@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
       <HintPath>..\packages\MSTest.TestFramework.1.1.17\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -91,12 +97,27 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumApplication.DataLayer\ForumApplication.DataAccessLayer.csproj">
+      <Project>{2e9ceea9-d518-4da9-b3b4-e811ed7b6130}</Project>
+      <Name>ForumApplication.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApplication.Domain\ForumApplication.Domain.csproj">
+      <Project>{799f2ca7-c43d-4e14-b2dc-0ca9eabe5b0f}</Project>
+      <Name>ForumApplication.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApplication.ServiceLayer\ForumApplication.ServiceLayer.csproj">
+      <Project>{b32a66cc-5da7-4ee0-875f-1da1cef3c12a}</Project>
+      <Name>ForumApplication.ServiceLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

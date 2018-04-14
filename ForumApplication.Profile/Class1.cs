@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApplication.ServiceLayer.DtoEntitys
+namespace ForumApplication.Profile
 {
-    class UserDto
+    public class Class1
     {
-
     }
 }

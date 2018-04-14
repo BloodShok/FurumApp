@@ -18,7 +18,6 @@ namespace ForumApplication.DataLayer.Repository
             Context = context;
             DbSet = context.Set<TEntity>();
         }
-
         public void AddNewItem(TEntity entity)
         {
             DbSet.Add(entity);

@@ -1,5 +1,4 @@
-﻿@model ForumApplication.Domain.Entitys.User
-
+﻿
 @{
     Layout = null;
 }
@@ -13,7 +12,12 @@
 </head>
 <body>
     <div> 
-        @Model.Id + @Model.Login
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("id");
+
+            <input type="submit" name="SendId" />
+        }
     </div>
 </body>
 </html>
