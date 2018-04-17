@@ -16,7 +16,9 @@ namespace ForumApplication.DataTransferObjects.Profile
             CreateMap<Forum, ForumDto>()
                 .ForMember("UserName", opt => opt.MapFrom(forum => forum.User.Login))
                 .ForMember("CountOfPosts", opt => opt.MapFrom(forum => CountOfPosts(forum)))
-                .ForMember("CountOfTopics", opt => opt.MapFrom(forum => CountOfTopics(forum)));
+                .ForMember("CountOfTopics", opt => opt.MapFrom(forum => CountOfTopics(forum)))
+                .ForMember("NestedSectionListInfo",opt => opt.MapFrom(SlistInfo =>
+                                                        Mapper.Map<IList<NestedSectionItemsInfoDto>>(SlistInfo.SectionLists)));
         }
 
         private static int CountOfPosts(Forum ForumBase)

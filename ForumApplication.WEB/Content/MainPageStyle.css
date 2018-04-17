@@ -1,0 +1,57 @@
+﻿
+
+#brendTitle {
+    font-size: 28px;
+}
+
+body {
+    background: url('../Pictures/UiPictures/blur-bright.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+#mainTextdiv {
+    margin-top: 15%;
+}
+
+#mainTextdiv  {
+    font-family: 'Century Gothic',sans-serif;
+    color:#F9F3F4;
+}
+#hellotext
+{
+    font-size:60px;
+}
+.navbar {
+    background-color: rgba(59, 58, 58, 0.70)
+}
+#welcomtext {
+    font-size: 50px;
+}
+
+@media screen and (min-width: 1450px) {
+    #mainTextdiv {
+        margin-top: 13%;
+    }
+}
+
+    @media screen and (max-width: 767px) {
+        #hellotext {
+            font-size: 33px;
+        }
+
+        #welcomtext {
+            font-size: 23px;
+        }
+
+        #brendTitle {
+            font-size: 20px;
+        }
+
+        .navbar-nav {
+            font-size: 14px;
+        }
+
+    }
+
+#mainTextdiv .btn {
+    margin-top:50px;
+}

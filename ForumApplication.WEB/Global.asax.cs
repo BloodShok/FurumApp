@@ -9,6 +9,8 @@ using Ninject;
 using AutoMapper;
 using ForumApplication.WEB.Models;
 using ForumApplication.DataTransferObjects.Profile;
+using ForumApplication.WEB.Models.Profile;
+
 namespace ForumApplication.WEB
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -18,9 +20,16 @@ namespace ForumApplication.WEB
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DependencyResolver.SetResolver(new ServiceLocator(new StandardKernel()));
-            AutoMapper.Mapper.Initialize(conf =>
+
+            Mapper.Initialize(conf =>
                             {
                                 conf.AddProfile(new ForumProfile());
+                                conf.AddProfile(new NestedSectionListInfoProfile());
+                                conf.AddProfile(new ForumViewModelProfile());
+
+                                conf.AddProfile(new SectionProfile());
+                                conf.AddProfile(new NestedTopicListInfoProfile());              
+                                conf.AddProfile(new SectionViewModelProfile());
                             });
         }
     }

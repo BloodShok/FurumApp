@@ -1,0 +1,53 @@
+﻿@model ForumApplication.WEB.Models.ForumViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Item</title>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    Creator
+                </td>
+                <td>
+                    Title
+                </td>
+                <td>
+                    SectionList
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Model.UserName
+                </td>
+                <td>
+                    @Model.Title
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.NestedSectionListInfo)
+                        {
+                          <li>
+                             @item.Title
+                          </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -7,20 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using ForumApplication.DataLayer.Interfaces;
 
 namespace ForumApplication.ServiceLayer.ForumService
 {
     public class ForumService : IForumService
     {
         DbContext _context;
-        public ForumService(DbContext context)
+        IForumRepository _repo;
+        public ForumService(DbContext context,IForumRepository repository)
         {
             _context = context;
+            _repo = repository;
         }
         public IList<ForumDto> GetAllForumElements()
         {
-            ForumRepository frepo = new ForumRepository(_context);
-            return frepo.GetAllIncludeReferences();
+            
+            var ForumList = _repo.GetAllIncludeReferences();
+
+            return Mapper.Map<IList<ForumDto>>(ForumList); 
+        }
+
+        public ForumDto GetForumElement(int id)
+        {
+            
+            var Forumitem = _repo.GetByIDIncludeReferences(id);
+
+            return Mapper.Map<ForumDto>(Forumitem);
         }
     }
 }

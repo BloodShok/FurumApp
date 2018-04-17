@@ -40,9 +40,11 @@ namespace ForumApplication.DataLayer.Repository
             return DbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IList<TEntity> GetAll(int pagenumber, int pageSize)
         {
-            return DbSet.Select(x => x).Page().ToList();
+            return DbSet.Select(x => x)
+                .Page(pagenumber,pageSize)
+                .ToList();
         }
 
         public void SaveChanges()

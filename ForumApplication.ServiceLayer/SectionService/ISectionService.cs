@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForumApplication.ServiceLayer.ForumService
+namespace ForumApplication.ServiceLayer.SectionService
 {
-    public interface IForumService
+    public interface ISectionService
     {
-        IList<ForumDto> GetAllForumElements();
-        ForumDto GetForumElement(int id);
+        SectionDto GetElement(int id);
+        IList<SectionDto> GetAllElements();
     }
 }

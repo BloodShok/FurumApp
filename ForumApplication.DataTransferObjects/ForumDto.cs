@@ -14,6 +14,7 @@ namespace ForumApplication.DataTransferObjects
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
         public string UserName { get; set; }
+        public IList<NestedSectionItemsInfoDto> NestedSectionListInfo { get; set; }
         public int CountOfPosts { get; set; }
         public int CountOfTopics { get; set; }
     }

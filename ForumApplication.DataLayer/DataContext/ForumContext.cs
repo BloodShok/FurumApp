@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ForumApplication.DataAccessLayer.DataContext
+namespace ForumApplication.DataLayer.DataContext
 {
   public  class ForumContext : System.Data.Entity.DbContext
     {

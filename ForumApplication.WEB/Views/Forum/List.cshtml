@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ForumApplication.WEB.Models.ForumViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowForumList</title>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+    <body>
+        <table class="table table-bordered">
+            <tr>
+                @foreach (var item in Model)
+                {
+                   <td>
+                      @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id }) <br />
+                       @foreach(var SlInfo in item.NestedSectionListInfo)
+                       {
+                           <ul>
+                               <li>
+                                  @Html.ActionLink($"{@SlInfo.Title}", "Item","Section",new { SlInfo.Id }, null)
+                               </li>
+                           </ul>
+                       }
+                   </td>
+                }
+            </tr>
+        </table>
+    </body>
+</html>

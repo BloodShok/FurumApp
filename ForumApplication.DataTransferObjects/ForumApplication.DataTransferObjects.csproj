@@ -45,8 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForumDto.cs" />
+    <Compile Include="NestedSectionItemsInfoDto.cs" />
+    <Compile Include="NestedSectionListItemsInfo.cs" />
+    <Compile Include="NestedTopicItemsInfoDto.cs" />
     <Compile Include="Profile\ForumProfile.cs" />
+    <Compile Include="Profile\NestedSectionListInfoProfile.cs" />
+    <Compile Include="Profile\NestedTopicListInfoProfile.cs" />
+    <Compile Include="Profile\SectionProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectionDto.cs" />
+    <Compile Include="SectionListDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
