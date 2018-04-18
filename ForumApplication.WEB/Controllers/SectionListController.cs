@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ForumApplication.DataTransferObjects;
 using ForumApplication.ServiceLayer.SectionListService;
 using ForumApplication.WEB.Models;
 using System;
@@ -23,6 +24,17 @@ namespace ForumApplication.WEB.Controllers
             var SecListItemVieweModel = Mapper.Map<SectionListViewModel>(SecListItemDto);
 
             return View(SecListItemVieweModel);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Create(NewForumContainerModel containerModel)
+        {
+            var SecListContainerDto = Mapper.Map<SaveNewForumContainerDto>(containerModel);
+            return View();
         }
     }
 }

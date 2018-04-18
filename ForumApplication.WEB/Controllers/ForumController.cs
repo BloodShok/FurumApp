@@ -29,8 +29,13 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Item(int id)
         {
             var forumItem = _forumService.GetElement(id);
+
+            if (forumItem == null)
+                return HttpNotFound();
+
             var ForumViewModelItem = Mapper.Map<ForumViewModel>(forumItem);
 
+            
             return View(ForumViewModelItem);
         }
 
