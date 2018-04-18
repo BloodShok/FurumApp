@@ -13,11 +13,9 @@ namespace ForumApplication.ServiceLayer.SectionService
 {
     public class SectionService : ISectionService
     {
-        DbContext _context;
         ISectionRepository _repo;
         public SectionService(DbContext context, ISectionRepository repository)
         {
-            _context = context;
             _repo = repository;
         }
         public IList<SectionDto> GetAllElements()

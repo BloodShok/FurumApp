@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    class NestedSectionListItemsInfo
+    public class SaveNewForumContainerDto
     {
+        public int UserId { get; set; }
+        public string Title { get; set; }
     }
 }

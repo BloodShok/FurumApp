@@ -16,6 +16,7 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<TEntity> GetAll(int pagenumber, int pageSize);     
         void AddNewItem(TEntity entity);
         void DeleteItem(TEntity entity);                          
-        void DeleteItemById(object id);                           
+        void DeleteItemById(object id);
+        void SaveChanges();
     }
 }

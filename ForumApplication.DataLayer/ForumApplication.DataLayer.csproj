@@ -59,12 +59,16 @@
     <Compile Include="DataContext\Config\UserConfig.cs" />
     <Compile Include="DataContext\ForumContext.cs" />
     <Compile Include="Interfaces\IForumRepository.cs" />
+    <Compile Include="Interfaces\IPostRepository.cs" />
     <Compile Include="Interfaces\ISectionListRepository.cs" />
     <Compile Include="Interfaces\ISectionRepository.cs" />
+    <Compile Include="Interfaces\ITopicRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomRepository\ForumRepository.cs" />
+    <Compile Include="Repository\CustomRepository\PostRepository.cs" />
     <Compile Include="Repository\CustomRepository\SectionListRepository.cs" />
     <Compile Include="Repository\CustomRepository\SectionRepository.cs" />
+    <Compile Include="Repository\CustomRepository\TopicRepository.cs" />
     <Compile Include="Repository\Pagination.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

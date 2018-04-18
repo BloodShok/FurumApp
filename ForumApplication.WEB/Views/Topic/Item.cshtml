@@ -1,0 +1,43 @@
+﻿@model ForumApplication.WEB.Models.TopicViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Item</title>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2 class="text-center">@Model.Title  @Model.UserName</h2>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User Name</th>
+                    <th>PostMessage</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model.PostViewModel)
+            {
+                <tr>
+                    <td>@item.UserInfo.Login</td>
+                    <td>@item.MessageStringContent</td>
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+</body>
+</html>

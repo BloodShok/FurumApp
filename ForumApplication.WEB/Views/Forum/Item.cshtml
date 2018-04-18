@@ -18,27 +18,21 @@
 <body>
     <div>
         <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Creator
+                    </th>
+                    <th>Title</th>
+                    <th>SectionList</th>
+                </tr>
+            </thead>
             <tr>
-                <td>
-                    Creator
-                </td>
-                <td>
-                    Title
-                </td>
-                <td>
-                    SectionList
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Model.UserName
-                </td>
-                <td>
-                    @Model.Title
-                </td>
+                <td>@Model.UserName</td>
+                <td>@Model.Title</td>
                 <td>
                     <ul>
-                        @foreach (var item in Model.NestedSectionListInfo)
+                        @foreach (var item in Model.NestedSectionListItemListInfo)
                         {
                           <li>
                              @item.Title

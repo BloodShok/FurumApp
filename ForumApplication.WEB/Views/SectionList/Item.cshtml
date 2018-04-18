@@ -1,0 +1,46 @@
+﻿@model ForumApplication.WEB.Models.SectionListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SectionList</title>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>UserName</th>
+                    <th>Sections</th>
+                <tr>
+                <tr>
+                    <td>@Model.Title</td>
+                    <td>@Model.UserName</td>
+                    <td>
+                        <ol>
+                            @foreach (var item in Model.NestedSectionListInfo)
+                            {
+                            <li>
+                                @Html.ActionLink($"{item.Title}", "Item", "Section", new { item.Id }, null) Topics(@item.CountOfTopics) Posts(@item.CountOfPosts)
+                            </li>
+                            }
+                        </ol>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

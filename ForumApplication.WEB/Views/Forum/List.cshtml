@@ -16,24 +16,33 @@
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
-    <body>
-        <table class="table table-bordered">
-            <tr>
-                @foreach (var item in Model)
-                {
-                   <td>
-                      @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id }) <br />
-                       @foreach(var SlInfo in item.NestedSectionListInfo)
-                       {
-                           <ul>
-                               <li>
-                                  @Html.ActionLink($"{@SlInfo.Title}", "Item","Section",new { SlInfo.Id }, null)
-                               </li>
-                           </ul>
-                       }
-                   </td>
-                }
-            </tr>
-        </table>
-    </body>
+<body>
+    <table class="table table-bordered">
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>
+                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id }) <br />
+                    @foreach (var SlInfo in item.NestedSectionListItemListInfo)
+                    {
+                        <ul>
+                            <li>
+                                @Html.ActionLink($"{@SlInfo.Title}", "Item", "SectionList", new { SlInfo.Id }, null)
+                            </li>
+                        </ul>
+                    }
+                </td>
+            }
+        </tr>
+    </table>
+    <button class="btn btn-outline-warning  d-block" type="button"
+            onclick="location.href='@Url.Action("Add","Forum")'">
+        <h5>Add New Forum Element</h5>
+    </button>
+
+    <button class="btn btn-outline-warning  d-block m-2" type="button"
+            onclick="location.href='@Url.Action("Delete","Forum")'">
+        <h5>Delete Forum Element</h5>
+    </button>
+</body>
 </html>

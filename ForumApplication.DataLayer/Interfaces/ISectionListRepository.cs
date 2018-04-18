@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataLayer.Interfaces
 {
-    interface ISectionListRepository : IRepository<SectionList>
+    public interface ISectionListRepository : IRepository<SectionList>
     {
         IList<SectionList> GetAllIncludeReferences();
         IList<SectionList> GetAllIncludeReferences(int pageNumber, int pageSize);

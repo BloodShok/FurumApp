@@ -175,9 +175,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ForumViewModel.cs" />
+    <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\Profile\ForumViewModelProfile.cs" />
+    <Compile Include="Models\Profile\PostViewModelProfile.cs" />
+    <Compile Include="Models\Profile\NewForumContainerModelProfile.cs" />
+    <Compile Include="Models\Profile\SectionListViewModelProfile.cs" />
     <Compile Include="Models\Profile\SectionViewModelProfile.cs" />
+    <Compile Include="Models\Profile\TopicViewModelProfile.cs" />
+    <Compile Include="Models\Profile\UserPostInfoViewModelProfile.cs" />
+    <Compile Include="Models\NewForumContainerModel.cs" />
+    <Compile Include="Models\SectionListViewModel.cs" />
     <Compile Include="Models\SectionViewModel.cs" />
+    <Compile Include="Models\TopicViewModel.cs" />
+    <Compile Include="Models\UserPostInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +208,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Forum\Item.cshtml" />
     <Content Include="Views\Section\Item.cshtml" />
+    <Content Include="Views\SectionList\Item.cshtml" />
+    <Content Include="Views\Topic\Item.cshtml" />
+    <Content Include="Views\Forum\Add.cshtml" />
+    <Content Include="Views\Forum\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,8 +222,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Post\" />
-    <Folder Include="Views\SectionList\" />
-    <Folder Include="Views\Topic\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumApplication.DataTransferObjects\ForumApplication.DataTransferObjects.csproj">

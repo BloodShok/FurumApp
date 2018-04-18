@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using ForumApplication.ServiceLayer.SectionListService;
+using ForumApplication.WEB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,18 @@ namespace ForumApplication.WEB.Controllers
 {
     public class SectionListController : Controller
     {
-        // GET: SectionList
-        public ActionResult Index()
+        ISectionListService _sectionListService;
+        public SectionListController(ISectionListService sectionListService)
         {
-            return View();
+            _sectionListService = sectionListService;
+        }
+        // GET: SectionList
+        public ActionResult Item(int id)
+        {
+            var SecListItemDto = _sectionListService.GetElement(id);
+            var SecListItemVieweModel = Mapper.Map<SectionListViewModel>(SecListItemDto);
+
+            return View(SecListItemVieweModel);
         }
     }
 }

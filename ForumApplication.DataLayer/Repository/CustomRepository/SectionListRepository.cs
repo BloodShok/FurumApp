@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataLayer.Repository.CustomRepository
 {
-    class SectionListRepository : Repository<SectionList>, ISectionListRepository
+    public class SectionListRepository : Repository<SectionList>, ISectionListRepository
     {
         public SectionListRepository(DbContext context) : base(context)
         {

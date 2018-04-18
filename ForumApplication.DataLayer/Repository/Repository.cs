@@ -52,7 +52,7 @@ namespace ForumApplication.DataLayer.Repository
             Context.SaveChanges();
         }
 
-        public void Dispouse()
+        public virtual void Dispouse()
         {
             Context.Dispose();
         }

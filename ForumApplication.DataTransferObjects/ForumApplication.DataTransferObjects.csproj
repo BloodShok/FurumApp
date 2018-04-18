@@ -45,16 +45,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForumDto.cs" />
-    <Compile Include="NestedSectionItemsInfoDto.cs" />
-    <Compile Include="NestedSectionListItemsInfo.cs" />
-    <Compile Include="NestedTopicItemsInfoDto.cs" />
+    <Compile Include="NestedContainerElement.cs" />
+    <Compile Include="PostDto.cs" />
     <Compile Include="Profile\ForumProfile.cs" />
-    <Compile Include="Profile\NestedSectionListInfoProfile.cs" />
-    <Compile Include="Profile\NestedTopicListInfoProfile.cs" />
+    <Compile Include="Profile\NestedContainerElementProfile.cs" />
+    <Compile Include="Profile\PostDtoProfile.cs" />
+    <Compile Include="Profile\SaveNewForumContainerProfile.cs" />
+    <Compile Include="Profile\SectionListProfie.cs" />
     <Compile Include="Profile\SectionProfile.cs" />
+    <Compile Include="Profile\TopicProfile.cs" />
+    <Compile Include="Profile\UserPostInfoDtoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveNewForumContainerDto.cs" />
     <Compile Include="SectionDto.cs" />
     <Compile Include="SectionListDto.cs" />
+    <Compile Include="TopicDto.cs" />
+    <Compile Include="UserPostInfoDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

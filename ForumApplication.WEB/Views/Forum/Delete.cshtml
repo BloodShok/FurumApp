@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ForumApplication.WEB.Models.ForumViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Creator Name</th>
+                    <th>SectionLists</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        <ol>
+                            @foreach (var secList in item.NestedSectionListItemListInfo)
+                            {
+                                <li>@secList.Title</li>
+                            }
+                        </ol>
+                    </td>
+                    <td>
+                        @using (Html.BeginForm())
+                        {
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input class="btn-success" type="submit" name="id" value="Delete"/>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

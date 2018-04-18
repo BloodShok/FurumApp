@@ -20,14 +20,11 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
 
         public IList<Forum> GetAllIncludeReferences(int pageNumber, int pageSize)
         {
-            List<Forum> ListofForum  = DbSet.Include(f => f.SectionLists
-            .Select(x => x.Sections
-            .Select(s => s.Topics
-            .Select(t => t.Posts)
-            )))
-            .Include(u => u.User)
-            .Page(pageNumber,pageSize)
-            .ToList();
+            List<Forum> ListofForum  = DbSet
+                .Include(f => f.SectionLists)
+                .Include(u => u.User)
+                .Page(pageNumber,pageSize)
+                .ToList();
 
             return ListofForum;
 
@@ -35,28 +32,24 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
 
         public IList<Forum> GetAllIncludeReferences()
         {
-            List<Forum> ListofForum = DbSet.Include(f => f.SectionLists
-          .Select(x => x.Sections
-          .Select(s => s.Topics
-          .Select(t => t.Posts)
-          )))
-           .Include(u => u.User)
-           .ToList();
+            List<Forum> ListofForum = DbSet
+                .Include(f => f.SectionLists)
+                .Include(u => u.User)
+                .ToList();
 
             return ListofForum;
         }
 
         public Forum GetByIDIncludeReferences(int id)
         {
-            Forum ForumElement =  DbSet.Include(f => f.SectionLists
-                .Select(x => x.Sections
-                .Select(s => s.Topics
-                .Select(t => t.Posts)
-                )))
-            .Include(u => u.User)
-            .SingleOrDefault(forum => forum.Id.Equals(id));
+            Forum ForumElement =  DbSet
+                .Include(f => f.SectionLists)
+                .Include(u => u.User)
+                .SingleOrDefault(forum => forum.Id.Equals(id));
 
             return ForumElement;
         }
+
+      
     }
 }

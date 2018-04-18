@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using ForumApplication.ServiceLayer.TopicService;
+using ForumApplication.WEB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,19 @@ namespace ForumApplication.WEB.Controllers
 {
     public class TopicController : Controller
     {
-        // GET: Topic
-        public ActionResult Index()
+        ITopicService _topicService;
+        public TopicController(ITopicService service)
         {
-            return View();
+            _topicService = service;
+        }
+        // GET: Topic
+        public ActionResult Item(int id)
+        {
+            var topicDto = _topicService.GetElement(id);
+            var topicView = Mapper.Map<TopicViewModel>(topicDto);
+            
+
+            return View(topicView);
         }
     }
 }

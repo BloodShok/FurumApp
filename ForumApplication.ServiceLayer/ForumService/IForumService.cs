@@ -9,7 +9,9 @@ namespace ForumApplication.ServiceLayer.ForumService
 {
     public interface IForumService
     {
-        IList<ForumDto> GetAllForumElements();
-        ForumDto GetForumElement(int id);
+        IList<ForumDto> GetAllElements();
+        ForumDto GetElement(int id);
+        void SaveElement(SaveNewForumContainerDto item);
+        void DeleteElement(int id);
     }
 }

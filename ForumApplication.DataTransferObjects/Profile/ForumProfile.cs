@@ -15,32 +15,8 @@ namespace ForumApplication.DataTransferObjects.Profile
         {
             CreateMap<Forum, ForumDto>()
                 .ForMember("UserName", opt => opt.MapFrom(forum => forum.User.Login))
-                .ForMember("CountOfPosts", opt => opt.MapFrom(forum => CountOfPosts(forum)))
-                .ForMember("CountOfTopics", opt => opt.MapFrom(forum => CountOfTopics(forum)))
-                .ForMember("NestedSectionListInfo",opt => opt.MapFrom(SlistInfo =>
-                                                        Mapper.Map<IList<NestedSectionItemsInfoDto>>(SlistInfo.SectionLists)));
-        }
-
-        private static int CountOfPosts(Forum ForumBase)
-        {
-            int sumofPosts = 0;
-
-            ForumBase.SectionLists
-            .ForEach(section => section.Sections
-                .ForEach(topics => topics.Topics
-                    .ForEach(posts => sumofPosts += posts.Posts.Count)));
-
-            return sumofPosts;
-        }
-        private static int CountOfTopics(Forum ForumBase)
-        {
-            int sumofPosts = 0;
-
-            ForumBase.SectionLists
-            .ForEach(section => section.Sections
-                .ForEach(topics => sumofPosts += topics.Topics.Count));
-
-            return sumofPosts;
+                .ForMember("NestedSectionListItemListInfo", opt => opt.MapFrom(SlistInfo =>
+                                                        Mapper.Map<IList<NestedContainerElement>>(SlistInfo.SectionLists)));
         }
     }
     

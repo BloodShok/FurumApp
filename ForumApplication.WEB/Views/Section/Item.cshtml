@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Item</title>
+    <title>Section</title>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
@@ -31,11 +31,11 @@
                     <td>@Model.UserName</td>
                     <td>
                         <ul>
-                            @foreach (var items in Model.NestedTopicListInfo)
+                            @foreach (var item in Model.NestedTopicListInfo)
                             {
-                                <li>
-                                    @items.Title
-                                </li>
+                            <li>
+                                @Html.ActionLink($"{@item.Title}", "Item","Topic", new { id = item.Id }, null ) Posts(@item.CountOfPosts)
+                            </li>
                             }
                         </ul>
                     </td>

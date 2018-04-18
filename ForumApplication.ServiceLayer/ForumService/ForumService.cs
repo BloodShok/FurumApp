@@ -8,32 +8,45 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
+using ForumApplication.Domain.Entitys;
 
 namespace ForumApplication.ServiceLayer.ForumService
 {
     public class ForumService : IForumService
     {
-        DbContext _context;
         IForumRepository _repo;
-        public ForumService(DbContext context,IForumRepository repository)
+        public ForumService(IForumRepository repository)
         {
-            _context = context;
             _repo = repository;
         }
-        public IList<ForumDto> GetAllForumElements()
+
+        public void DeleteElement(int id)
         {
-            
+            _repo.DeleteItemById(id);
+            _repo.SaveChanges();
+        }
+
+        public IList<ForumDto> GetAllElements()
+        {
             var ForumList = _repo.GetAllIncludeReferences();
 
             return Mapper.Map<IList<ForumDto>>(ForumList); 
         }
 
-        public ForumDto GetForumElement(int id)
+        public ForumDto GetElement(int id)
         {
             
             var Forumitem = _repo.GetByIDIncludeReferences(id);
 
             return Mapper.Map<ForumDto>(Forumitem);
+        }
+
+        public void SaveElement(SaveNewForumContainerDto item)
+        {
+            var ForumElement = Mapper.Map<Forum>(item);
+            
+            _repo.AddNewItem(ForumElement);
+            _repo.SaveChanges();
         }
     }
 }
