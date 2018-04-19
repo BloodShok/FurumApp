@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class SaveNewForumContainerDto
+    public class CreateNewForumContainerDto
     {
         public int UserId { get; set; }
         public string Title { get; set; }

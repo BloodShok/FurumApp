@@ -52,8 +52,9 @@
     <Compile Include="Profile\SaveNewForumContainerProfile.cs" />
     <Compile Include="Profile\UserPostInfoDtoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveNewForumContainerDto.cs" />
+    <Compile Include="CreateNewForumContainerDto.cs" />
     <Compile Include="TopicDto.cs" />
+    <Compile Include="UpdateForumContainerDto.cs" />
     <Compile Include="UserPostInfoDto.cs" />
   </ItemGroup>
   <ItemGroup>

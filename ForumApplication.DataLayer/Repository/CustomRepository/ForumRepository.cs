@@ -50,6 +50,14 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return ForumElement;
         }
 
-      
+        public void UpdateItem(UpdateForumContainerDto forumElement)
+        {
+            var itemForUpdate = DbSet.Find(forumElement.Id);
+
+            itemForUpdate.Title = forumElement.Title;
+            itemForUpdate.DateUpdate = forumElement.DateUpdate;
+
+            Context.SaveChanges();
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                Title: @Model.Title
+            </li>
+            <li>DataCreate: @Model.DateCreated</li>
+            <li>DataUpdate: @Model.DateUpdate</li>
+            <li>CreatorName: @Model.UserName</li>
+        </ul>
+        <h2>Update Title</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.EditorFor(x => x.Title);
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input class="btn-success" type="submit" name="Update" value="Update" />
+        }
+    </div>
+</body>
+</html>

@@ -11,10 +11,10 @@ namespace ForumApplication.DataTransferObjects.Profile
     {
         public SaveNewForumContainerProfile()
         {
-            CreateMap<SaveNewForumContainerDto, Forum>();
-            CreateMap<SaveNewForumContainerDto, SectionList>();
-            CreateMap<SaveNewForumContainerDto, Section>();
-            CreateMap<SaveNewForumContainerDto, Topic>();
+            CreateMap<CreateNewForumContainerDto, Forum>();
+            CreateMap<CreateNewForumContainerDto, SectionList>();
+            CreateMap<CreateNewForumContainerDto, Section>();
+            CreateMap<CreateNewForumContainerDto, Topic>();
         }
     }
 }

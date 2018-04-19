@@ -48,7 +48,7 @@ namespace ForumApplication.WEB.Controllers
         [HttpPost]
         public ActionResult Add (CreateForumContainerModel NewContainerModel)
         {
-            var newForumDto = Mapper.Map<SaveNewForumContainerDto>(NewContainerModel);
+            var newForumDto = Mapper.Map<CreateNewForumContainerDto>(NewContainerModel);
 
             _forumService.SaveElement(newForumDto);
 
@@ -68,6 +68,24 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Delete(int id)
         {
             _forumService.DeleteElement(id);
+
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            var itemForUpdateDto = _forumService.GetElement(id);
+            var itemForUpadateView = Mapper.Map<BaseForumContainerViewModel>(itemForUpdateDto);
+
+            return View(itemForUpadateView);
+        }
+
+        [HttpPost]
+        public ActionResult Update(UpdateForumContainerViewModel modelForUpdate)
+        {
+            var itemForUpdateDto = Mapper.Map<UpdateForumContainerDto>(modelForUpdate);
+            _forumService.UpdateForum(itemForUpdateDto);
 
             return RedirectToAction("List");
         }

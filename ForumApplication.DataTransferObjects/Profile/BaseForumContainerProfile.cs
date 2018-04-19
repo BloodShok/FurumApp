@@ -35,6 +35,7 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForMember(postDto => postDto.UserInfo, opt =>
                                         opt.MapFrom(post => Mapper.Map<UserPostInfoDto>(post.User)));
 
+            CreateMap<BaseForumContainerDto, Forum>();
         }
     }
 }

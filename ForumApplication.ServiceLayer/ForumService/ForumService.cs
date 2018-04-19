@@ -41,7 +41,7 @@ namespace ForumApplication.ServiceLayer.ForumService
             return Mapper.Map<BaseForumContainerDto>(Forumitem);
         }
 
-        public void SaveElement(SaveNewForumContainerDto item)
+        public void SaveElement(CreateNewForumContainerDto item)
         {
             var ForumElement = Mapper.Map<Forum>(item);
             ForumElement.DateCreated = DateTime.Now;
@@ -49,6 +49,12 @@ namespace ForumApplication.ServiceLayer.ForumService
 
             _repo.AddNewItem(ForumElement);
             _repo.SaveChanges();
+        }
+
+        public void UpdateForum(UpdateForumContainerDto itemForUpdateDto)
+        {
+            itemForUpdateDto.DateUpdate = DateTime.Now;
+            _repo.UpdateItem(itemForUpdateDto);
         }
     }
 }

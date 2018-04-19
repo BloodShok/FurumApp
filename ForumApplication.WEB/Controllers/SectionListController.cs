@@ -33,7 +33,7 @@ namespace ForumApplication.WEB.Controllers
 
         public ActionResult Create(CreateForumContainerModel containerModel)
         {
-            var SecListContainerDto = Mapper.Map<SaveNewForumContainerDto>(containerModel);
+            var SecListContainerDto = Mapper.Map<CreateNewForumContainerDto>(containerModel);
             return View();
         }
     }

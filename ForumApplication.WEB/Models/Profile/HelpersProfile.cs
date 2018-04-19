@@ -6,11 +6,12 @@ using System.Web;
 
 namespace ForumApplication.WEB.Models.Profile
 {
-    public class NewForumContainerModelProfile : AutoMapper.Profile
+    public class HelpersProfile : AutoMapper.Profile
     {
-        public NewForumContainerModelProfile()
+        public HelpersProfile()
         {
             CreateMap<CreateForumContainerModel, CreateNewForumContainerDto>();
+            CreateMap<UpdateForumContainerViewModel, UpdateForumContainerDto>();
         }
     }
 }

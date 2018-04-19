@@ -178,12 +178,14 @@
     <Compile Include="Models\Profile\BaseForumContainerViewModelProfile.cs" />
     <Compile Include="Models\NestedContainerElementsInfoViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\Profile\HelpersProfile.cs" />
     <Compile Include="Models\Profile\PostViewModelProfile.cs" />
     <Compile Include="Models\Profile\NewForumContainerModelProfile.cs" />
     <Compile Include="Models\Profile\TopicViewModelProfile.cs" />
     <Compile Include="Models\Profile\UserPostInfoViewModelProfile.cs" />
     <Compile Include="Models\CreateForumContainerModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
+    <Compile Include="Models\UpdateForumContainerViewModel.cs" />
     <Compile Include="Models\UserPostInfoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,6 +211,7 @@
     <Content Include="Views\Topic\Item.cshtml" />
     <Content Include="Views\Forum\Add.cshtml" />
     <Content Include="Views\Forum\Delete.cshtml" />
+    <Content Include="Views\Forum\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

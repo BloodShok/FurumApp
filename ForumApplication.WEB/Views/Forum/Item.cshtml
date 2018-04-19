@@ -34,11 +34,11 @@
                 <td>
                     <ul>
                         @foreach (var item in Model.NestedItemListInfo)
-                        {
-                          <li>
-                             @item.Title
-                          </li>
-                        }
+                    {
+                        <li>
+                            @item.Title
+                        </li>
+                }
                     </ul>
                 </td>
             </tr>
@@ -46,6 +46,11 @@
         <button class="btn btn-outline-warning  d-block m-2" type="button"
                 onclick="location.href='@Url.Action("Create","SectionList")'">
             <h5>Add SectionList</h5>
+        </button>
+
+        <button class="btn btn-outline-warning  d-block m-2" type="button"
+                onclick="location.href='@Url.Action("Update","Forum", new { Id = Model.Id })'">
+            <h5>Update Forum Element</h5>
         </button>
     </div>
 </body>

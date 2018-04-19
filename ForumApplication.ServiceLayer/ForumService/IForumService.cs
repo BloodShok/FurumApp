@@ -11,7 +11,8 @@ namespace ForumApplication.ServiceLayer.ForumService
     {
         IList<BaseForumContainerDto> GetAllElements();
         BaseForumContainerDto GetElement(int id);
-        void SaveElement(SaveNewForumContainerDto item);
+        void SaveElement(CreateNewForumContainerDto item);
         void DeleteElement(int id);
+        void UpdateForum(UpdateForumContainerDto itemForUpdateDto);
     }
 }
