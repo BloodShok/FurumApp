@@ -25,16 +25,5 @@ namespace ForumApplication.WEB.Controllers
 
             return View(SecListItemVieweModel);
         }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        public ActionResult Create(CreateForumContainerModel containerModel)
-        {
-            var SecListContainerDto = Mapper.Map<CreateNewForumContainerDto>(containerModel);
-            return View();
-        }
     }
 }

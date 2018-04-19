@@ -10,7 +10,7 @@ namespace ForumApplication.WEB.Models.Profile
     {
         public BaseForumContainerViewModelProfile()
         {
-            CreateMap<BaseForumContainerDto, BaseForumContainerViewModel>();
+            CreateMap<BaseForumContainerInfoDto, BaseForumContainerViewModel>();
         }
     }
 }

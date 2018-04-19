@@ -9,7 +9,8 @@ namespace ForumApplication.ServiceLayer.SectionService
 {
     public interface ISectionService
     {
-        BaseForumContainerDto GetElement(int id);
-        IList<BaseForumContainerDto> GetAllElements();
+        BaseForumContainerInfoDto GetElement(int id);
+        IList<BaseForumContainerInfoDto> GetAllElements();
+
     }
 }

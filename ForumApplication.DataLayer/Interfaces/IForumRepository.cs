@@ -13,6 +13,5 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<Forum> GetAllIncludeReferences();
         IList<Forum> GetAllIncludeReferences(int pageNumber, int pageSize);
         Forum GetByIDIncludeReferences(int id);
-        void UpdateItem(UpdateForumContainerDto forumElement);
     }
 }

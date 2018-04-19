@@ -17,16 +17,16 @@ namespace ForumApplication.ServiceLayer.TopicService
             _repo = repository;
         }
 
-        public IList<TopicDto> GetAllElements()
+        public IList<TopicInfoDto> GetAllElements()
         {
             throw new NotImplementedException();
         }
 
-        public TopicDto GetElement(int id)
+        public TopicInfoDto GetElement(int id)
         {
             var TopicElement = _repo.GetByIDIncludeReferences(id);
 
-            return Mapper.Map<TopicDto>(TopicElement);
+            return Mapper.Map<TopicInfoDto>(TopicElement);
         }
     }
 }

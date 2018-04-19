@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class UpdateForumContainerDto
+    public class CreateSectionListDto : BasePropertisForCreateDto
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime DateUpdate { get; set; }
+        public int ForumId { get; set; }
     }
 }

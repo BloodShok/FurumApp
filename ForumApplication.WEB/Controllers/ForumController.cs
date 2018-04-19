@@ -45,15 +45,15 @@ namespace ForumApplication.WEB.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Add (CreateForumContainerModel NewContainerModel)
-        {
-            var newForumDto = Mapper.Map<CreateNewForumContainerDto>(NewContainerModel);
+        //[HttpPost]
+        //public ActionResult Add (CreateForumContainerModel NewContainerModel)
+        //{
+        //    var newForumDto = Mapper.Map<CreateNewForumContainerDto>(NewContainerModel);
 
-            _forumService.SaveElement(newForumDto);
+        //    _forumService.SaveElement(newForumDto);
 
-            return RedirectToAction("List");
-        }
+        //    return RedirectToAction("List");
+        //}
 
         [HttpGet]
         public ActionResult Delete()
@@ -64,31 +64,31 @@ namespace ForumApplication.WEB.Controllers
             return View("Delete", FoumListViewModel);
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id)
-        {
-            _forumService.DeleteElement(id);
+        //[HttpPost]
+        //public ActionResult Delete(int id)
+        //{
+        //    _forumService.DeleteElement(id);
 
-            return RedirectToAction("List");
-        }
+        //    return RedirectToAction("List");
+        //}
 
-        [HttpGet]
-        public ActionResult Update(int id)
-        {
-            var itemForUpdateDto = _forumService.GetElement(id);
-            var itemForUpadateView = Mapper.Map<BaseForumContainerViewModel>(itemForUpdateDto);
+        //[HttpGet]
+        //public ActionResult Update(int id)
+        //{
+        //    var itemForUpdateDto = _forumService.GetElement(id);
+        //    var itemForUpadateView = Mapper.Map<BaseForumContainerViewModel>(itemForUpdateDto);
 
-            return View(itemForUpadateView);
-        }
+        //    return View(itemForUpadateView);
+        //}
 
-        [HttpPost]
-        public ActionResult Update(UpdateForumContainerViewModel modelForUpdate)
-        {
-            var itemForUpdateDto = Mapper.Map<UpdateForumContainerDto>(modelForUpdate);
-            _forumService.UpdateForum(itemForUpdateDto);
+        //[HttpPost]
+        //public ActionResult Update(UpdateForumContainerViewModel modelForUpdate)
+        //{
+        //    var itemForUpdateDto = Mapper.Map<UpdateBaseForumDto>(modelForUpdate);
+        //    _forumService.UpdateForum(itemForUpdateDto);
 
-            return RedirectToAction("List");
-        }
+        //    return RedirectToAction("List");
+        //}
 
     }
 }

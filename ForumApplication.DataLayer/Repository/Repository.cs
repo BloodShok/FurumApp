@@ -22,17 +22,20 @@ namespace ForumApplication.DataLayer.Repository
         public void AddNewItem(TEntity entity)
         {
             DbSet.Add(entity);
+            Context.SaveChanges();
         }
 
         public void DeleteItem(TEntity entity)
         {
             DbSet.Remove(entity);
+            Context.SaveChanges();
         }
 
         public void DeleteItemById(object id)
         {
             var item = DbSet.Find(id);
             DeleteItem(item);
+            Context.SaveChanges();
         }
 
         public TEntity GetByID(object id)
@@ -45,11 +48,6 @@ namespace ForumApplication.DataLayer.Repository
             return DbSet.Select(x => x)
                 .Page(pagenumber,pageSize)
                 .ToList();
-        }
-
-        public void SaveChanges()
-        {
-            Context.SaveChanges();
         }
 
         public virtual void Dispouse()

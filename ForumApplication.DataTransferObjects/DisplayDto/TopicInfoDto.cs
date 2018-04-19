@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class TopicDto 
+    public class TopicInfoDto 
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -15,6 +15,6 @@ namespace ForumApplication.DataTransferObjects
         public int CountOfPosts { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
-        public IList<PostDto> PostDto { get; set; }
+        public IList<PostInfoDto> PostDto { get; set; }
     }
 }

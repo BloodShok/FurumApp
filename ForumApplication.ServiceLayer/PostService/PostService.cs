@@ -16,18 +16,18 @@ namespace ForumApplication.ServiceLayer.PostService
         {
             _repo = repository;
         }
-        public IList<PostDto> GetAllElements()
+        public IList<PostInfoDto> GetAllElements()
         {
             var PostList = _repo.GetAllIncludeReferences();
 
-            return Mapper.Map<List<PostDto>>(PostList);
+            return Mapper.Map<List<PostInfoDto>>(PostList);
         }
 
-        public PostDto GetElement(int id)
+        public PostInfoDto GetElement(int id)
         {
             var Post = _repo.GetByIDIncludeReferences(id);
 
-            return Mapper.Map<PostDto>(Post);
+            return Mapper.Map<PostInfoDto>(Post);
         }
     }
 }

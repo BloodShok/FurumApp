@@ -9,7 +9,11 @@ namespace ForumApplication.ServiceLayer.SectionListService
 {
     public interface ISectionListService
     {
-        BaseForumContainerDto GetElement(int id);
-        IList<BaseForumContainerDto> GetAllElements();
+        BaseForumContainerInfoDto GetElement(int id);
+        IList<BaseForumContainerInfoDto> GetAllElements();
+        void CreateSectionList(CreateSectionListDto sectionList);
+        //void DeleteSectionList(int id);
+        //void UpdateSectionList(UpdateBaseForumDto updateSection);
+
     }
 }

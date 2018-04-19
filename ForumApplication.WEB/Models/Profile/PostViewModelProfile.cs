@@ -11,7 +11,7 @@ namespace ForumApplication.WEB.Models.Profile
     {
         public PostViewModelProfile()
         {
-            CreateMap<PostDto, PostViewModel>()
+            CreateMap<PostInfoDto, PostViewModel>()
                 .ForMember(postDto => postDto.UserInfo,
                             opt => opt.MapFrom(postDto => Mapper.Map<UserPostInfoViewModel>(postDto.UserInfo)));
         }

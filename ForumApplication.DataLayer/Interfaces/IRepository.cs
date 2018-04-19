@@ -17,6 +17,5 @@ namespace ForumApplication.DataLayer.Interfaces
         void AddNewItem(TEntity entity);
         void DeleteItem(TEntity entity);                          
         void DeleteItemById(object id);
-        void SaveChanges();
     }
 }

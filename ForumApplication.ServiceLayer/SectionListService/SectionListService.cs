@@ -7,28 +7,39 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.Domain.Entitys;
 
 namespace ForumApplication.ServiceLayer.SectionListService
 {
     public class SectionListService : ISectionListService
     {
-        ISectionListRepository _repo;
-        public SectionListService(DbContext context, ISectionListRepository repository)
+        ISectionListRepository _sectionListRepo;
+        public SectionListService(ISectionListRepository repository)
         {
-            _repo = repository;
-        }
-        public IList<BaseForumContainerDto> GetAllElements()
-        {
-            var SectionListElements = _repo.GetAllIncludeReferences();
-
-            return Mapper.Map<IList<BaseForumContainerDto>>(SectionListElements);
+            _sectionListRepo = repository;
         }
 
-        public BaseForumContainerDto GetElement(int id)
+        public void CreateSectionList(CreateSectionListDto sectionList)
         {
-            var SectionListElement = _repo.GetByIDIncludeReferences(id);
+            var newSectionList = Mapper.Map<SectionList>(sectionList);
 
-            return Mapper.Map<BaseForumContainerDto>(SectionListElement);
+            _sectionListRepo.AddNewItem(newSectionList);
         }
+
+        public IList<BaseForumContainerInfoDto> GetAllElements()
+        {
+            var SectionListElements = _sectionListRepo.GetAllIncludeReferences();
+
+            return Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionListElements);
+        }
+
+        public BaseForumContainerInfoDto GetElement(int id)
+        {
+            var SectionListElement = _sectionListRepo.GetByIDIncludeReferences(id);
+
+            return Mapper.Map<BaseForumContainerInfoDto>(SectionListElement);
+        }
+
+     
     }
 }

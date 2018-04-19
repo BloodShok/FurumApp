@@ -30,16 +30,20 @@
                     <td>
                         <ol>
                             @foreach (var item in Model.NestedItemListInfo)
-                            {
+                        {
                             <li>
                                 @Html.ActionLink($"{item.Title}", "Item", "Section", new { item.Id }, null)
                             </li>
-                            }
+                    }
                         </ol>
                     </td>
                 </tr>
             </thead>
         </table>
+        <button class="btn btn-outline-warning  d-block m-2" type="button"
+                onclick="location.href='@Url.Action("Update","SectionList", new { Id = Model.Id })'">
+            <h5>Update SectionList Element</h5>
+        </button>
     </div>
 </body>
 </html>

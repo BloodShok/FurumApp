@@ -9,7 +9,7 @@ namespace ForumApplication.ServiceLayer.TopicService
 {
     public interface ITopicService
     {
-        TopicDto GetElement(int id);
-        IList<TopicDto> GetAllElements();
+        TopicInfoDto GetElement(int id);
+        IList<TopicInfoDto> GetAllElements();
     }
 }

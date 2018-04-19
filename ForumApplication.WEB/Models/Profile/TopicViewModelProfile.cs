@@ -11,7 +11,7 @@ namespace ForumApplication.WEB.Models.Profile
     {
         public TopicViewModelProfile()
         {
-            CreateMap<TopicDto, TopicViewModel>()
+            CreateMap<TopicInfoDto, TopicViewModel>()
                 .ForMember(topicView => topicView.PostViewModel, opt => 
                                     opt.MapFrom(topicDto => Mapper.Map<IList<PostViewModel>>(topicDto.PostDto)));
         }

@@ -36,8 +36,6 @@ namespace ForumApplication.WEB
                                 conf.AddProfile(new UserPostInfoViewModelProfile());
 
                                 conf.AddProfile(new NestedContainerElementsInfoProfile());
-                                conf.AddProfile(new SaveNewForumContainerProfile());
-                                conf.AddProfile(new HelpersProfile());
                             });
         }
     }

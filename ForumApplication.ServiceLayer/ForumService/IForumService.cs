@@ -9,10 +9,10 @@ namespace ForumApplication.ServiceLayer.ForumService
 {
     public interface IForumService
     {
-        IList<BaseForumContainerDto> GetAllElements();
-        BaseForumContainerDto GetElement(int id);
-        void SaveElement(CreateNewForumContainerDto item);
-        void DeleteElement(int id);
-        void UpdateForum(UpdateForumContainerDto itemForUpdateDto);
+        IList<BaseForumContainerInfoDto> GetAllElements();
+        BaseForumContainerInfoDto GetElement(int id);
+        //void SaveElement(CreateNewForumContainerDto item);
+        //void DeleteElement(int id);
+        //void UpdateForum(UpdateBaseForumDto itemForUpdateDto);
     }
 }

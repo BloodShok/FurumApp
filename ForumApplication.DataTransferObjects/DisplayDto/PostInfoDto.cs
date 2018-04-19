@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class PostDto
+    public class PostInfoDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }

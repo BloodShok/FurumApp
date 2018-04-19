@@ -9,7 +9,7 @@ namespace ForumApplication.ServiceLayer.PostService
 {
     public interface IPostService
     {
-        IList<PostDto> GetAllElements();
-        PostDto GetElement(int id);
+        IList<PostInfoDto> GetAllElements();
+        PostInfoDto GetElement(int id);
     }
 }

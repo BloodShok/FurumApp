@@ -1,4 +1,5 @@
-﻿using ForumApplication.Domain.Entitys;
+﻿using ForumApplication.DataTransferObjects;
+using ForumApplication.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<SectionList> GetAllIncludeReferences();
         IList<SectionList> GetAllIncludeReferences(int pageNumber, int pageSize);
         SectionList GetByIDIncludeReferences(int id);
+
     }
 }
