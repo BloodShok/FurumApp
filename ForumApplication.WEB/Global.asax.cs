@@ -23,26 +23,19 @@ namespace ForumApplication.WEB
 
             Mapper.Initialize(conf =>
                             {
-                                
-                                conf.AddProfile(new ForumProfile());
-                                conf.AddProfile(new ForumViewModelProfile());
 
-                                conf.AddProfile(new SectionProfile());
-                                conf.AddProfile(new SectionViewModelProfile());
+                                conf.AddProfile(new BaseForumContainerProfile());
+                                conf.AddProfile(new BaseForumContainerViewModelProfile());
 
-                                conf.AddProfile(new SectionListProfie());
-                                conf.AddProfile(new SectionListViewModelProfile());
-
-                                conf.AddProfile(new TopicProfile());
                                 conf.AddProfile(new TopicViewModelProfile());
 
-                                conf.AddProfile(new PostDtoProfile());
+                               
                                 conf.AddProfile(new PostViewModelProfile());
 
                                 conf.AddProfile(new UserPostInfoDtoProfile());
                                 conf.AddProfile(new UserPostInfoViewModelProfile());
 
-                                conf.AddProfile(new NestedContainerElementProfile());
+                                conf.AddProfile(new NestedContainerElementsInfoProfile());
                                 conf.AddProfile(new SaveNewForumContainerProfile());
                             });
         }

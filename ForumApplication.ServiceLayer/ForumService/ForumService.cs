@@ -26,25 +26,27 @@ namespace ForumApplication.ServiceLayer.ForumService
             _repo.SaveChanges();
         }
 
-        public IList<ForumDto> GetAllElements()
+        public IList<BaseForumContainerDto> GetAllElements()
         {
             var ForumList = _repo.GetAllIncludeReferences();
 
-            return Mapper.Map<IList<ForumDto>>(ForumList); 
+            return Mapper.Map<IList<BaseForumContainerDto>>(ForumList); 
         }
 
-        public ForumDto GetElement(int id)
+        public BaseForumContainerDto GetElement(int id)
         {
             
             var Forumitem = _repo.GetByIDIncludeReferences(id);
 
-            return Mapper.Map<ForumDto>(Forumitem);
+            return Mapper.Map<BaseForumContainerDto>(Forumitem);
         }
 
         public void SaveElement(SaveNewForumContainerDto item)
         {
             var ForumElement = Mapper.Map<Forum>(item);
-            
+            ForumElement.DateCreated = DateTime.Now;
+            ForumElement.DateUpdate = DateTime.Now;
+
             _repo.AddNewItem(ForumElement);
             _repo.SaveChanges();
         }

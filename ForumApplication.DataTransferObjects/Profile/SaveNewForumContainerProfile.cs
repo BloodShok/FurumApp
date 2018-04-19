@@ -11,9 +11,10 @@ namespace ForumApplication.DataTransferObjects.Profile
     {
         public SaveNewForumContainerProfile()
         {
-            CreateMap<SaveNewForumContainerDto, Forum>()
-                .ForMember(forum => forum.DateCreated, opt => opt.UseValue(DateTime.Now))
-                .ForMember(forum => forum.DateUpdate, opt => opt.UseValue(DateTime.Now));
+            CreateMap<SaveNewForumContainerDto, Forum>();
+            CreateMap<SaveNewForumContainerDto, SectionList>();
+            CreateMap<SaveNewForumContainerDto, Section>();
+            CreateMap<SaveNewForumContainerDto, Topic>();
         }
     }
 }

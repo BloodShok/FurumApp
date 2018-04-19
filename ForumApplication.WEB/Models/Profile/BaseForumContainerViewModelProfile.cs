@@ -6,12 +6,11 @@ using System.Web;
 
 namespace ForumApplication.WEB.Models.Profile
 {
-    public class SectionViewModelProfile : AutoMapper.Profile
+    public class BaseForumContainerViewModelProfile : AutoMapper.Profile
     {
-        public SectionViewModelProfile()
+        public BaseForumContainerViewModelProfile()
         {
-            CreateMap<SectionViewModel, SectionDto>();
-            CreateMap<SectionDto, SectionViewModel>();
+            CreateMap<BaseForumContainerDto, BaseForumContainerViewModel>();
         }
     }
 }

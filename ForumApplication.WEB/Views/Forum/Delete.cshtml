@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ForumApplication.WEB.Models.ForumViewModel>
+﻿@model IEnumerable<ForumApplication.WEB.Models.BaseForumContainerViewModel>
 
 @{
     Layout = null;
@@ -34,7 +34,7 @@
                     <td>@item.UserName</td>
                     <td>
                         <ol>
-                            @foreach (var secList in item.NestedSectionListItemListInfo)
+                            @foreach (var secList in item.NestedItemListInfo)
                             {
                                 <li>@secList.Title</li>
                             }

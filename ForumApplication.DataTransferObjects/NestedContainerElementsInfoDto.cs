@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class NestedContainerElement
+    public class NestedContainerElementsInfoDto
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int CountOfPosts { get; set; }
-        public int CountOfTopics { get; set; }
+        public int CountOfNestedElements { get; set; }
     }
 }

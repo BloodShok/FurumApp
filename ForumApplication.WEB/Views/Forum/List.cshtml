@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ForumApplication.WEB.Models.ForumViewModel>
+﻿@model IEnumerable<ForumApplication.WEB.Models.BaseForumContainerViewModel>
 
 @{
     Layout = null;
@@ -22,8 +22,8 @@
             @foreach (var item in Model)
             {
                 <td>
-                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id }) <br />
-                    @foreach (var SlInfo in item.NestedSectionListItemListInfo)
+                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id })<br />
+                    @foreach (var SlInfo in item.NestedItemListInfo)
                     {
                         <ul>
                             <li>

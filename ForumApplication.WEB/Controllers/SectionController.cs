@@ -22,7 +22,7 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Item(int id)
         {
             var SectionDto = _sectionService.GetElement(id);
-            var SectionView = Mapper.Map<SectionViewModel>(SectionDto);
+            var SectionView = Mapper.Map<BaseForumContainerViewModel>(SectionDto);
 
             return View(SectionView);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class ForumDto
+    public class BaseForumContainerDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -14,6 +14,6 @@ namespace ForumApplication.DataTransferObjects
         public string Title { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
-        public IList<NestedContainerElement> NestedSectionListItemListInfo { get; set; }
+        public IList<NestedContainerElementsInfoDto> NestedItemListInfo { get; set; }
     }
 }

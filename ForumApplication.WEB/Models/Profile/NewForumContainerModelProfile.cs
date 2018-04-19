@@ -10,7 +10,7 @@ namespace ForumApplication.WEB.Models.Profile
     {
         public NewForumContainerModelProfile()
         {
-            CreateMap<NewForumContainerModel, SaveNewForumContainerDto>();
+            CreateMap<CreateForumContainerModel, SaveNewForumContainerDto>();
         }
     }
 }

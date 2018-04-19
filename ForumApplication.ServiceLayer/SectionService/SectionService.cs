@@ -18,20 +18,20 @@ namespace ForumApplication.ServiceLayer.SectionService
         {
             _repo = repository;
         }
-        public IList<SectionDto> GetAllElements()
+        public IList<BaseForumContainerDto> GetAllElements()
         {
            
             var SectionList = _repo.GetAllIncludeReferences();
 
-            return Mapper.Map<IList<SectionDto>>(SectionList);
+            return Mapper.Map<IList<BaseForumContainerDto>>(SectionList);
         }
 
-        public SectionDto GetElement(int id)
+        public BaseForumContainerDto GetElement(int id)
         {
             
             var SectionElement = _repo.GetByIDIncludeReferences(id);
 
-            return Mapper.Map<SectionDto>(SectionElement);
+            return Mapper.Map<BaseForumContainerDto>(SectionElement);
         }
     }
 }

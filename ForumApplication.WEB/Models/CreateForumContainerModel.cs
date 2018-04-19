@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ForumApplication.WEB.Models
 {
-    public class NewForumContainerModel
+    public class CreateForumContainerModel
     {
         public int UserId { get; set; }
         public string Title { get; set; }

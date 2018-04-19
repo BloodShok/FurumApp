@@ -1,4 +1,4 @@
-﻿@model ForumApplication.WEB.Models.SectionViewModel
+﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
 
 @{
     Layout = null;
@@ -31,10 +31,10 @@
                     <td>@Model.UserName</td>
                     <td>
                         <ul>
-                            @foreach (var item in Model.NestedTopicListInfo)
+                            @foreach (var item in Model.NestedItemListInfo)
                             {
                             <li>
-                                @Html.ActionLink($"{@item.Title}", "Item","Topic", new { id = item.Id }, null ) Posts(@item.CountOfPosts)
+                                @Html.ActionLink($"{@item.Title}", "Item","Topic", new { id = item.Id }, null )
                             </li>
                             }
                         </ul>

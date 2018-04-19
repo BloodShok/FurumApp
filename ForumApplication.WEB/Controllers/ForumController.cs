@@ -21,7 +21,7 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult List()
         {
             var listofForumsDto = _forumService.GetAllElements();
-            var FoumListViewModel = Mapper.Map<List<ForumViewModel>>(listofForumsDto);
+            var FoumListViewModel = Mapper.Map<List<BaseForumContainerViewModel>>(listofForumsDto);
 
             return View("List", FoumListViewModel);
         }
@@ -33,7 +33,7 @@ namespace ForumApplication.WEB.Controllers
             if (forumItem == null)
                 return HttpNotFound();
 
-            var ForumViewModelItem = Mapper.Map<ForumViewModel>(forumItem);
+            var ForumViewModelItem = Mapper.Map<BaseForumContainerViewModel>(forumItem);
 
             
             return View(ForumViewModelItem);
@@ -46,7 +46,7 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add (NewForumContainerModel NewContainerModel)
+        public ActionResult Add (CreateForumContainerModel NewContainerModel)
         {
             var newForumDto = Mapper.Map<SaveNewForumContainerDto>(NewContainerModel);
 
@@ -59,7 +59,7 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Delete()
         {
             var listofForumsDto = _forumService.GetAllElements();
-            var FoumListViewModel = Mapper.Map<List<ForumViewModel>>(listofForumsDto);
+            var FoumListViewModel = Mapper.Map<List<BaseForumContainerViewModel>>(listofForumsDto);
 
             return View("Delete", FoumListViewModel);
         }

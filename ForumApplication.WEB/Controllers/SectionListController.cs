@@ -21,7 +21,7 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Item(int id)
         {
             var SecListItemDto = _sectionListService.GetElement(id);
-            var SecListItemVieweModel = Mapper.Map<SectionListViewModel>(SecListItemDto);
+            var SecListItemVieweModel = Mapper.Map<BaseForumContainerViewModel>(SecListItemDto);
 
             return View(SecListItemVieweModel);
         }
@@ -31,7 +31,7 @@ namespace ForumApplication.WEB.Controllers
             return View();
         }
 
-        public ActionResult Create(NewForumContainerModel containerModel)
+        public ActionResult Create(CreateForumContainerModel containerModel)
         {
             var SecListContainerDto = Mapper.Map<SaveNewForumContainerDto>(containerModel);
             return View();
