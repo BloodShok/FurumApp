@@ -120,6 +120,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MainPageStyle.css" />
+    <Content Include="Content\SiteStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="Pictures\UiPictures\blur-bright.jpg" />
     <Content Include="Pictures\UiPictures\login.png" />
@@ -174,15 +175,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaseForumContainerViewModel.cs" />
+    <Compile Include="Models\DisplayViewModel\BaseForumContainerViewModel.cs" />
     <Compile Include="Models\Profile\BaseForumContainerViewModelProfile.cs" />
-    <Compile Include="Models\NestedContainerElementsInfoViewModel.cs" />
-    <Compile Include="Models\PostViewModel.cs" />
-    <Compile Include="Models\Profile\PostViewModelProfile.cs" />
-    <Compile Include="Models\Profile\TopicViewModelProfile.cs" />
-    <Compile Include="Models\Profile\UserPostInfoViewModelProfile.cs" />
-    <Compile Include="Models\TopicViewModel.cs" />
-    <Compile Include="Models\UserPostInfoViewModel.cs" />
+    <Compile Include="Models\DisplayViewModel\NestedContainerElementsInfoViewModel.cs" />
+    <Compile Include="Models\DisplayViewModel\PostViewModel.cs" />
+    <Compile Include="Models\Profile\CreateUpdateViewModelProfile.cs" />
+    <Compile Include="Models\Profile\DisplayViewModelProfile.cs" />
+    <Compile Include="Models\DisplayViewModel\TopicViewModel.cs" />
+    <Compile Include="Models\DisplayViewModel\UserPostInfoViewModel.cs" />
+    <Compile Include="Models\UpdateAndCreateViewModel\BasePropertysForCreateViewModel.cs" />
+    <Compile Include="Models\UpdateAndCreateViewModel\CreateSectionListViewModel.cs" />
+    <Compile Include="Models\UpdateAndCreateViewModel\CreateTopicViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,10 +208,12 @@
     <Content Include="Views\Section\Item.cshtml" />
     <Content Include="Views\SectionList\Item.cshtml" />
     <Content Include="Views\Topic\Item.cshtml" />
-    <Content Include="Views\Forum\Add.cshtml" />
     <Content Include="Views\Forum\Delete.cshtml" />
-    <Content Include="Views\Forum\Update.cshtml" />
     <Content Include="Views\SectionList\Create.cshtml" />
+    <Content Include="Views\Forum\Create.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Topic\Create.cshtml" />
+    <Content Include="Views\Forum\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

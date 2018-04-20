@@ -23,6 +23,9 @@ namespace ForumApplication.ServiceLayer.SectionListService
         {
             var newSectionList = Mapper.Map<SectionList>(sectionList);
 
+            newSectionList.DateCreated = DateTime.Now;
+            newSectionList.DateUpdate = DateTime.Now;
+    
             _sectionListRepo.AddNewItem(newSectionList);
         }
 

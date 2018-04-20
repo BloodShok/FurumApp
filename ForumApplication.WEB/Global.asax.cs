@@ -27,15 +27,12 @@ namespace ForumApplication.WEB
                                 conf.AddProfile(new BaseForumContainerProfile());
                                 conf.AddProfile(new BaseForumContainerViewModelProfile());
 
-                                conf.AddProfile(new TopicViewModelProfile());
-
-                               
-                                conf.AddProfile(new PostViewModelProfile());
-
-                                conf.AddProfile(new UserPostInfoDtoProfile());
-                                conf.AddProfile(new UserPostInfoViewModelProfile());
-
                                 conf.AddProfile(new NestedContainerElementsInfoProfile());
+
+                                conf.AddProfile(new CreateUpdateViewModelProfile());
+                                conf.AddProfile(new CreateUpdateProfile());
+                                conf.AddProfile(new DisplayViewModelProfile());
+
                             });
         }
     }

@@ -20,6 +20,15 @@ namespace ForumApplication.ServiceLayer.ForumService
             _repo = repository;
         }
 
+        public void CreateForum(BasePropertisForCreateDto newForumDataDto)
+        {
+            var newForum = Mapper.Map<Forum>(newForumDataDto);
+            newForum.DateCreated = DateTime.Now;
+            newForum.DateUpdate = DateTime.Now;
+
+            _repo.AddNewItem(newForum);
+        }
+
         public void DeleteElement(int id)
         {
             _repo.DeleteItemById(id);
@@ -39,20 +48,5 @@ namespace ForumApplication.ServiceLayer.ForumService
 
             return Mapper.Map<BaseForumContainerInfoDto>(Forumitem);
         }
-
-        //public void SaveElement(CreateNewForumContainerDto item)
-        //{
-        //    var ForumElement = Mapper.Map<Forum>(item);
-        //    ForumElement.DateCreated = DateTime.Now;
-        //    ForumElement.DateUpdate = DateTime.Now;
-
-        //    _repo.AddNewItem(ForumElement);
-        //}
-
-        //public void UpdateForum(UpdateBaseForumDto itemForUpdateDto)
-        //{
-        //    itemForUpdateDto.DateUpdate = DateTime.Now;
-        //    _repo.UpdateItem(itemForUpdateDto);
-        //}
     }
 }

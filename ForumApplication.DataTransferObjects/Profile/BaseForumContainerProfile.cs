@@ -12,7 +12,7 @@ namespace ForumApplication.DataTransferObjects.Profile
         public BaseForumContainerProfile()
         {
             
-                CreateMap<Forum, BaseForumContainerInfoDto>()
+            CreateMap<Forum, BaseForumContainerInfoDto>()
                     .ForMember(mainDto => mainDto.UserName, opt => opt.MapFrom(forum => forum.User.Login))
                     .ForMember(mainDto => mainDto.NestedItemListInfo , opt => opt.MapFrom(SlistInfo =>
                                                             Mapper.Map<IList<NestedContainerElementsInfoDto>>(SlistInfo.SectionLists)));
@@ -36,6 +36,8 @@ namespace ForumApplication.DataTransferObjects.Profile
                                         opt.MapFrom(post => Mapper.Map<UserPostInfoDto>(post.User)));
 
             CreateMap<BaseForumContainerInfoDto, Forum>();
+
+            CreateMap<User, UserPostInfoDto>();
         }
     }
 }

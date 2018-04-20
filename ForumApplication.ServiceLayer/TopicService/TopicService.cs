@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.Domain.Entitys;
 
 namespace ForumApplication.ServiceLayer.TopicService
 {
@@ -15,6 +16,15 @@ namespace ForumApplication.ServiceLayer.TopicService
         public TopicService(ITopicRepository repository)
         {
             _repo = repository;
+        }
+
+        public void CreateTopic(CreateTopicDto newCreateTopicData)
+        {
+            var newTopic = Mapper.Map<Topic>(newCreateTopicData);
+            newTopic.DateCreated = DateTime.Now;
+            newTopic.DateUpdate = DateTime.Now;
+
+            _repo.AddNewItem(newTopic);
         }
 
         public IList<TopicInfoDto> GetAllElements()

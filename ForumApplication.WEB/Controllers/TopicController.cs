@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ForumApplication.DataTransferObjects;
 using ForumApplication.ServiceLayer.TopicService;
 using ForumApplication.WEB.Models;
 using System;
@@ -24,6 +25,23 @@ namespace ForumApplication.WEB.Controllers
             
 
             return View(topicView);
+        }
+
+        [HttpGet]
+        public ActionResult Create(int Id)
+        {
+            ViewBag.SectionId = Id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateTopicViewModel createTopicView)
+        {
+            var createTopicDto = Mapper.Map<CreateTopicDto>(createTopicView);
+            _topicService.CreateTopic(createTopicDto);
+
+            return RedirectToAction("Item", new { createTopicDto.Id });
         }
     }
 }

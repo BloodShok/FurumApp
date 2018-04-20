@@ -40,22 +40,6 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
-        {
-            return View();
-        }
-
-        //[HttpPost]
-        //public ActionResult Add (CreateForumContainerModel NewContainerModel)
-        //{
-        //    var newForumDto = Mapper.Map<CreateNewForumContainerDto>(NewContainerModel);
-
-        //    _forumService.SaveElement(newForumDto);
-
-        //    return RedirectToAction("List");
-        //}
-
-        [HttpGet]
         public ActionResult Delete()
         {
             var listofForumsDto = _forumService.GetAllElements();
@@ -64,31 +48,46 @@ namespace ForumApplication.WEB.Controllers
             return View("Delete", FoumListViewModel);
         }
 
-        //[HttpPost]
-        //public ActionResult Delete(int id)
-        //{
-        //    _forumService.DeleteElement(id);
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _forumService.DeleteElement(id);
 
-        //    return RedirectToAction("List");
-        //}
+            return RedirectToAction("List");
+        }
 
-        //[HttpGet]
-        //public ActionResult Update(int id)
-        //{
-        //    var itemForUpdateDto = _forumService.GetElement(id);
-        //    var itemForUpadateView = Mapper.Map<BaseForumContainerViewModel>(itemForUpdateDto);
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //    return View(itemForUpadateView);
-        //}
+        [HttpPost]
+        public ActionResult Create(BasePropertysForCreateViewModel newForumData)
+        {
+            var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(newForumData);
 
-        //[HttpPost]
-        //public ActionResult Update(UpdateForumContainerViewModel modelForUpdate)
-        //{
-        //    var itemForUpdateDto = Mapper.Map<UpdateBaseForumDto>(modelForUpdate);
-        //    _forumService.UpdateForum(itemForUpdateDto);
+            _forumService.CreateForum(newForumDataDto);
 
-        //    return RedirectToAction("List");
-        //}
+            return RedirectToAction("List");
+        }
 
+        [HttpGet]
+        public ActionResult Update(int Id)
+        {
+            var updateElemDto = _forumService.GetElement(Id);
+            var updateElemViewModel = Mapper.Map<BasePropertisForCreateDto>(updateElemDto);
+            
+            return View(updateElemViewModel);
+        }
+
+        public ActionResult Update(BasePropertysForCreateViewModel updateData)
+        {
+            var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(newForumData);
+
+            _forumService.CreateForum(newForumDataDto);
+
+            return RedirectToAction("List");
+        }
     }
 }

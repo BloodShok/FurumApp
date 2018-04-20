@@ -1,6 +1,7 @@
 ﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
 @{
-    Layout = null;
+    ViewBag.Title = "sectionlist";
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
 }
 
 <!DOCTYPE html>
@@ -40,10 +41,6 @@
                 </tr>
             </thead>
         </table>
-        <button class="btn btn-outline-warning  d-block m-2" type="button"
-                onclick="location.href='@Url.Action("Update","SectionList", new { Id = Model.Id })'">
-            <h5>Update SectionList Element</h5>
-        </button>
     </div>
 </body>
 </html>

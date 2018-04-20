@@ -11,5 +11,6 @@ namespace ForumApplication.ServiceLayer.TopicService
     {
         TopicInfoDto GetElement(int id);
         IList<TopicInfoDto> GetAllElements();
+        void CreateTopic(CreateTopicDto newCreateTopicData);
     }
 }

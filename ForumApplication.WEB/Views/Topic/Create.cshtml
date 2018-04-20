@@ -1,0 +1,16 @@
+﻿@model ForumApplication.WEB.Models.CreateTopicViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Topic</h1>
+@using (Html.BeginForm())
+{
+    <input type="hidden" value="1" name="UserId" />
+    <input type="hidden" value="@ViewBag.SectionId" name="SectionId" />
+     @Html.TextBoxFor(x => x.Title);
+    <input type="submit" name="Create"/>
+}
+

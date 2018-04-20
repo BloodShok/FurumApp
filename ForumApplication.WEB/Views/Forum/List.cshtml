@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<ForumApplication.WEB.Models.BaseForumContainerViewModel>
 
 @{
-    Layout = null;
+    ViewBag.Title = "forumlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
         </tr>
     </table>
     <button class="btn btn-outline-warning  d-block" type="button"
-            onclick="location.href='@Url.Action("Add","Forum")'">
+            onclick="location.href='@Url.Action("Create","Forum")'">
         <h5>Add New Forum Element</h5>
     </button>
 

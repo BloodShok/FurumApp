@@ -48,11 +48,14 @@
     <Compile Include="DisplayDto\NestedContainerElementsInfoDto.cs" />
     <Compile Include="DisplayDto\PostInfoDto.cs" />
     <Compile Include="Profile\BaseForumContainerProfile.cs" />
+    <Compile Include="Profile\CreateUpdateProfile.cs" />
     <Compile Include="Profile\NestedContainerElementsInfoProfile.cs" />
-    <Compile Include="Profile\UserPostInfoDtoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DisplayDto\TopicInfoDto.cs" />
     <Compile Include="DisplayDto\UserPostInfoDto.cs" />
+    <Compile Include="UpdateAndCreateDto\BasePropertysForCreateDto.cs" />
+    <Compile Include="UpdateAndCreateDto\CreateSectionListDto.cs" />
+    <Compile Include="UpdateAndCreateDto\CreateTopicDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,8 +66,6 @@
       <Name>ForumApplication.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UpdateAndCreateDto\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
