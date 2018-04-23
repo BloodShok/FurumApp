@@ -19,7 +19,8 @@
 </head>
 <body>
     <div>
-        <h2 class="text-center">@Model.Title  @Model.UserName</h2>
+        <h2 class="text-center">@Model.Title  <br />  
+        @Model.UserInfo.UserName</h2>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -31,7 +32,7 @@
             @foreach (var item in Model.PostViewModel)
             {
                 <tr>
-                    <td>@item.UserInfo.Login</td>
+                    <td>@item.UserInfo.UserName</td>
                     <td>@item.MessageStringContent</td>
                 </tr>
             }

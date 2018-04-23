@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataLayer.DataAccessContext
 {
-    class UserConfig : EntityTypeConfiguration<User>
+    class UserConfig : EntityTypeConfiguration<UserProfile>
     {
         public UserConfig()
         {
@@ -26,20 +26,12 @@ namespace ForumApplication.DataLayer.DataAccessContext
                 .WithRequired(x => x.User)
                 .HasForeignKey(x => x.UserId)
                 .WillCascadeOnDelete(false);
+            
 
             HasMany(x => x.Posts)
                 .WithRequired(x => x.User)
                 .HasForeignKey(x => x.UserId)
                 .WillCascadeOnDelete(false);
-
-            Property(x => x.Login)
-                .IsRequired();
-
-            Property(x => x.Password)
-                .IsRequired();
-
-            Property(x => x.Email)
-                .IsRequired();
 
             Property(x => x.AttachedPicture)
                 .IsOptional();
@@ -49,6 +41,8 @@ namespace ForumApplication.DataLayer.DataAccessContext
 
             Property(x => x.SomeInformation)
                 .IsOptional();
+
+
             
         }
     }

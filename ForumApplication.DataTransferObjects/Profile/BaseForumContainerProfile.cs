@@ -11,33 +11,40 @@ namespace ForumApplication.DataTransferObjects.Profile
     {
         public BaseForumContainerProfile()
         {
-            
+
             CreateMap<Forum, BaseForumContainerInfoDto>()
-                    .ForMember(mainDto => mainDto.UserName, opt => opt.MapFrom(forum => forum.User.Login))
-                    .ForMember(mainDto => mainDto.NestedItemListInfo , opt => opt.MapFrom(SlistInfo =>
-                                                            Mapper.Map<IList<NestedContainerElementsInfoDto>>(SlistInfo.SectionLists)));
+                    .ForMember(mainDto => mainDto.NestedItemListInfo,
+                            opt => opt.MapFrom(forum => Mapper.Map<IList<NestedContainerElementsInfoDto>>(forum.SectionLists)))
+            .ForMember(mainDto => mainDto.UserInfo,
+                            opt => opt.MapFrom(forum => Mapper.Map<UserNameIdDto>(forum.User.UserAccount)));
+
+
             CreateMap<SectionList, BaseForumContainerInfoDto>()
-                .ForMember(mainDto => mainDto.UserName, opt => opt.MapFrom(secList => secList.User.Login))
-                    .ForMember(mainDto => mainDto.NestedItemListInfo, opt => opt.MapFrom(secList =>
-                                                           Mapper.Map<IList<NestedContainerElementsInfoDto>>(secList.Sections)));
+                    .ForMember(mainDto => mainDto.NestedItemListInfo,
+                            opt => opt.MapFrom(secList => Mapper.Map<IList<NestedContainerElementsInfoDto>>(secList.Sections)))
+                    .ForMember(mainDto => mainDto.UserInfo,
+                            opt => opt.MapFrom(secList => Mapper.Map<UserNameIdDto>(secList.User.UserAccount)));
+
 
             CreateMap<Section, BaseForumContainerInfoDto>()
-                .ForMember(mainDto => mainDto.UserName, opt => opt.MapFrom(Sec => Sec.User.Login))
-                .ForMember(mainDto => mainDto.NestedItemListInfo, opt =>
-                                            opt.MapFrom(Sec => Mapper.Map<IList<NestedContainerElementsInfoDto>>(Sec.Topics)));
+                    .ForMember(mainDto => mainDto.NestedItemListInfo,
+                            opt => opt.MapFrom(sec => Mapper.Map<IList<NestedContainerElementsInfoDto>>(sec.Topics)))
+                    .ForMember(mainDto => mainDto.UserInfo,
+                            opt => opt.MapFrom(sec => Mapper.Map<UserNameIdDto>(sec.User.UserAccount)));
+
 
             CreateMap<Topic, TopicInfoDto>()
-                .ForMember(topDto => topDto.UserName, opt => opt.MapFrom(topic => topic.User.Login))
-                .ForMember(topDto => topDto.PostDto, opt => opt.MapFrom(topic => Mapper.Map<IList<PostInfoDto>>(topic.Posts)))
-                .ForMember(topDto => topDto.CountOfPosts, opt => opt.MapFrom(topic => topic.Posts.Count));
+                   .ForMember(topDto => topDto.PostDto, opt => opt.MapFrom(top => top.Posts))
+                   .ForMember(topDto => topDto.UserInfo, opt => opt.MapFrom(top => Mapper.Map<UserNameIdDto>(top.User.UserAccount)))
+                   .ForMember(topDto => topDto.CountOfPosts, opt => opt.MapFrom(top => top.Posts.Count))
+                   .ForMember(topDto => topDto.PostDto, opt => opt.MapFrom(topic => Mapper.Map<IList<PostInfoDto>>(topic.Posts)));
 
             CreateMap<Post, PostInfoDto>()
-                .ForMember(postDto => postDto.UserInfo, opt =>
-                                        opt.MapFrom(post => Mapper.Map<UserPostInfoDto>(post.User)));
+                .ForMember(postDto => postDto.UserInfo,
+                        opt => opt.MapFrom(post => Mapper.Map<UserNameIdDto>(post.User.UserAccount)));
 
             CreateMap<BaseForumContainerInfoDto, Forum>();
 
-            CreateMap<User, UserPostInfoDto>();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         {
             List<Forum> ListofForum  = DbSet
                 .Include(f => f.SectionLists)
-                .Include(u => u.User)
+                .Include(u => u.User.UserAccount)
                 .Page(pageNumber,pageSize)
                 .ToList();
 
@@ -34,7 +34,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         {
             List<Forum> ListofForum = DbSet
                 .Include(f => f.SectionLists)
-                .Include(u => u.User)
+                .Include(u => u.User.UserAccount)
                 .ToList();
 
             return ListofForum;
@@ -44,7 +44,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         {
             Forum ForumElement =  DbSet
                 .Include(f => f.SectionLists)
-                .Include(u => u.User)
+                .Include(u => u.User.UserAccount)
                 .SingleOrDefault(forum => forum.Id.Equals(id));
 
             return ForumElement;

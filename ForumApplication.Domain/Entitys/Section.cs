@@ -17,7 +17,7 @@ namespace ForumApplication.Domain.Entitys
 
         public List<Topic> Topics { get; set; } = new List<Topic>();
         public SectionList SectionList { get; set; }
-        public User User { get; set; }
+        public UserProfile User { get; set; }
 
     }
 }

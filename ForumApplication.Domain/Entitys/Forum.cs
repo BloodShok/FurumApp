@@ -14,7 +14,7 @@ namespace ForumApplication.Domain.Entitys
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
 
-        public User User { get; set; }
+        public UserProfile User { get; set; }
         public List<SectionList> SectionLists { get; set; } = new List<SectionList>();
 
     }

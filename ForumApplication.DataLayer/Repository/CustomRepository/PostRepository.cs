@@ -19,7 +19,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         public IList<Post> GetAllIncludeReferences()
         {
             IList<Post> post = DbSet
-                .Include(item => item.User)
+                .Include(item => item.User.UserAccount)
                 .ToList();
 
             return post;
@@ -28,7 +28,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         public IList<Post> GetAllIncludeReferences(int pageNumber, int pageSize)
         {
             IList<Post> post = DbSet
-                .Include(item => item.User)
+                .Include(item => item.User.UserAccount)
                 .Page(pageNumber, pageSize)
                 .ToList();
 
@@ -38,7 +38,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         public Post GetByIDIncludeReferences(int id)
         {
             Post post = DbSet
-                .Include(item => item.User)
+                .Include(item => item.User.UserAccount)
                 .FirstOrDefault(item => item.Id.Equals(id));
             return post;
         }

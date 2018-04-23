@@ -23,7 +23,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
            .Select(s => s.Topics
            .Select(t => t.Posts)
            ))
-            .Include(u => u.User)
+            .Include(u => u.User.UserAccount)
             .ToList();
 
             return ListofSectionList;
@@ -35,7 +35,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
           .Select(s => s.Topics
           .Select(t => t.Posts)
           ))
-           .Include(u => u.User)
+           .Include(u => u.User.UserAccount)
            .Page(pageNumber, pageSize)
            .ToList();
 
@@ -48,7 +48,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
                .Select(s => s.Topics
                .Select(t => t.Posts)
                ))
-            .Include(u => u.User)
+            .Include(u => u.User.UserAccount)
             .SingleOrDefault(sl => sl.Id.Equals(id));
 
             return SectionListElement;

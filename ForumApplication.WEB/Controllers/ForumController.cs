@@ -83,7 +83,7 @@ namespace ForumApplication.WEB.Controllers
 
         public ActionResult Update(BasePropertysForCreateViewModel updateData)
         {
-            var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(newForumData);
+            var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(updateData);
 
             _forumService.CreateForum(newForumDataDto);
 

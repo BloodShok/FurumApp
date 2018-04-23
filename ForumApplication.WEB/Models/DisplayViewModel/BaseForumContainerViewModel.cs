@@ -14,5 +14,6 @@ namespace ForumApplication.WEB.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
         public IList<NestedContainerElementsInfoViewModel> NestedItemListInfo { get; set; }
+        public UserNameIdViewModel UserInfo { get; set; }
     }
 }

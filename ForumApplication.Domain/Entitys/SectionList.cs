@@ -17,6 +17,6 @@ namespace ForumApplication.Domain.Entitys
 
         public List<Section> Sections { get; set; } = new List<Section>();
         public Forum Forum { get; set; }
-        public User User { get; set; }
+        public UserProfile User { get; set; }
     }
 }

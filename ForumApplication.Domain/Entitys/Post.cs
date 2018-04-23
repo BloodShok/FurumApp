@@ -16,7 +16,7 @@ namespace ForumApplication.Domain.Entitys
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
 
-        public User User { get; set; }
+        public UserProfile User { get; set; }
         public Topic Topic { get; set; }
 
     }

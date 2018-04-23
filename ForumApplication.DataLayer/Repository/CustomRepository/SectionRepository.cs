@@ -23,7 +23,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             IList<Section> ListOfSections = DbSet
                 .Include(sec => sec.Topics
                 .Select(top => top.Posts))
-                .Include(sec => sec.User).ToList();
+                .Include(sec => sec.User.UserAccount).ToList();
 
             return ListOfSections;
         }
@@ -33,7 +33,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             IList<Section> ListOfSections = DbSet
                 .Include(sec => sec.Topics
                 .Select(top => top.Posts))
-                .Include(sec => sec.User)
+                .Include(sec => sec.User.UserAccount)
                 .Page(pageNumber, pageSize)
                 .ToList();
 
@@ -45,7 +45,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             Section Section = DbSet
                 .Include(sec => sec.Topics
                 .Select(top => top.Posts))
-                .Include(sec => sec.User)
+                .Include(sec => sec.User.UserAccount)
                 .SingleOrDefault(section => section.Id.Equals(id));
 
             return Section;

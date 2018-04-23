@@ -23,7 +23,7 @@
             @foreach (var item in Model)
             {
                 <td>
-                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id })<br />
+                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id })    @item.UserInfo.UserName<br />
                     @foreach (var SlInfo in item.NestedItemListInfo)
                     {
                         <ul>

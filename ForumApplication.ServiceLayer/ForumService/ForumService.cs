@@ -1,11 +1,8 @@
-﻿using ForumApplication.DataLayer.Repository.CustomRepository;
+﻿
 using ForumApplication.DataTransferObjects;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.Domain.Entitys;
@@ -47,6 +44,15 @@ namespace ForumApplication.ServiceLayer.ForumService
             var Forumitem = _repo.GetByIDIncludeReferences(id);
 
             return Mapper.Map<BaseForumContainerInfoDto>(Forumitem);
+        }
+
+        public void UpdateForum(BaseForumContainerInfoDto updForumDto)
+        {
+            var newForum = Mapper.Map<Forum>(updForumDto);
+            newForum.DateCreated = DateTime.Now;
+            newForum.DateUpdate = DateTime.Now;
+
+            _repo.AddNewItem(newForum);
         }
     }
 }

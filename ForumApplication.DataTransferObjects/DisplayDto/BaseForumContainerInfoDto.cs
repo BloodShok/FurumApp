@@ -9,11 +9,10 @@ namespace ForumApplication.DataTransferObjects
     public class BaseForumContainerInfoDto
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string UserName { get; set; }
         public string Title { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
         public IList<NestedContainerElementsInfoDto> NestedItemListInfo { get; set; }
+        public UserNameIdDto UserInfo { get; set; }
     }
 }
