@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+}
+<script src="~/Scripts/jtable/jquery.jtable.min.js"></script>
+
+
+<link href="~/Scripts/jtable/themes/metro/crimson/jtable.css" rel="stylesheet" type="text/css" />
+
+<h2>UserList</h2>
+
+<style>
+ .ui-button {
+   background-color: #ffffff;
+   color: red;
+   border-color: red;
+   border-width: 2px;
+   transition-duration: 0.6s;
+}
+
+  .ui-button:hover {
+    background-color: #dc3545;
+    color: white;
+    border-width: 2px;
+    border-color: red;
+}
+
+
+    .ui-widget-header {
+        border: 1px solid #ddd;
+        background: #a43333;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#PersonTableContainer').jtable({
+            title: 'Table of people',
+            paging: true,
+            pageSize: 10,
+            useBootstrap: true,
+            actions: {
+                listAction: 'UserLists',
+                createAction: 'CreateAccount',
+                updateAction: 'UpdateAccount',
+                deleteAction: 'DeleteAccount'
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    list: false
+                },
+                UserName: {
+                    title: 'UserName',
+                    width: '40%'
+                },
+                Password: {
+                    title: 'Password',
+                    list: false,
+                    create: true,
+                    edit: false
+                },
+                Email: {
+                    title: 'Email',
+                    width: '20%'
+                },
+                DateRegistration: {
+                    title: 'DateRegistration',
+                    width: '25%',
+                    type: 'date',
+                    displayFormat:'dd/mm/yy',
+                    create: false,
+                    edit: false,
+                },
+                BirthDay: {
+                    title: 'BirthDay',
+                    width: '25%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd'
+                },
+                IsActive: {
+                    title: 'IsActive',
+                    width: '20%',
+                    options: { '0': 'Deleted', '1': 'Active' }
+                },
+                RoleName: {
+                    title: 'RoleName',
+                    width: '20%',
+                    options: { 'User': 'User', 'Moderator': 'Moderator' }
+                },
+                Gender: {
+                    title: 'Gender',
+                    width: '20%',
+                    options: { '0': 'Male', '1': 'Female' }
+                },
+                SomeInformation: {
+                    title: 'SomeInformation',
+                    width: '20%'
+                },
+                Location: {
+                    title: 'Location',
+                    width: '20%'
+                },
+            }
+        });
+        $('#PersonTableContainer').jtable('load');
+    });
+
+</script>
+
+
+
+
+<div style="background-color:white;" class="container bl-0 br-0">
+    <div id="PersonTableContainer"></div>
+</div>

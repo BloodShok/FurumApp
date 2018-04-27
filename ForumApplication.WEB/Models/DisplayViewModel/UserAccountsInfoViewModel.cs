@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,18 +8,23 @@ namespace ForumApplication.WEB.Models
 {
     public enum Gender
     {
-        M = 0,
-        F = 1
+        Male = 0,
+        Female = 1
     }
     public class UserAccountsInfoViewModel
     {
         public string Id { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
+        public string RoleName { get; set; }
         public string Location { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime BirthDay { get; set; }
-        public int Gender { get; set; }
+        public DateTime DateRegistration { get; set; }
+        public Gender Gender { get; set; }
         public string SomeInformation { get; set; }
-        public string AttachedPicture { get; set; }
+        public string Image { get; set; }
+        
+
     }
 }

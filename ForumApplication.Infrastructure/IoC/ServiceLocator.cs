@@ -16,6 +16,7 @@ using ForumApplication.ServiceLayer.SectionService;
 using ForumApplication.ServiceLayer.TopicService;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Ninject;
 using Ninject.Web.Common;
 
@@ -60,11 +61,18 @@ namespace ForumApplication.Infrastructure.IoC
             _kernel.Bind<ISectionRepository>().To<SectionRepository>();
             _kernel.Bind<ITopicRepository>().To<TopicRepository>();
             _kernel.Bind<IPostRepository>().To<PostRepository>();
+            _kernel.Bind<IUserProfileRepository>().To<UserProfileRepository>();
 
             //_kernel.Bind<UserManager<UserAccount>>().ToSelf();
 
             _kernel.Bind<IAccountManager>().ToMethod(
-                c => HttpContext.Current.GetOwinContext().GetUserManager<UserAccountManager>());
+                meth => HttpContext.Current.GetOwinContext().GetUserManager<UserAccountManager>());
+
+            _kernel.Bind<IAuthenticationManager>().ToMethod (
+                meth => HttpContext.Current.GetOwinContext().Authentication );
+            _kernel.Bind<IRoleManager>().ToMethod(
+                meth => HttpContext.Current.GetOwinContext().GetUserManager<UserRoleManager>());
+
             //_kernel.Bind<IAccountManager>().To<UserAccountManager>();
             //_kernel.Bind<IUserStore<UserAccount>>().To<UserStore<UserAccount>>();
 

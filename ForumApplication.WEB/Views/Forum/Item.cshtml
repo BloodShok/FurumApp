@@ -2,8 +2,16 @@
 @model ForumApplication.WEB.Models.BaseForumContainerViewModel
 
 @{
-    ViewBag.Title = "Forum";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -30,7 +38,7 @@
                 </tr>
             </thead>
             <tr>
-                <td>@Model.UserName</td>
+                <td>@Model.UserInfo.UserName</td>
                 <td>@Model.Title</td>
                 <td>
                     <ul>

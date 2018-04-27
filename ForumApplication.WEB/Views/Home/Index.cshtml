@@ -1,58 +1,28 @@
-﻿@{
-    Layout = null;
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+    if(User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
+<div class="container-fluid" id="maintitle">
+    <div id="mainTextdiv">
+        <h1 id="hellotext" class="text-light text-center">Hello!</h1>
+        <h1 class="text-light text-center " id="welcomtext">Welcome to our fantasy forum  </h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/MainPageStyle.css" rel="stylesheet" />
-</head>
-<body>
-    <nav class="navbar navbar-expand-md  navbar-dark">
-        <a class="navbar-brand" id="brendTitle" href="#">Fantasy Forum</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Go To Forum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">FAQ</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="~/Pictures/UiPictures/user-silhouette.png" /> Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="~/Pictures/UiPictures/login.png" /> Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container-fluid" id="maintitle">
-        <div id="mainTextdiv">
-            <h1 id="hellotext" class="text-light text-center">Hello!</h1> 
-            <h1 class="text-light text-center " id="welcomtext">Welcome to our fantasy forum  </h1>
-
-            <button class="btn btn-outline-warning mx-auto d-block" type="button"
-                    onclick="location.href='@Url.Action("List","Forum")'">
+        <button class="btn btn-outline-warning mx-auto d-block" type="button"
+                onclick="location.href='@Url.Action("List", "Forum")'">
             <h4><b>Go to Forum</b></h4>
-            </button>
-        </div>
+        </button>
     </div>
-</body>
-</html>
+</div>
+

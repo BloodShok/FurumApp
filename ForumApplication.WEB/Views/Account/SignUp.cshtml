@@ -1,0 +1,46 @@
+﻿@model ForumApplication.WEB.Models.CreateAccountViewModel
+
+@{
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+<div class="container border border-primary rounded" id="signUp-form-container">
+    <h4 class="text-center" id="logint-title-text">Please Enter You Data</h4>
+    @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+    {
+   
+        @Html.ValidationSummary()
+    
+        <input type="hidden" name="RoleName" value="User" />
+        
+        <div class="form-group" >
+            <label for="log">Login*</label>
+            <input type="text" id="log" class="form-control" placeholder="Enter Login" name="Login" required />
+        </div>
+        <div class="form-group">
+            <label for="pass">Email*</label>
+            <input type="email" class="form-control" id="pass" placeholder="Email" name="Email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Password*</label>
+            <input type="password" class="form-control" id="pass" placeholder="Password" name="Password" required />
+        </div>
+        <div class="text-center mt-5">
+            <input type="submit" class="btn btn-outline-info" style="font-size:19px;" name="Sign Up" >
+        </div>
+        
+    }
+</div>
+   
+
+

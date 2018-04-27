@@ -1,7 +1,16 @@
 ﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
+
 @{
-    ViewBag.Title = "sectionlist";
-    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -31,11 +40,11 @@
                     <td>
                         <ol>
                             @foreach (var item in Model.NestedItemListInfo)
-                        {
-                            <li>
-                                @Html.ActionLink($"{item.Title}", "Item", "Section", new { item.Id }, null)
-                            </li>
-                    }
+                            {
+                                <li>
+                                    @Html.ActionLink($"{item.Title}", "Item", "Section", new { item.Id }, null)
+                                </li>
+                            }
                         </ol>
                     </td>
                 </tr>

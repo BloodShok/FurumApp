@@ -18,10 +18,12 @@ namespace ForumApplication.Infrastructure.IoC
         {
             app.CreatePerOwinContext<DbContext>(ForumContext.Create);
             app.CreatePerOwinContext<UserAccountManager>(UserAccountManager.Create);
+            app.CreatePerOwinContext<UserRoleManager>(UserRoleManager.Create);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Account/SignUp"),
             });
         }
     }

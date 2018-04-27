@@ -33,6 +33,9 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -45,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DisplayDto\BaseForumContainerInfoDto.cs" />
+    <Compile Include="DisplayDto\JtableAccountInfoDto.cs" />
+    <Compile Include="DisplayDto\LoginModelDto.cs" />
     <Compile Include="DisplayDto\NestedContainerElementsInfoDto.cs" />
     <Compile Include="DisplayDto\PostInfoDto.cs" />
+    <Compile Include="DisplayDto\UserRoleInfoDto.cs" />
     <Compile Include="DisplayDto\UserAccountInfoDto.cs" />
     <Compile Include="DisplayDto\UserNameIdDto.cs" />
     <Compile Include="DisplayDto\UserProfileInfoDto.cs" />
@@ -60,8 +66,11 @@
     <Compile Include="UpdateAndCreateDto\CreateAccountDto.cs" />
     <Compile Include="UpdateAndCreateDto\CreateSectionListDto.cs" />
     <Compile Include="UpdateAndCreateDto\CreateTopicDto.cs" />
+    <Compile Include="UpdateAndCreateDto\JtableCreateAccountDto.cs" />
+    <Compile Include="UpdateAndCreateDto\UpdateUserProfileDto.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -70,8 +79,6 @@
       <Name>ForumApplication.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DisplayDto\Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

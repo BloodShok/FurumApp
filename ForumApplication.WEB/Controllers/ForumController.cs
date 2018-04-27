@@ -56,6 +56,7 @@ namespace ForumApplication.WEB.Controllers
             return RedirectToAction("List");
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {

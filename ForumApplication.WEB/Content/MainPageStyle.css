@@ -5,7 +5,7 @@
 }
 
 body {
-    background: url('../Pictures/UiPictures/blur-bright.jpg') no-repeat center fixed;
+    background: url('Pictures/UiPictures/blur-bright.jpg') no-repeat center fixed;
     background-size: cover;
 }
 #mainTextdiv {
@@ -55,3 +55,106 @@ body {
 #mainTextdiv .btn {
     margin-top:50px;
 }
+
+
+#modal-header-center {
+    margin: 0 auto;
+    font-size:43px;
+    color:rebeccapurple;
+}
+
+#MainContainer {
+    background-color: rgba(59, 58, 58, 0.70);
+}
+
+
+#signUp-form-container {
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    padding-top: 68px;
+    border-bottom-width: 50px;
+    padding-bottom: 68px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#logint-title-text
+{
+    color:#4d4d4d
+}
+
+#login-login-fild
+{
+    margin-top:30px;
+}
+
+#validationSummary
+{
+    color:orangered;
+    margin-top:15px;
+}
+
+
+#profile-container {
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    padding-top: 68px;
+    border-bottom-width: 50px;
+    padding-bottom: 68px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#SomeInformation{
+    width:180px;
+}
+
+#Gender {
+    width: 180px;
+}
+
+.ui-widget-header {
+    border: 1px solid #ddd;
+    background: #a43333;
+    color: #fff;
+    font-weight: bold;
+}
+
+#EditDialogSaveButton {
+    background-color: #ffffff;
+    color: red;
+    border-color: red;
+    border-width: 2px;
+    transition-duration: 0.6s;
+}
+
+.ui-button {
+    background-color: #ffffff;
+    color: red;
+    border-color: red;
+    border-width: 2px;
+    transition-duration: 0.6s;
+}
+
+.ui-button:hover {
+    background-color: #dc3545;
+    color: white;       
+}
+
+#EditDialogSaveButton:hover {
+    background-color: #dc3545;
+    color: white; 
+}
+
+
+
+#jtable-edit-form {
+    border-color: red;
+}
+
+#jtable-input {
+    border-color: red;
+    border-left: solid;
+    margin: 2px;
+}
+

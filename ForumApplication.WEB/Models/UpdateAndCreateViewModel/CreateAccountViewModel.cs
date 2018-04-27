@@ -14,5 +14,7 @@ namespace ForumApplication.WEB.Models
         public string Password { get; set; }
         [Required]
         public string Email { get; set; }
+
+        public string RoleName { get; set; }
     }
 }

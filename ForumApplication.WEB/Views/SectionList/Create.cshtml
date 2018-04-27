@@ -1,7 +1,16 @@
 ﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -23,10 +32,10 @@
             <input type="hidden" value="1" name="UserId" />
             <p>Title</p>
             @Html.TextBoxFor(x => x.Title)
-            <input type="submit" name="Add"/>
+            <input type="submit" name="Add" />
 
         }
-        
+
     </div>
 </body>
 </html>

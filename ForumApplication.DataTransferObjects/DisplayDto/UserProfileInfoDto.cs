@@ -16,8 +16,9 @@ namespace ForumApplication.DataTransferObjects
         public int Id { get; set; }
         public string Location { get; set; }
         public DateTime BirthDay { get; set; }
+        public DateTime DateRegistration { get; set; }
         public Gender Gender { get; set; }
         public string SomeInformation { get; set; }
-        public string AttachedPicture { get; set; }
+        public string Image { get; set; }
     }
 }

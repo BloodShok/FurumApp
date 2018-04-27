@@ -14,6 +14,7 @@ namespace ForumApplication.DataLayer.DataContext.Config
         {
             HasOptional(acc => acc.UserProfile)
                 .WithRequired(prof => prof.UserAccount);
+            
         }
     }
 }

@@ -12,16 +12,21 @@ namespace ForumApplication.ServiceLayer.ForumService
     public class ForumService : IForumService
     {
         IForumRepository _repo;
-        public ForumService(IForumRepository repository)
+        IUserProfileRepository _accRepo;
+        public ForumService(IForumRepository repository, IUserProfileRepository accRepo)
         {
             _repo = repository;
+            _accRepo = accRepo;
         }
 
         public void CreateForum(BasePropertisForCreateDto newForumDataDto)
         {
             var newForum = Mapper.Map<Forum>(newForumDataDto);
+            var profId = _accRepo.GetProfileIdByAccountId(newForumDataDto.UserAccountId);
+
             newForum.DateCreated = DateTime.Now;
             newForum.DateUpdate = DateTime.Now;
+            newForum.UserId = profId;
 
             _repo.AddNewItem(newForum);
         }

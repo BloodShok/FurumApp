@@ -33,15 +33,15 @@ namespace ForumApplication.DataLayer.DataAccessContext
                 .HasForeignKey(x => x.UserId)
                 .WillCascadeOnDelete(false);
 
-            Property(x => x.AttachedPicture)
-                .IsOptional();
-
             Property(x => x.BirthDay)
+                .HasColumnType("datetime2")
+                .IsOptional();
+            Property(x => x.DateRegistration)
+                .HasColumnType("datetime2")
                 .IsOptional();
 
             Property(x => x.SomeInformation)
                 .IsOptional();
-
 
             
         }

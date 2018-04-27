@@ -15,9 +15,37 @@ namespace ForumApplication.DataTransferObjects.Profile
             CreateMap<UserAccount, UserAccountInfoDto>()
                 .ForMember(x => x.UserProfile, opt => opt.MapFrom(x => x.UserProfile));
 
-            CreateMap<CreateAccountDto, UserAccount>();
+
+            CreateMap<UserAccount, JtableAccountInfoDto>();
+
+
+
+            CreateMap<CreateAccountDto, UserAccount>()
+                .ForMember(x => x.IsActive, opt => opt.UseValue(true))
+                .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(x => new DateTime(2000, 1, 1)))
+                .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(x => DateTime.Now));
+            
 
             CreateMap<UserAccount, UserNameIdDto>();
+
+            CreateMap<UserProfile, UserProfileInfoDto>();
+
+
+
+            CreateMap<JtableCreateAccountDto, UserAccount>()
+                .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(val => val.BirthDay))
+                .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(val => val.DateRegistration))
+                .ForPath(x => x.UserProfile.Gender, opt => opt.MapFrom(val => val.Gender))
+                .ForPath(x => x.UserProfile.Location, opt => opt.MapFrom(val => val.Location))
+                .ForPath(x => x.UserProfile.Image, opt => opt.MapFrom(val => val.Image))
+                .ForPath(x => x.UserProfile.SomeInformation, opt => opt.MapFrom(val => val.SomeInformation));
+
+
+
+
+
+
+
         }
     }
 }

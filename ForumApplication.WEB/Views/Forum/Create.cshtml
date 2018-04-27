@@ -1,8 +1,17 @@
-﻿@model ForumApplication.WEB.Models.BasePropertysForCreateViewModel
+﻿@using Microsoft.AspNet.Identity
+@model ForumApplication.WEB.Models.BasePropertysForCreateViewModel
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -21,7 +30,8 @@
         <h2 class="text-center text-dark">CreateForum</h2>
         @using (Html.BeginForm())
         {
-            <input type="hidden" value="1" name="UserId" />
+
+            <input type="hidden" value="@User.Identity.GetUserId()" name="UserAccountId" />
             <p>Write Title of Forum</p>
             @Html.TextBoxFor(x => x.Title)
             <input type="submit" name="Create" value="Create" />

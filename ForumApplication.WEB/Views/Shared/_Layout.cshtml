@@ -1,19 +1,143 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
 
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_Layout</title>
+    <title>Index</title>
+
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
+
+    <link href="~/Content/MainPageStyle.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/SiteStyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div class="container" id="MainContainer" style="color:white">
-        @RenderBody()
-        
-    </div>
+    <nav class="navbar navbar-expand-md  navbar-dark">
+        <a class="navbar-brand" id="brendTitle" href="#">Fantasy Forum</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Go To Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="cursor: pointer;" onclick="location.href='@Url.Action("SignUp", "Account")'"><img src="~/Content/Pictures/UiPictures/user-silhouette.png" />Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link" style="cursor: pointer;" data-target="#LoginForm" data-toggle="modal"><img src="~/Content/Pictures/UiPictures/login.png" /> Login</span>
+                </li>
+
+
+
+
+                <div class="modal fade" id="LoginForm">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header" @*id="modal-header-center"*@>
+                                <h4 class="modal-title" style="margin-left:40%;">LogIn</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                @using (Html.BeginForm("Login", "Account"))
+                    {
+                        <h5 class="text-danger">@TempData["Errors"]</h5>
+
+                        <div class="form-group">
+                            <label for="log">Login</label>
+                            <input type="text" id="log" class="form-control" placeholder="Enter Login" name="Login" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password</label>
+                            <input type="password" class="form-control" id="pass" placeholder="Password" name="Password" required />
+                        </div>
+
+                        <input type="submit" class="btn btn-primary" value="Login" />
+        }
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="AccountStatus">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header" @*id="modal-header-center"*@>
+                                <h4 class="modal-title" style="margin-left:40%;"></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <h5 class="text-danger text-center">@TempData["status"]</h5>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </ul>
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+
+
+
+    @if (TempData["Errors"] != null)
+    {
+        <script>
+            $('#LoginForm').modal();
+        </script>
+    }
+
+    @if (TempData["status"] != null)
+    {
+        <script>
+            $('#AccountStatus').modal();
+        </script>
+    }
+
+
+
 </body>
 </html>

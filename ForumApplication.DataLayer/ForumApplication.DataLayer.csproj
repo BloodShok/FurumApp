@@ -89,16 +89,22 @@
     <Compile Include="Interfaces\IAccountManager.cs" />
     <Compile Include="Interfaces\IForumRepository.cs" />
     <Compile Include="Interfaces\IPostRepository.cs" />
+    <Compile Include="Interfaces\IRoleManager.cs" />
     <Compile Include="Interfaces\ISectionListRepository.cs" />
     <Compile Include="Interfaces\ISectionRepository.cs" />
     <Compile Include="Interfaces\ITopicRepository.cs" />
-    <Compile Include="Migrations\201804201118306_NewMegration.cs" />
-    <Compile Include="Migrations\201804201118306_NewMegration.Designer.cs">
-      <DependentUpon>201804201118306_NewMegration.cs</DependentUpon>
+    <Compile Include="Interfaces\IUserProfileRepository.cs" />
+    <Compile Include="Migrations\201804271442219_Missing.cs" />
+    <Compile Include="Migrations\201804271442219_Missing.Designer.cs">
+      <DependentUpon>201804271442219_Missing.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804201332406_NewMegration1.cs" />
-    <Compile Include="Migrations\201804201332406_NewMegration1.Designer.cs">
-      <DependentUpon>201804201332406_NewMegration1.cs</DependentUpon>
+    <Compile Include="Migrations\201804271444290_Missing1.cs" />
+    <Compile Include="Migrations\201804271444290_Missing1.Designer.cs">
+      <DependentUpon>201804271444290_Missing1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804271450178_Missing2.cs" />
+    <Compile Include="Migrations\201804271450178_Missing2.Designer.cs">
+      <DependentUpon>201804271450178_Missing2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,10 +114,12 @@
     <Compile Include="Repository\CustomRepository\SectionListRepository.cs" />
     <Compile Include="Repository\CustomRepository\SectionRepository.cs" />
     <Compile Include="Repository\CustomRepository\TopicRepository.cs" />
+    <Compile Include="Repository\CustomRepository\UserProfileRepository.cs" />
     <Compile Include="Repository\UserAccountManagers\UserAccountManager.cs" />
     <Compile Include="Repository\Pagination.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Repository\UserAccountManagers\UserRoleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,11 +136,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804201118306_NewMegration.resx">
-      <DependentUpon>201804201118306_NewMegration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804271442219_Missing.resx">
+      <DependentUpon>201804271442219_Missing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804201332406_NewMegration1.resx">
-      <DependentUpon>201804201332406_NewMegration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804271444290_Missing1.resx">
+      <DependentUpon>201804271444290_Missing1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804271450178_Missing2.resx">
+      <DependentUpon>201804271450178_Missing2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

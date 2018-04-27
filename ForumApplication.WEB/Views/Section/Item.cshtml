@@ -1,8 +1,16 @@
 ﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
 
 @{
-    ViewBag.Title = "section";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -26,23 +34,23 @@
                     <th>List of Topics</th>
                 </tr>
             </thead>
-                <tr>
-                    <td>
-                        @Model.Title
-                    </td>
-                    <td>@Model.UserName</td>
-                    <td>
-                        <ul>
-                            @foreach (var item in Model.NestedItemListInfo)
+            <tr>
+                <td>
+                    @Model.Title
+                </td>
+                <td>@Model.UserName</td>
+                <td>
+                    <ul>
+                        @foreach (var item in Model.NestedItemListInfo)
                         {
                             <li>
                                 @Html.ActionLink($"{@item.Title}", "Item", "Topic", new { id = item.Id }, null)
                             </li>
-                    }
-                        </ul>
-                    </td>
-                </tr>
-            
+                        }
+                    </ul>
+                </td>
+            </tr>
+
         </table>
         <button class="btn btn-dark  d-block m-2" type="button"
                 onclick="location.href='@Url.Action("Create","Topic", new {Id = Model.Id })'">

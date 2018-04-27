@@ -13,7 +13,7 @@ namespace ForumApplication.DataLayer.Repository
             if (pageNumber < 0 || pageSize < 0 || pageSize == 0)
                 throw new Exception("Paginated Error");
 
-            return query.Skip(pageNumber * pageSize).Take(pageSize);
+            return query.Skip(pageNumber).Take(pageSize);
         }
     }
 }

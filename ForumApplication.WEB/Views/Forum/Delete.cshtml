@@ -1,8 +1,16 @@
 ﻿@model IEnumerable<ForumApplication.WEB.Models.BaseForumContainerViewModel>
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
 
 <!DOCTYPE html>
@@ -45,7 +53,7 @@
                         @using (Html.BeginForm())
                         {
                             <input type="hidden" name="id" value="@item.Id" />
-                            <input class="btn-success" type="submit" name="id" value="Delete"/>
+                            <input class="btn-success" type="submit" name="id" value="Delete" />
                         }
                     </td>
                 </tr>
