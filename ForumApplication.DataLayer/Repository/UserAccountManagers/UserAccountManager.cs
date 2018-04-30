@@ -54,8 +54,8 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
             {
                 RequireUniqueEmail = true
             };
-
             return manager;
+            
         }
 
         public UserAccount FindUser(string login, string password)
@@ -156,7 +156,7 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
                                 .Equals(updateUserAccount.Id));
 
             account.IsActive = updateUserAccount.IsActive;
-         
+            account.UserName = updateUserAccount.UserName;
             UpdateProfileFilds(account.UserProfile, updateUserAccount.UserProfile);
             this.Update(account);
             

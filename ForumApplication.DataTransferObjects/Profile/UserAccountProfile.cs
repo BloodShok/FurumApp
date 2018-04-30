@@ -40,9 +40,16 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForPath(x => x.UserProfile.Image, opt => opt.MapFrom(val => val.Image))
                 .ForPath(x => x.UserProfile.SomeInformation, opt => opt.MapFrom(val => val.SomeInformation));
 
+            CreateMap<JtableUpdateAccountDto, UserAccount>()
+                .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(val => val.BirthDay))
+                .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(val => val.DateRegistration))
+                .ForPath(x => x.UserProfile.Gender, opt => opt.MapFrom(val => val.Gender))
+                .ForPath(x => x.UserProfile.Location, opt => opt.MapFrom(val => val.Location))
+                .ForPath(x => x.UserProfile.Image, opt => opt.MapFrom(val => val.Image))
+                .ForPath(x => x.UserProfile.SomeInformation, opt => opt.MapFrom(val => val.SomeInformation));
 
 
-
+            CreateMap<UpdateUserProfileDto, UserProfile>();
 
 
 

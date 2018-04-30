@@ -24,6 +24,6 @@ namespace ForumApplication.ServiceLayer.AccountService
         void DisableAccount(string Id);
         void EnableAccount(string Id);
         IdentityResult CreateUserAccount(JtableCreateAccountDto jTableCreatUserAccountDto);
-        void UpdateUserProfile(JtableCreateAccountDto jTableUpdateAccountDto);
+        void UpdateUserProfile(JtableUpdateAccountDto jTableUpdateAccountDto);
     }
 }

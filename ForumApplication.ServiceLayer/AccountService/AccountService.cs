@@ -137,7 +137,7 @@ namespace ForumApplication.ServiceLayer.AccountService
             return CreateIdentityReuslt;
         }
 
-        public void UpdateUserProfile(JtableCreateAccountDto jTableUpdateAccountDto)
+        public void UpdateUserProfile(JtableUpdateAccountDto jTableUpdateAccountDto)
         {
             var updateUserAccount = Mapper.Map<UserAccount>(jTableUpdateAccountDto);
 

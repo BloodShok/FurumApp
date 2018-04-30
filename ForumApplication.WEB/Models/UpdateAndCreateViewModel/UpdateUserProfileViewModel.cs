@@ -7,7 +7,7 @@ namespace ForumApplication.WEB.Models
 {
     public class UpdateUserProfileViewModel
     {
-        public string Id { get; set; }
+        public string AccountId { get; set; }
         public DateTime BirthDay { get; set; }
         public Gender Gender { get; set; }
         public string SomeInformation { get; set; }

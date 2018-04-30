@@ -229,6 +229,11 @@
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
     <Content Include="Scripts\jtable\external\json2.js" />
@@ -380,7 +385,7 @@
     <Compile Include="Models\UpdateAndCreateViewModel\CreateSectionListViewModel.cs" />
     <Compile Include="Models\UpdateAndCreateViewModel\CreateTopicViewModel.cs" />
     <Compile Include="Models\UpdateAndCreateViewModel\JtableCreateAccountViewModel.cs" />
-    <Compile Include="Models\UpdateAndCreateViewModel\UpdateUserAccountViewModel.cs" />
+    <Compile Include="Models\UpdateAndCreateViewModel\JtableUpdateAccountViewModel.cs" />
     <Compile Include="Models\UpdateAndCreateViewModel\UpdateUserProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -117,7 +117,7 @@ namespace ForumApplication.WEB.Controllers
             var updateUserProfileDto = Mapper.Map<UpdateUserProfileDto>(updateUserProfile);
             _accountService.UpdateUserProfile(updateUserProfileDto);
 
-            return RedirectToAction("UpdateProfile");
+            return RedirectToAction("ShowProfile");
         }
 
 

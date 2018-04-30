@@ -33,7 +33,8 @@ namespace ForumApplication.WEB.Models.Profile
 
 
 
-            CreateMap<UpdateUserProfileDto, UserProfile>();
+            CreateMap<UpdateUserProfileDto, UpdateUserProfileViewModel>()
+                .ForMember(x => x.AccountId, opt => opt.MapFrom(x => x.AccountId));
 
             CreateMap<CreateAccountViewModel, CreateAccountDto>()
                 .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.Login));
@@ -42,6 +43,7 @@ namespace ForumApplication.WEB.Models.Profile
             CreateMap<LoginModelDto, LoginViewModel>();
 
             CreateMap<JtableAccountInfoViewModel, JtableCreateAccountDto>();
+            CreateMap<JtableUpdateAccountViewModel, JtableUpdateAccountDto>();
         }
     }
 }

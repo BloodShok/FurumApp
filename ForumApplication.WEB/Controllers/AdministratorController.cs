@@ -11,6 +11,7 @@ using ForumApplication.DataTransferObjects;
 
 namespace ForumApplication.WEB.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     public class AdministratorController : Controller
     {
         IAccountService _accountService;
@@ -52,33 +53,51 @@ namespace ForumApplication.WEB.Controllers
         [HttpPost]
         public JsonResult CreateAccount(JtableCreateAccountViewModel newAccountViewModel)
         {
-            switch (newAccountViewModel.RoleName)
+            if (!ModelState.IsValid)
             {
-                case "User":
-                    newAccountViewModel.Image = "941f3690-6f0d-4752-a289-3e3fcdc91fcatroglodyte.png";
-                    break;
-
-                case "Moderator":
-                    newAccountViewModel.Image = "0420aa0c-52f0-4510-904f-9e99be42fb2aknight.png";
-                    break;
-                default:
-                    newAccountViewModel.Image = "941f3690-6f0d-4752-a289-3e3fcdc91fcatroglodyte.png";
-                    break;
+                return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again" });
             }
 
-            var JTableCreatUserAccountDto = Mapper.Map<JtableCreateAccountDto>(newAccountViewModel);
+                switch (newAccountViewModel.RoleName)
+                {
+                    case "User":
+                        newAccountViewModel.Image = "941f3690-6f0d-4752-a289-3e3fcdc91fcatroglodyte.png";
+                        break;
 
-            var newUser = _accountService.CreateUserAccount(JTableCreatUserAccountDto);
+                    case "Moderator":
+                        newAccountViewModel.Image = "0420aa0c-52f0-4510-904f-9e99be42fb2aknight.png";
+                        break;
+                    default:
+                        newAccountViewModel.Image = "941f3690-6f0d-4752-a289-3e3fcdc91fcatroglodyte.png";
+                        break;
+                }
+                var JTableCreatUserAccountDto = Mapper.Map<JtableCreateAccountDto>(newAccountViewModel);
+                var createResult = _accountService.CreateUserAccount(JTableCreatUserAccountDto);
 
-
-            return Json(new { Result = "OK", Record = newUser });
-        }
+                if (createResult.Succeeded)
+                {
+                    var newUser = JTableCreatUserAccountDto;
+                    return Json(new { Result = "OK", Record = newUser });
+                }
+                else
+                {
+                    return Json(new { Result = "ERROR", Message = createResult.Errors });
+                }
+            }
+            
+        
 
 
         [HttpPost]
-        public JsonResult UpdateAccount(JtableCreateAccountViewModel updateAccountViewModel)
+        public JsonResult UpdateAccount(JtableUpdateAccountViewModel updateAccountViewModel)
         {
-            var updateAccountDto = Mapper.Map<JtableCreateAccountDto>(updateAccountViewModel);
+            if (!ModelState.IsValid)
+            {
+                return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again" });
+            }
+
+
+            var updateAccountDto = Mapper.Map<JtableUpdateAccountDto>(updateAccountViewModel);
 
             _accountService.UpdateUserProfile(updateAccountDto);
             return Json(new

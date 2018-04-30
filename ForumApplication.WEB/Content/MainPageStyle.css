@@ -158,3 +158,8 @@ body {
     margin: 2px;
 }
 
+#jtable-container
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}

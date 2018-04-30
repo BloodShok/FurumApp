@@ -8,8 +8,6 @@
 
 <link href="~/Scripts/jtable/themes/metro/crimson/jtable.css" rel="stylesheet" type="text/css" />
 
-<h2>UserList</h2>
-
 <style>
  .ui-button {
    background-color: #ffffff;
@@ -86,7 +84,9 @@
                 IsActive: {
                     title: 'IsActive',
                     width: '20%',
-                    options: { '0': 'Deleted', '1': 'Active' }
+                    type: 'checkbox',
+                    values: { 'false': 'Deleted', 'true': 'Active' },
+                    defaultValue: 'true'
                 },
                 RoleName: {
                     title: 'RoleName',
@@ -116,6 +116,6 @@
 
 
 
-<div style="background-color:white;" class="container bl-0 br-0">
+<div style="background-color:white;" class="container border border-danger rounded mt-5" id="jtable-container">
     <div id="PersonTableContainer"></div>
 </div>

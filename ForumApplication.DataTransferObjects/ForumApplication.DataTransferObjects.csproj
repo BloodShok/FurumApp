@@ -67,6 +67,7 @@
     <Compile Include="UpdateAndCreateDto\CreateSectionListDto.cs" />
     <Compile Include="UpdateAndCreateDto\CreateTopicDto.cs" />
     <Compile Include="UpdateAndCreateDto\JtableCreateAccountDto.cs" />
+    <Compile Include="UpdateAndCreateDto\JtableUpdateAccountDto.cs" />
     <Compile Include="UpdateAndCreateDto\UpdateUserProfileDto.cs" />
   </ItemGroup>
   <ItemGroup>
