@@ -55,6 +55,7 @@ namespace ForumApplication.WEB.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel loginModel)
         {
+            const string Erroros = "Erroros";
             if (ModelState.IsValid)
             {
                 var LoginDto = Mapper.Map<LoginModelDto>(loginModel);
@@ -63,7 +64,7 @@ namespace ForumApplication.WEB.Controllers
                 {
                     ModelState.AddModelError("", "Login or Password Incorect");
 
-                    TempData["Errors"] = "Login or Password Incorect";
+                    TempData[Erroros] = "Login or Password Incorect";
                     return RedirectPermanent(Request.UrlReferrer.ToString());
                 }
 
