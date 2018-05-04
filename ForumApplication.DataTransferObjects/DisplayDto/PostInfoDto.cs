@@ -13,6 +13,6 @@ namespace ForumApplication.DataTransferObjects
         public string AttachedPicture { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
-        public UserNameIdDto UserInfo { get; set; }
+        public UserPostInfoDto UserPostInfo { get; set; }
     }
 }

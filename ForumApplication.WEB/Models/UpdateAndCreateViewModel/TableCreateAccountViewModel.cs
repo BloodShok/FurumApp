@@ -7,7 +7,7 @@ using System.Web;
 namespace ForumApplication.WEB.Models
 {
 
-    public class JtableCreateAccountViewModel
+    public class TableCreateAccountViewModel
     {
         [Required(ErrorMessage ="Please enter Email")]
         [EmailAddress]

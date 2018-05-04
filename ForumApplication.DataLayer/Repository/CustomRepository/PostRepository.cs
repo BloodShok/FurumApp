@@ -42,5 +42,45 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
                 .FirstOrDefault(item => item.Id.Equals(id));
             return post;
         }
+
+
+        public Post GetLastCreatedPostBySectionListId(int sectionListId)
+        {
+
+            Post post = DbSet.Where(x => x.Topic
+            .Section.SectionListId == sectionListId)
+            .OrderByDescending(p => p.DateUpdate)
+            .Include(p =>p.Topic)
+            .Include(p=>p.User.UserAccount)
+            .FirstOrDefault();
+
+            return post;
+        }
+
+        public Post GetLastCreatedPostBySectionId(int sectionId)
+        {
+
+            Post post = DbSet.Where(x => x.Topic
+            .Section.Id == sectionId)
+            .OrderByDescending(p => p.DateUpdate)
+            .Include(p => p.Topic)
+            .Include(p => p.User.UserAccount)
+            .FirstOrDefault();
+
+            return post;
+        }
+
+        public Post GetLastCreatedPostByTopicId(int topicId)
+        {
+
+            Post post = DbSet.Where(x => x.Topic.Id == topicId)
+            .OrderByDescending(p => p.DateUpdate)
+            .Include(p => p.Topic)
+            .Include(p => p.User.UserAccount)
+            .FirstOrDefault();
+
+            return post;
+        }
+
     }
 }

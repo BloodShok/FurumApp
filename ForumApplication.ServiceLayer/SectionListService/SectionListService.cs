@@ -14,9 +14,11 @@ namespace ForumApplication.ServiceLayer.SectionListService
     public class SectionListService : ISectionListService
     {
         ISectionListRepository _sectionListRepo;
-        public SectionListService(ISectionListRepository repository)
+        IPostRepository _postRepo;
+        public SectionListService(ISectionListRepository repository, IPostRepository postRepo)
         {
             _sectionListRepo = repository;
+            _postRepo = postRepo;
         }
 
         public void CreateSectionList(CreateSectionListDto sectionList)
@@ -32,17 +34,27 @@ namespace ForumApplication.ServiceLayer.SectionListService
         public IList<BaseForumContainerInfoDto> GetAllElements()
         {
             var SectionListElements = _sectionListRepo.GetAllIncludeReferences();
+            var SectionListElementsDto = Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionListElements);
+            
 
-            return Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionListElements);
+            return SectionListElementsDto;
         }
 
         public BaseForumContainerInfoDto GetElement(int id)
         {
             var SectionListElement = _sectionListRepo.GetByIDIncludeReferences(id);
-
-            return Mapper.Map<BaseForumContainerInfoDto>(SectionListElement);
+            
+            var sectionlistDto = Mapper.Map<BaseForumContainerInfoDto>(SectionListElement);
+            InsertLastUpdateTopic(sectionlistDto);
+            return sectionlistDto;
         }
 
-     
+        private void InsertLastUpdateTopic(BaseForumContainerInfoDto sectionList)
+        {
+                foreach (var item in sectionList.NestedItemListInfo)
+                {
+                    item.LastUpdateTopic = Mapper.Map<LastUpdateTopicInfoDto>(_postRepo.GetLastCreatedPostBySectionId(item.Id));
+                }
+        }
     }
 }

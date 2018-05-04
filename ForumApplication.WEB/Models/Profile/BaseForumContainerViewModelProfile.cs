@@ -18,10 +18,14 @@ namespace ForumApplication.WEB.Models.Profile
                             opt => opt.MapFrom(topDto => Mapper.Map<IList<PostInfoViewModel>>(topDto.PostDto)));
 
             CreateMap<PostInfoDto, PostInfoViewModel>();
-               // .ForMember(x => x.UserInfo, opt => opt.MapFrom( x => Mapper.Map<UserNameIdViewModel>(x.UserInfo)));
+            // .ForMember(x => x.UserInfo, opt => opt.MapFrom( x => Mapper.Map<UserNameIdViewModel>(x.UserInfo)));
 
-           
-                
+            CreateMap<LastUpdateTopicInfoDto, LastUpdateTopicInfoViewModel>()
+                .ForMember(x => x.UserId, opt => opt.MapFrom(usDto => usDto.UserInfo.Id))
+                .ForMember(x => x.UserName, opt => opt.MapFrom(usDto => usDto.UserInfo.UserName));
+
+
+            CreateMap<UserPostInfoDto, UserPostInfoViewModel>();
         }
     }
 }

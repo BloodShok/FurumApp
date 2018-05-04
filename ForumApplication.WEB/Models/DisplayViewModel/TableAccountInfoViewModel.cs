@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ForumApplication.WEB.Models
 {
-    public class JtableAccountInfoViewModel : UserAccountsInfoViewModel
+    public class TableAccountInfoViewModel : UserAccountsInfoViewModel
     {
         [DisplayName("Status")]
         public bool IsActive { get; set; }

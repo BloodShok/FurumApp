@@ -15,9 +15,11 @@ namespace ForumApplication.ServiceLayer.SectionService
     public class SectionService : ISectionService
     {
         ISectionRepository _repo;
-        public SectionService( ISectionRepository repository)
+        IPostRepository _postRepo;
+        public SectionService( ISectionRepository repository, IPostRepository postRepo)
         {
             _repo = repository;
+            _postRepo = postRepo;
         }
 
         public void CreateSection(BaseForumContainerInfoDto item)
@@ -56,13 +58,18 @@ namespace ForumApplication.ServiceLayer.SectionService
         {
             
             var SectionElement = _repo.GetByIDIncludeReferences(id);
+            var sectionElementDto = Mapper.Map<BaseForumContainerInfoDto>(SectionElement);
+            InsertLastUpdateTopic(sectionElementDto);
 
-            return Mapper.Map<BaseForumContainerInfoDto>(SectionElement);
+            return sectionElementDto;
         }
 
-        //public void UpdateSection(UpdateBaseForumDto updateSection)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private void InsertLastUpdateTopic(BaseForumContainerInfoDto section)
+        {
+            foreach (var item in section.NestedItemListInfo)
+            {
+                item.LastUpdateTopic = Mapper.Map<LastUpdateTopicInfoDto>(_postRepo.GetLastCreatedPostByTopicId(item.Id));
+            }
+        }
     }
 }

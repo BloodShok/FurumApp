@@ -2,15 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    if (User.Identity.IsAuthenticated)
-    {
-        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>SingIn</h2>

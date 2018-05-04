@@ -32,8 +32,8 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
 
         public IList<Forum> GetAllIncludeReferences()
         {
-            List<Forum> ListofForum = DbSet
-                .Include(f => f.SectionLists)
+            List<Forum> ListofForum = DbSet.Include(seList => seList
+            .SectionLists.Select(sect =>sect.Sections))
                 .Include(u => u.User.UserAccount)
                 .ToList();
 
@@ -49,6 +49,5 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
 
             return ForumElement;
         }
-
     }
 }

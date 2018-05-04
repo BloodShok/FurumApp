@@ -35,8 +35,8 @@ namespace ForumApplication.ServiceLayer.TopicService
         public TopicInfoDto GetElement(int id)
         {
             var TopicElement = _repo.GetByIDIncludeReferences(id);
-
-            return Mapper.Map<TopicInfoDto>(TopicElement);
+            var topicElementDto = Mapper.Map<TopicInfoDto>(TopicElement);
+            return topicElementDto;
         }
     }
 }

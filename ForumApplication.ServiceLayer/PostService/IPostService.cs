@@ -1,4 +1,5 @@
 ﻿using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.PostDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace ForumApplication.ServiceLayer.PostService
     {
         IList<PostInfoDto> GetAllElements();
         PostInfoDto GetElement(int id);
+        void CreateNewPost(CreatePostDto createPostDto);
     }
 }

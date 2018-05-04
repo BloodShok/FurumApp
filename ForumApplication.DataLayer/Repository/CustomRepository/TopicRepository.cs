@@ -41,9 +41,9 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         public Topic GetByIDIncludeReferences(int id)
         {
             Topic Topic = DbSet
-                 .Include(topic => topic.Posts
-                 .Select(post => post.User))
                  .Include(topic => topic.User.UserAccount)
+                 .Include(topic => topic.Posts
+                 .Select(post => post.User.UserAccount))
                  .SingleOrDefault(topic => topic.Id.Equals(id));
 
             return Topic;

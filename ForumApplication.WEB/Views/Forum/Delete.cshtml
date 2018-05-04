@@ -2,14 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
-    if (User.Identity.IsAuthenticated)
-    {
-        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
-    }
-    else
-    {
+
         Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+    
 
 }
 
@@ -40,7 +35,7 @@
             {
                 <tr>
                     <td>@item.Title</td>
-                    <td>@item.UserName</td>
+                    <td>@item.UserInfo.UserName</td>
                     <td>
                         <ol>
                             @foreach (var secList in item.NestedItemListInfo)

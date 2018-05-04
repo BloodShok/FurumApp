@@ -11,5 +11,6 @@ namespace ForumApplication.DataTransferObjects
         public int Id { get; set; }
         public string Title { get; set; }
         public int CountOfNestedElements { get; set; }
+        public LastUpdateTopicInfoDto LastUpdateTopic { get; set; }
     }
 }

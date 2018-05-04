@@ -12,6 +12,6 @@ namespace ForumApplication.WEB.Models
         public string MessageStringContent { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }
-        public UserNameIdViewModel UserInfo { get; set; }
+        public UserPostInfoViewModel UserPostInfo { get; set; }
     }
 }

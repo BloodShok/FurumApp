@@ -1,0 +1,73 @@
+﻿@model ForumApplication.WEB.Models.BaseForumContainerViewModel
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<div class="card bg-light text-dark mt-2 mb-2 ml-2 mr-2">
+    <div class="card-header" style="background-color:#fcf8e3">
+        <h5>
+            @Html.ActionLink($"{Model.Title}", "item", new { Id = Model.Id }, new { style = "cursor: pointer;" })
+        </h5>
+        <p class="small"> Creator: @Html.ActionLink($"{Model.UserInfo.UserName}", "ShowProfile", "Account", new { Id = Model.UserInfo.Id }, null) </p>
+    </div>
+    <div class="card-body bg-light">
+
+        @foreach (var nestedItem in Model.NestedItemListInfo)
+        {
+            <div class="card-body  border-dark border-bottom">
+                <div class="row">
+                    <div class="col-sm-6">
+                        @Html.ActionLink($"{nestedItem.Title}", "Item", "SectionList", new { Id = nestedItem.Id }, new { @class = "nav" })
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Sections: @nestedItem.CountOfNestedElements</p>
+                            </div>
+                            <div class="col-sm-6">
+                                @if (nestedItem.LastUpdateTopic != null)
+                                {
+                                    <div class="row">
+                                        <span>
+                                            <span class="text-info">Last Update Topic:</span> 
+                                            @Html.ActionLink(
+                                                       $"{@nestedItem.LastUpdateTopic.Title}"
+                                                       , "Item"
+                                                       , "Topic"
+                                                       , new { Id = nestedItem.LastUpdateTopic.Id }
+                                                       , null
+                                                       )
+                                        </span>
+                                    </div>
+                                    <div class="row small">
+                                        <span>
+                                            <span class="text-info">User:</span> 
+                                            @Html.ActionLink(
+                                                $"{@nestedItem.LastUpdateTopic.UserName}"
+                                                , "ShowProfile"
+                                                , "Account"
+                                                , new { Id = nestedItem.LastUpdateTopic.UserId }
+                                                , null
+                                                )
+                                            <span class="text-info">Date:</span>
+                                            <span>@nestedItem.LastUpdateTopic.UpdateTime</span>
+                                        </span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <p class="text-danger">No Created Topics</p>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

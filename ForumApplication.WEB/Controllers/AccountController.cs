@@ -52,10 +52,13 @@ namespace ForumApplication.WEB.Controllers
             }
         }
 
+
         [HttpPost]
         public ActionResult Login(LoginViewModel loginModel)
         {
             const string Erroros = "Erroros";
+            const string status = "status";
+
             if (ModelState.IsValid)
             {
                 var LoginDto = Mapper.Map<LoginModelDto>(loginModel);
@@ -70,7 +73,7 @@ namespace ForumApplication.WEB.Controllers
 
                 if(!_accountService.IsAccountActive(LoginDto))
                 {
-                    TempData["status"] = "Sorry but your account was deleted";
+                    TempData[status] = "Sorry but your account was deleted";
                     return RedirectPermanent(Request.UrlReferrer.ToString());
                 }
 
@@ -85,7 +88,6 @@ namespace ForumApplication.WEB.Controllers
                         IsPersistent = false,
 
                     }, CliemIdentity);
-
 
                 return Redirect(Request.UrlReferrer.ToString());
             }
@@ -124,12 +126,12 @@ namespace ForumApplication.WEB.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult ShowProfile()
+        public ActionResult ShowProfile(string Id)
         {
-            var accId = _authenticationManager.User.Identity.GetUserId();
-            var userAccountInfoDto = _accountService.GetUserAccountInfo(accId);
+            var userAccountInfoDto = _accountService.GetUserAccountInfo(Id);
             var UserAccountInfoViewModel = Mapper.Map<UserAccountsInfoViewModel>(userAccountInfoDto);
             return View(UserAccountInfoViewModel);
         }
+
     }
 }

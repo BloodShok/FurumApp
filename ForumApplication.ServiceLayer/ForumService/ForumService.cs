@@ -13,10 +13,12 @@ namespace ForumApplication.ServiceLayer.ForumService
     {
         IForumRepository _repo;
         IUserProfileRepository _accRepo;
-        public ForumService(IForumRepository repository, IUserProfileRepository accRepo)
+        IPostRepository _postRepo;
+        public ForumService(IForumRepository repository, IUserProfileRepository accRepo, IPostRepository postRepo)
         {
             _repo = repository;
             _accRepo = accRepo;
+            _postRepo = postRepo;
         }
 
         public void CreateForum(BasePropertisForCreateDto newForumDataDto)
@@ -38,9 +40,11 @@ namespace ForumApplication.ServiceLayer.ForumService
 
         public IList<BaseForumContainerInfoDto> GetAllElements()
         {
-            var ForumList = _repo.GetAllIncludeReferences();
+            var forumList = _repo.GetAllIncludeReferences();
+            var forumListInfoDto = Mapper.Map<IList<BaseForumContainerInfoDto>>(forumList);
+            InsertLastUpdateTopic(forumListInfoDto);
 
-            return Mapper.Map<IList<BaseForumContainerInfoDto>>(ForumList); 
+           return Mapper.Map<IList<BaseForumContainerInfoDto>>(forumListInfoDto); 
         }
 
         public BaseForumContainerInfoDto GetElement(int id)
@@ -58,6 +62,18 @@ namespace ForumApplication.ServiceLayer.ForumService
             newForum.DateUpdate = DateTime.Now;
 
             _repo.AddNewItem(newForum);
+        }
+
+
+        private void InsertLastUpdateTopic(IList<BaseForumContainerInfoDto> forumList)
+        {
+            foreach (var forum in forumList)
+            {
+                foreach (var item in forum.NestedItemListInfo)
+                {
+                    item.LastUpdateTopic = Mapper.Map<LastUpdateTopicInfoDto>(_postRepo.GetLastCreatedPostBySectionListId(item.Id));
+                }
+            }
         }
     }
 }

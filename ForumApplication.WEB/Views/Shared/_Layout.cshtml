@@ -18,10 +18,12 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-md  navbar-dark">
-        <a class="navbar-brand" id="brendTitle" href="#">Fantasy Forum</a>
+        <a class="navbar-brand" id="brendTitle" href="@Url.Action("Index","Home",null)">Fantasy Forum</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,87 +39,112 @@
                     <a class="nav-link" href="#">FAQ</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" style="cursor: pointer;" onclick="location.href='@Url.Action("SignUp", "Account")'"><img src="~/Content/Pictures/UiPictures/user-silhouette.png" />Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-link" style="cursor: pointer;" data-target="#LoginForm" data-toggle="modal"><img src="~/Content/Pictures/UiPictures/login.png" /> Login</span>
-                </li>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="navbar-nav ml-auto">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" style="cursor: pointer;" onclick="location.href='@Url.Action("UserManager", "Administrator")'">Admin Panel</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="location.href='@Url.Action("ShowProfile", "Account", new {Id = User.Identity.GetUserId()})'">Hello, <span class="text-warning">@User.Identity.GetUserName()</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" style="cursor: pointer;" data-target="#LoginForm" data-toggle="modal" onclick="location.href='@Url.Action("LogOut","Account")'">
+                            <img src="~/Content/Pictures/UiPictures/logout.png" /> Log Out
+                        </span>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="location.href='@Url.Action("SignUp", "Account")'"><img src="~/Content/Pictures/UiPictures/user-silhouette.png" />Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" style="cursor: pointer;" data-target="#LoginForm" data-toggle="modal"><img src="~/Content/Pictures/UiPictures/login.png" /> Login</span>
+                    </li>
+                </ul>
+            }
 
 
 
 
-                <div class="modal fade" id="LoginForm">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
 
-                            <!-- Modal Header -->
-                            <div class="modal-header" @*id="modal-header-center"*@>
-                                <h4 class="modal-title" style="margin-left:40%;">LogIn</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
 
-                            <!-- Modal body -->
-                            <div class="modal-body">
+            <div class="modal fade" id="LoginForm">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
-                                @using (Html.BeginForm("Login", "Account"))
-                                {
-                                    <h5 class="text-danger">@TempData["Errors"]</h5>
+                        <!-- Modal Header -->
+                        <div class="modal-header" @*id="modal-header-center"*@>
+                            <h4 class="modal-title" style="margin-left:40%;">LogIn</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-                                    <div class="form-group">
-                                        <label for="LabelLog">Login</label>
-                                        <input type="text" id="LabelLog" class="form-control" placeholder="Enter Login" name="Login" data-val="true" data-val-required="Не указано имя" />
-                                        <span class="field-validation-valid" data-valmsg-for="LabelLog" data-valmsg-replace="true"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="LabelPass">Password</label>
-                                        <input type="password" class="form-control" id="LabelPass" placeholder="Password" name="Password" data-val="true" data-val-required="pss" />
-                                        <span class="field-validation-valid" data-valmsg-for="LabelPass" data-valmsg-replace="true"></span>
-                                    </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            @using (Html.BeginForm("Login", "Account"))
+                            {
+                                <h5 class="text-danger">@TempData["Errors"]</h5>
 
-                                    <input type="submit" class="btn btn-primary" value="Login" />
-                                }
+                                <div class="form-group">
+                                    <label for="LabelLog">Login</label>
+                                    <input type="text" id="LabelLog" class="form-control" placeholder="Enter Login" name="Login" data-val="true" data-val-required="Не указано имя" />
+                                    <span class="field-validation-valid" data-valmsg-for="LabelLog" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="LabelPass">Password</label>
+                                    <input type="password" class="form-control" id="LabelPass" placeholder="Password" name="Password" data-val="true" data-val-required="pss" />
+                                    <span class="field-validation-valid" data-valmsg-for="LabelPass" data-valmsg-replace="true"></span>
+                                </div>
 
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                            </div>
+                                <input type="submit" class="btn btn-primary" value="Login" />
+                            }
 
                         </div>
-                    </div>
-                </div>
 
-
-                <div class="modal fade" id="AccountStatus">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header" @*id="modal-header-center"*@>
-                                <h4 class="modal-title" style="margin-left:40%;"></h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <h5 class="text-danger text-center">@TempData["status"]</h5>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                            </div>
-
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
                         </div>
+
                     </div>
                 </div>
+            </div>
+
+
+            <div class="modal fade" id="AccountStatus">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header" @*id="modal-header-center"*@>
+                            <h4 class="modal-title" style="margin-left:40%;"></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <h5 class="text-danger text-center">@TempData["status"]</h5>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
 
-            </ul>
+
         </div>
     </nav>
 

@@ -2,14 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
-    if (User.Identity.IsAuthenticated)
-    {
-        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
 
 }
 
@@ -36,11 +31,16 @@
             <input type="password" class="form-control" id="pass" placeholder="Password" name="Password" required />
         </div>
         <div class="text-center mt-5">
-            <input type="submit" class="btn btn-outline-info" style="font-size:19px;" name="Sign Up" >
+            <input type="submit" class="btn btn-outline-info" style="font-size:19px;" value="Create Account">
+            <input type="button" id="sign-in-buttn" class="btn btn-outline-info" style="font-size:19px;" value="Or Sign In"/>
         </div>
         
     }
 </div>
    
 
-
+<script>
+    $("#sign-in-buttn").click(function () {
+        $('#LoginForm').modal();
+    });
+</script>

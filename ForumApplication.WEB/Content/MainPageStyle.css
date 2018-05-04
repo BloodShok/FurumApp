@@ -163,3 +163,13 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+@media screen and (max-width: 583px) {
+    #post-message {
+        margin-top:5px;
+    }
+}
+
+#post-message {
+    margin-left: 3%;
+}

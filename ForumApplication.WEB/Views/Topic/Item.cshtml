@@ -1,42 +1,49 @@
 ﻿@model ForumApplication.WEB.Models.TopicViewModel
+@using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "Topic";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<div class="container-fluid mt-5 ">
+    <div class="border-warning border p-2 border rounded" style="background-color:#313131d9;">
+        <div class="card bg-light text-dark mt-2 mb-2 ml-2 mr-2">
+            <div class="card-header" style="background-color:#fcf8e3">
+                <span>@Model.Title</span>
+                <br />
+                <span class="small">
+                    @Html.ActionLink(
+                                               $"{Model.UserInfo.UserName}"
+                                               , "ShowProfile"
+                                               , "Account"
+                                               , new { Id = Model.UserInfo.Id }
+                                               , null)
+                </span>
+            </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Item</title>
-
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div>
-        <h2 class="text-center">@Model.Title  <br />  
-        @Model.UserInfo.UserName</h2>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>User Name</th>
-                    <th>PostMessage</th>
-                </tr>
-            </thead>
-
-            @foreach (var item in Model.PostViewModel)
+            <div class="card-body bg-light">
+                @Html.DisplayFor(x => x.PostViewModel)
+            </div>
+            @if (User.Identity.IsAuthenticated)
             {
-                <tr>
-                    <td>@item.UserInfo.UserName</td>
-                    <td>@item.MessageStringContent</td>
-                </tr>
+                <div class="card-body bg-light">
+                    @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
+                    {
+                        @Html.TextArea("MessageStringContent", new { @id = "editor" })
+                        <input type="hidden" value="@User.Identity.GetUserId()" name="UserId" />
+                        <input type="hidden" value="@Model.Id" name="TopicId" />
+
+                        <input type="submit" class="btn btn-outline-info mt-2 font-weight-bold" />
+                    }
+                </div>
             }
-        </table>
+
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+<script>
+    CKEDITOR.replace("editor");
+</script>

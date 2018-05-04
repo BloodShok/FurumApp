@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ForumApplication.WEB.Models
 {
-    public class JtableUpdateAccountViewModel : JtableCreateAccountViewModel
+    public class TableUpdateAccountViewModel : TableCreateAccountViewModel
     {
         public string Id { get; set; }
     }

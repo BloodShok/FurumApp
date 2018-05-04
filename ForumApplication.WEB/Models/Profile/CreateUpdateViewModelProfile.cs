@@ -1,4 +1,6 @@
 ﻿using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.PostDto;
+using ForumApplication.WEB.Models.PostViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,9 @@ namespace ForumApplication.WEB.Models.Profile
         {
             CreateMap<CreateSectionListDto, CreateSectionListViewModel>();
             CreateMap<CreateTopicDto, CreateTopicViewModel>();
+
+            CreateMap<CreatePostViewModel, CreatePostDto>()
+                .ForMember(pdto => pdto.MessageStringContent, opt => opt.MapFrom(vm => vm.MessageStringContent));
         }
     }
 }

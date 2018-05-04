@@ -36,7 +36,7 @@ namespace ForumApplication.WEB.Controllers
         {
             var userAccountDto = _accountService.GetUserAccountsListForJTable(jtStartIndex, jtPageSize);
 
-            var usersAccountsJTableViewModel = Mapper.Map<ICollection<JtableAccountInfoViewModel>>(userAccountDto);
+            var usersAccountsJTableViewModel = Mapper.Map<ICollection<TableAccountInfoViewModel>>(userAccountDto);
 
 
             return Json(new { Result = "OK", Records = usersAccountsJTableViewModel, TotalRecordCount = _accountService.CountUserAccounts });
@@ -51,7 +51,7 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateAccount(JtableCreateAccountViewModel newAccountViewModel)
+        public JsonResult CreateAccount(TableCreateAccountViewModel newAccountViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ForumApplication.WEB.Controllers
 
 
         [HttpPost]
-        public JsonResult UpdateAccount(JtableUpdateAccountViewModel updateAccountViewModel)
+        public JsonResult UpdateAccount(TableUpdateAccountViewModel updateAccountViewModel)
         {
             if (!ModelState.IsValid)
             {

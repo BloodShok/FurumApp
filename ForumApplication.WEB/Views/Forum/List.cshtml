@@ -1,57 +1,18 @@
-﻿@model IEnumerable<ForumApplication.WEB.Models.BaseForumContainerViewModel>
+﻿@model List<ForumApplication.WEB.Models.BaseForumContainerViewModel>
 
 @{
     ViewBag.Title = "Index";
-    if (User.Identity.IsAuthenticated)
-    {
-        Layout = "~/Views/Shared/_LoginNavLayout.cshtml";
-    }
-    else
-    {
+
         Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+    
 
 }
 
-<!DOCTYPE html>
+<div class="container-fluid mt-5 ">
+    <div class="border-warning border p-2 border rounded" style="background-color:#313131d9;">
+        @Html.DisplayForModel(Model)
+    </div>
+         
+</div>
+    
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ShowForumList</title>
-
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <table class="table table-bordered">
-        <tr>
-            @foreach (var item in Model)
-            {
-                <td>
-                    @Html.ActionLink($"{ @item.Title }", "Item", new { item.Id })    @item.UserInfo.UserName<br />
-                    @foreach (var SlInfo in item.NestedItemListInfo)
-                    {
-                        <ul>
-                            <li>
-                                @Html.ActionLink($"{@SlInfo.Title}", "Item", "SectionList", new { SlInfo.Id }, null)
-                            </li>
-                        </ul>
-                    }
-                </td>
-            }
-        </tr>
-    </table>
-    <button class="btn btn-outline-warning  d-block" type="button"
-            onclick="location.href='@Url.Action("Create","Forum")'">
-        <h5>Add New Forum Element</h5>
-    </button>
-
-    <button class="btn btn-outline-warning  d-block m-2" type="button"
-            onclick="location.href='@Url.Action("Delete","Forum")'">
-        <h5>Delete Forum Element</h5>
-    </button>
-</body>
-</html>
