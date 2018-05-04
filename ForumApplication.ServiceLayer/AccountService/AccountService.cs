@@ -93,11 +93,11 @@ namespace ForumApplication.ServiceLayer.AccountService
             
         }
 
-        public IList<JtableAccountInfoDto> GetUserAccountsListForJTable(int startPage, int size)
+        public IList<TableAccountInfoDto> GetUserAccountsListForJTable(int startPage, int size)
         {
             var listOfUserAccounts = _userManager.GetUserAccountsList(startPage, size);
 
-            var jtableAccountInfoDto = Mapper.Map<IList<JtableAccountInfoDto>>(listOfUserAccounts);
+            var jtableAccountInfoDto = Mapper.Map<IList<TableAccountInfoDto>>(listOfUserAccounts);
 
 
             foreach (var account in jtableAccountInfoDto)
@@ -123,7 +123,7 @@ namespace ForumApplication.ServiceLayer.AccountService
             _userManager.EnableAccount(Id);
         }
 
-        public IdentityResult CreateUserAccount(JtableCreateAccountDto jTableCreatUserAccountDto)
+        public IdentityResult CreateUserAccount(TableCreateAccountDto jTableCreatUserAccountDto)
         {
             var newAccount = Mapper.Map<UserAccount>(jTableCreatUserAccountDto);
 
@@ -137,7 +137,7 @@ namespace ForumApplication.ServiceLayer.AccountService
             return CreateIdentityReuslt;
         }
 
-        public void UpdateUserProfile(JtableUpdateAccountDto jTableUpdateAccountDto)
+        public void UpdateUserProfile(TableUpdateAccountDto jTableUpdateAccountDto)
         {
             var updateUserAccount = Mapper.Map<UserAccount>(jTableUpdateAccountDto);
 

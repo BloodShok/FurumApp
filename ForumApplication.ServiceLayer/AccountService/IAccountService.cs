@@ -13,7 +13,7 @@ namespace ForumApplication.ServiceLayer.AccountService
     {
         int CountUserAccounts { get; }
 
-        IList<JtableAccountInfoDto> GetUserAccountsListForJTable(int startPage, int size);
+        IList<TableAccountInfoDto> GetUserAccountsListForJTable(int startPage, int size);
         IdentityResult CreateUserAccount(CreateAccountDto createAccountDto);
         IList<UserAccountInfoDto> GetUserAccountsList();
         bool CheckUser(LoginModelDto loginModelDto);
@@ -23,7 +23,7 @@ namespace ForumApplication.ServiceLayer.AccountService
         bool IsAccountActive(LoginModelDto loginDto);
         void DisableAccount(string Id);
         void EnableAccount(string Id);
-        IdentityResult CreateUserAccount(JtableCreateAccountDto jTableCreatUserAccountDto);
-        void UpdateUserProfile(JtableUpdateAccountDto jTableUpdateAccountDto);
+        IdentityResult CreateUserAccount(TableCreateAccountDto jTableCreatUserAccountDto);
+        void UpdateUserProfile(TableUpdateAccountDto jTableUpdateAccountDto);
     }
 }

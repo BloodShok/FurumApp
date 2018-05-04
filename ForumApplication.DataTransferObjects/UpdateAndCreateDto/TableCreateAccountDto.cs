@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class JtableCreateAccountDto
+    public class TableCreateAccountDto
     {
         public string Email { get; set; }
         public string UserName { get; set; }

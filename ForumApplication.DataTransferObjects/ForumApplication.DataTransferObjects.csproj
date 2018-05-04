@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DisplayDto\BaseForumContainerInfoDto.cs" />
-    <Compile Include="DisplayDto\JtableAccountInfoDto.cs" />
+    <Compile Include="DisplayDto\TableAccountInfoDto.cs" />
     <Compile Include="DisplayDto\LastUpdateTopicInfoDto.cs" />
     <Compile Include="DisplayDto\LoginModelDto.cs" />
     <Compile Include="DisplayDto\NestedContainerElementsInfoDto.cs" />
@@ -82,8 +82,8 @@
     <Compile Include="UpdateAndCreateDto\CreateAccountDto.cs" />
     <Compile Include="UpdateAndCreateDto\CreateSectionListDto.cs" />
     <Compile Include="UpdateAndCreateDto\CreateTopicDto.cs" />
-    <Compile Include="UpdateAndCreateDto\JtableCreateAccountDto.cs" />
-    <Compile Include="UpdateAndCreateDto\JtableUpdateAccountDto.cs" />
+    <Compile Include="UpdateAndCreateDto\TableCreateAccountDto.cs" />
+    <Compile Include="UpdateAndCreateDto\TableUpdateAccountDto.cs" />
     <Compile Include="UpdateAndCreateDto\UpdateUserProfileDto.cs" />
   </ItemGroup>
   <ItemGroup>

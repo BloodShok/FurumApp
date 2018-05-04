@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ForumApplication.DataTransferObjects
 {
-    public class JtableUpdateAccountDto : JtableCreateAccountDto
+    public class TableAccountInfoDto : UserAccountInfoDto
     {
-        public string Id { get; set; }
+        public bool IsActive { get; set; }
     }
 }

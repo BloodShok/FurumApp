@@ -71,7 +71,7 @@ namespace ForumApplication.WEB.Controllers
                         newAccountViewModel.Image = "941f3690-6f0d-4752-a289-3e3fcdc91fcatroglodyte.png";
                         break;
                 }
-                var JTableCreatUserAccountDto = Mapper.Map<JtableCreateAccountDto>(newAccountViewModel);
+                var JTableCreatUserAccountDto = Mapper.Map<TableCreateAccountDto>(newAccountViewModel);
                 var createResult = _accountService.CreateUserAccount(JTableCreatUserAccountDto);
 
                 if (createResult.Succeeded)
@@ -97,7 +97,7 @@ namespace ForumApplication.WEB.Controllers
             }
 
 
-            var updateAccountDto = Mapper.Map<JtableUpdateAccountDto>(updateAccountViewModel);
+            var updateAccountDto = Mapper.Map<TableUpdateAccountDto>(updateAccountViewModel);
 
             _accountService.UpdateUserProfile(updateAccountDto);
             return Json(new

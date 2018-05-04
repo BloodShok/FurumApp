@@ -16,7 +16,7 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForMember(x => x.UserProfile, opt => opt.MapFrom(x => x.UserProfile));
 
 
-            CreateMap<UserAccount, JtableAccountInfoDto>();
+            CreateMap<UserAccount, TableAccountInfoDto>();
 
 
 
@@ -32,7 +32,7 @@ namespace ForumApplication.DataTransferObjects.Profile
 
 
 
-            CreateMap<JtableCreateAccountDto, UserAccount>()
+            CreateMap<TableCreateAccountDto, UserAccount>()
                 .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(val => val.BirthDay))
                 .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(val => val.DateRegistration))
                 .ForPath(x => x.UserProfile.Gender, opt => opt.MapFrom(val => val.Gender))
@@ -40,7 +40,7 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForPath(x => x.UserProfile.Image, opt => opt.MapFrom(val => val.Image))
                 .ForPath(x => x.UserProfile.SomeInformation, opt => opt.MapFrom(val => val.SomeInformation));
 
-            CreateMap<JtableUpdateAccountDto, UserAccount>()
+            CreateMap<TableUpdateAccountDto, UserAccount>()
                 .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(val => val.BirthDay))
                 .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(val => val.DateRegistration))
                 .ForPath(x => x.UserProfile.Gender, opt => opt.MapFrom(val => val.Gender))

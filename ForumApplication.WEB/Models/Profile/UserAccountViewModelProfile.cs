@@ -20,7 +20,7 @@ namespace ForumApplication.WEB.Models.Profile
 
 
 
-            CreateMap<JtableAccountInfoDto, TableAccountInfoViewModel>()
+            CreateMap<TableAccountInfoDto, TableAccountInfoViewModel>()
                 .ForMember(AccView => AccView.Location, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Location))
                 .ForMember(AccView => AccView.BirthDay, opt => opt.MapFrom(AccDto => AccDto.UserProfile.BirthDay))
                 .ForMember(AccView => AccView.Gender, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Gender))
@@ -41,8 +41,8 @@ namespace ForumApplication.WEB.Models.Profile
             CreateMap<UserNameIdDto, UserNameIdDto>();
             CreateMap<LoginModelDto, LoginViewModel>();
 
-            CreateMap<TableAccountInfoViewModel, JtableCreateAccountDto>();
-            CreateMap<TableUpdateAccountViewModel, JtableUpdateAccountDto>();
+            CreateMap<TableAccountInfoViewModel, TableCreateAccountDto>();
+            CreateMap<TableUpdateAccountViewModel, TableUpdateAccountDto>();
         }
     }
 }
