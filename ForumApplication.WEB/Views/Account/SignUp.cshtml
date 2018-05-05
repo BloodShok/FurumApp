@@ -1,18 +1,14 @@
-﻿@model ForumApplication.WEB.Models.CreateAccountViewModel
+﻿@model ForumApplication.WEB.Models.AccountViewModel.CreateAccountViewModel
 
 @{
     ViewBag.Title = "Index";
- 
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
-
 }
 
 <div class="container border border-primary rounded" id="signUp-form-container">
     <h4 class="text-center" id="logint-title-text">Please Enter You Data</h4>
     @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
     {
-   
         @Html.ValidationSummary()
     
         <input type="hidden" name="RoleName" value="User" />
@@ -31,8 +27,8 @@
             <input type="password" class="form-control" id="pass" placeholder="Password" name="Password" required />
         </div>
         <div class="text-center mt-5">
-            <input type="submit" class="btn btn-outline-info" style="font-size:19px;" value="Create Account">
-            <input type="button" id="sign-in-buttn" class="btn btn-outline-info" style="font-size:19px;" value="Or Sign In"/>
+            <input type="submit" class="btn btn-outline-info font-size-19" value="Create Account">
+            <input type="button" id="sign-in-buttn" class="btn btn-outline-info font-size-19" value="Or Sign In"/>
         </div>
         
     }

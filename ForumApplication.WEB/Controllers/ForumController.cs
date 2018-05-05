@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.BaseDtoItems;
+using ForumApplication.DataTransferObjects.ForumDto;
 using ForumApplication.ServiceLayer.ForumService;
 using ForumApplication.WEB.Models;
+using ForumApplication.WEB.Models.BaseViewModelItems;
+using ForumApplication.WEB.Models.ForumViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,20 +77,11 @@ namespace ForumApplication.WEB.Controllers
             return RedirectToAction("List");
         }
 
-        [HttpGet]
-        public ActionResult Update(int Id)
+        public ActionResult Update(UpdateForumViewModel updateData)
         {
-            var updateElemDto = _forumService.GetElement(Id);
-            var updateElemViewModel = Mapper.Map<BasePropertisForCreateDto>(updateElemDto);
-            
-            return View(updateElemViewModel);
-        }
+            var newForumDataDto = Mapper.Map<UpdateForumDto>(updateData);
 
-        public ActionResult Update(BasePropertysForCreateViewModel updateData)
-        {
-            var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(updateData);
-
-            _forumService.CreateForum(newForumDataDto);
+            _forumService.UpdateForum(newForumDataDto);
 
             return RedirectToAction("List");
         }

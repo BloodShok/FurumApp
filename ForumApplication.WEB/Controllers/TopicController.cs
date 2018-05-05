@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.TopicDto;
 using ForumApplication.ServiceLayer.TopicService;
 using ForumApplication.WEB.Models;
+using ForumApplication.WEB.Models.TopicViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +23,10 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Item(int id)
         {
             var topicDto = _topicService.GetElement(id);
-            var topicView = Mapper.Map<TopicViewModel>(topicDto);
+            var topicView = Mapper.Map<TopicInfoViewModel>(topicDto);
             
 
             return View(topicView);
-        }
-
-        [HttpGet]
-        public ActionResult Create(int Id)
-        {
-            ViewBag.SectionId = Id;
-
-            return View();
         }
 
         [HttpPost]
@@ -41,7 +35,7 @@ namespace ForumApplication.WEB.Controllers
             var createTopicDto = Mapper.Map<CreateTopicDto>(createTopicView);
             _topicService.CreateTopic(createTopicDto);
 
-            return RedirectToAction("Item", new { createTopicDto.Id });
+            return RedirectToAction("Item","Section", new { createTopicView.SectionId });
         }
     }
 }

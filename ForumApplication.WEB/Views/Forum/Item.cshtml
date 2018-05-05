@@ -1,61 +1,152 @@
-﻿
-@model ForumApplication.WEB.Models.BaseForumContainerViewModel
+﻿@using ForumApplication.Infrastructure.Consts
+@using Microsoft.AspNet.Identity
+@model ForumApplication.WEB.Models.BaseViewModelItems.BaseForumContainerViewModel
 
 @{
-    ViewBag.Title = "Index";
-
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    
-
+    ViewBag.Title = "Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="container-fluid mt-5 ">
+    <div class="border-warning border p-2 border rounded container-for-card">
+        <div class="card bg-light text-dark mt-2 mb-2 ml-2 mr-2">
+            <div class="card-header forum-card-header">
+                <h5>
+                    @Html.ActionLink($"{Model.Title}", "item", new { Id = Model.Id }, new { @class = "url-cursor" })
+                </h5>
+                <span class="small"> Creator: @Html.ActionLink($"{Model.UserName}", "ShowProfile", "Account", new { Id = Model.UserId }, null) </span>
+            </div>
+            <div class="card-body">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Item</title>
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+                @foreach (var nestedItem in Model.NestedItemListInfo)
+                {
+                    <div class="card-body  border-dark border-bottom">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @Html.ActionLink($"{nestedItem.Title}", "Item", "SectionList", new { Id = nestedItem.Id }, new { @class = "nav" })
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Posts: @nestedItem.CountOfNestedElements</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @if (nestedItem.LastUpdateTopic != null)
+                                        {
+                                            <div class="row">
+                                                <span>
+                                                    <span class="text-info">Last Active User:</span>
+                                                    @Html.ActionLink(
+                                                                      $"{@nestedItem.LastUpdateTopic.UserName}"
+                                                                      , "ShowProfile"
+                                                                      , "Account"
+                                                                      , new { Id = nestedItem.LastUpdateTopic.UserId }
+                                                                      , null
+                                                                      )
+                                                    <br />
+                                                    <span class="text-info">Date:</span>
+                                                    <span>@nestedItem.LastUpdateTopic.UpdateTime</span>
+                                                </span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-danger">No Created Posts</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
 
-
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        Creator
-                    </th>
-                    <th>Title</th>
-                    <th>SectionList</th>
-                </tr>
-            </thead>
-            <tr>
-                <td>@Model.UserInfo.UserName</td>
-                <td>@Model.Title</td>
-                <td>
-                    <ul>
-                        @foreach (var item in Model.NestedItemListInfo)
-                        {
-                            <li>
-                                @item.Title
-                            </li>
-                        }
-                    </ul>
-                </td>
-            </tr>
-        </table>
-        <button class="btn btn-outline-warning  d-block m-2" type="button"
-                onclick="location.href='@Url.Action("Create","SectionList")'">
-            <h5>Add SectionList</h5>
-        </button>
-
-        <button class="btn btn-outline-warning  d-block m-2" type="button"
-                onclick="location.href='@Url.Action("Update","Forum", new { Id = Model.Id })'">
-            <h5>Update Forum Element</h5>
-        </button>
+        </div>
+        <div class="card ml-2 mr-2">
+            <div class="card-header ">
+                @if (User.IsInRole(RoleConsts.Administrator))
+                {
+                    <buton class="btn-outline-dark btn" id="new-forum-btn">Create New SectionList</buton>
+                    <buton class="btn-outline-dark btn" id="update-forum-btn">Update Forum</buton>
+                }
+                else
+                {
+                    <span class="small text-info">
+                        (You have insufficient privileges to post here.)
+                    </span>
+                }
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+</div>
+
+<div class="modal fade" id="create-forum-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title margin-left-40">SectionList</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            @using (Html.BeginForm("Create", "SectionList", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="LabelTitle">Forum Title: </label>
+                        <input type="text" id="LabelTitle" class="form-control" placeholder="Enter Title of SectionList" name="Title" data-val="true" data-val-required="Titile is Required" />
+                        <span class="field-validation-valid" data-valmsg-for="LabelTitle" data-valmsg-replace="true"></span>
+                    </div>
+                    <input type="hidden" value="@User.Identity.GetUserId()" name="UserAccountId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Create new SectionList" />
+                    <input type="hidden" value="@Model.Id" name="ForumId" />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="update-forum">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Update Forum Title</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            @using (Html.BeginForm("Update","Forum",FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" rows="3" name="Title" data-val="true" data-val-required="Titile is Required">@Model.Title</textarea>
+                    </div>
+                    <input type="hidden" value="@Model.Id" name="ForumId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Update Forum Title" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#new-forum-btn").click(function () {
+        $("#create-forum-modal").modal();
+    });
+
+    $("#update-forum-btn").click(function () {
+        $("#update-forum").modal();
+    });
+</script>

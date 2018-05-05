@@ -1,4 +1,5 @@
 ﻿using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.ForumDto;
 using ForumApplication.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<Forum> GetAllIncludeReferences();
         IList<Forum> GetAllIncludeReferences(int pageNumber, int pageSize);
         Forum GetByIDIncludeReferences(int id);
+        void Update(UpdateForumDto updForumDto);
     }
 }

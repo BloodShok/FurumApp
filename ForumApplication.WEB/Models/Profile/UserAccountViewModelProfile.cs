@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.AccountDto;
+using ForumApplication.DataTransferObjects.BaseDtoItems;
 using ForumApplication.Domain.Entitys;
+using ForumApplication.WEB.Models.AccountViewModel;
+using ForumApplication.WEB.Models.AdministratorViewModel;
 using System.Linq;
 
 namespace ForumApplication.WEB.Models.Profile
@@ -9,14 +13,16 @@ namespace ForumApplication.WEB.Models.Profile
     {
         public UserAccountViewModelProfile()
         {
+
+            #region TableMapping
             CreateMap<UserAccountInfoDto, UserAccountsInfoViewModel>()
-                .ForMember(AccView => AccView.Location, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Location))
-                .ForMember(AccView => AccView.BirthDay, opt => opt.MapFrom(AccDto => AccDto.UserProfile.BirthDay))
-                .ForMember(AccView => AccView.Gender, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Gender))
-                .ForMember(AccView => AccView.Image, opt => opt.MapFrom(AccDto =>  AccDto.UserProfile.Image))
-                .ForMember(AccView => AccView.RoleName, opt => opt.MapFrom(AccDto => AccDto.Role))
-                .ForMember(AccView => AccView.DateRegistration, opt => opt.MapFrom(AccDto => AccDto.UserProfile.DateRegistration))
-                .ForMember(AccView => AccView.SomeInformation, opt => opt.MapFrom(AccDto => AccDto.UserProfile.SomeInformation));
+               .ForMember(AccView => AccView.Location, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Location))
+               .ForMember(AccView => AccView.BirthDay, opt => opt.MapFrom(AccDto => AccDto.UserProfile.BirthDay))
+               .ForMember(AccView => AccView.Gender, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Gender))
+               .ForMember(AccView => AccView.Image, opt => opt.MapFrom(AccDto => AccDto.UserProfile.Image))
+               .ForMember(AccView => AccView.RoleName, opt => opt.MapFrom(AccDto => AccDto.Role))
+               .ForMember(AccView => AccView.DateRegistration, opt => opt.MapFrom(AccDto => AccDto.UserProfile.DateRegistration))
+               .ForMember(AccView => AccView.SomeInformation, opt => opt.MapFrom(AccDto => AccDto.UserProfile.SomeInformation));
 
 
 
@@ -30,6 +36,10 @@ namespace ForumApplication.WEB.Models.Profile
                 .ForMember(AccView => AccView.SomeInformation, opt => opt.MapFrom(AccDto => AccDto.UserProfile.SomeInformation));
 
 
+            CreateMap<TableAccountInfoViewModel, TableCreateAccountDto>();
+            CreateMap<TableUpdateAccountViewModel, TableUpdateAccountDto>();
+
+            #endregion
 
 
             CreateMap<UpdateUserProfileDto, UpdateUserProfileViewModel>()
@@ -41,8 +51,7 @@ namespace ForumApplication.WEB.Models.Profile
             CreateMap<UserNameIdDto, UserNameIdDto>();
             CreateMap<LoginModelDto, LoginViewModel>();
 
-            CreateMap<TableAccountInfoViewModel, TableCreateAccountDto>();
-            CreateMap<TableUpdateAccountViewModel, TableUpdateAccountDto>();
+            
         }
     }
 }

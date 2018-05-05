@@ -6,6 +6,8 @@ using Ninject;
 using AutoMapper;
 using ForumApplication.DataTransferObjects.Profile;
 using ForumApplication.WEB.Models.Profile;
+using ForumApplication.WEB.App_Start;
+using System.Web.Optimization;
 
 namespace ForumApplication.WEB
 {
@@ -33,6 +35,7 @@ namespace ForumApplication.WEB
                                 conf.AddProfile(new UserAccountViewModelProfile());
 
                             });
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

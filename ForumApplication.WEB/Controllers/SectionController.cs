@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using ForumApplication.DataTransferObjects.SectionDto;
 using ForumApplication.ServiceLayer;
 using ForumApplication.ServiceLayer.SectionService;
 using ForumApplication.WEB.Models;
+using ForumApplication.WEB.Models.BaseViewModelItems;
+using ForumApplication.WEB.Models.SectionViewModel;
 
 namespace ForumApplication.WEB.Controllers
 {
@@ -25,6 +28,18 @@ namespace ForumApplication.WEB.Controllers
             var SectionView = Mapper.Map<BaseForumContainerViewModel>(SectionDto);
 
             return View(SectionView);
+        }
+
+        public ActionResult Create(CreateSectionViewModel createSection)
+        {
+            var createSectionDto = Mapper.Map<CreateSectionDto>(createSection);
+            _sectionService.CreateSection(createSectionDto);
+            return RedirectToAction("Item","SectionList", new { Id = createSection.SectionListId });
+        }
+
+        public ActionResult Update(UpdateSectionViewModel updateSectionView)
+        {
+            return View();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ForumApplication.WEB.Models.TopicViewModel
+﻿@model ForumApplication.WEB.Models.TopicViewModel.TopicInfoViewModel
 @using Microsoft.AspNet.Identity
 
 @{
@@ -15,11 +15,11 @@
                 <br />
                 <span class="small">
                     @Html.ActionLink(
-                                               $"{Model.UserInfo.UserName}"
-                                               , "ShowProfile"
-                                               , "Account"
-                                               , new { Id = Model.UserInfo.Id }
-                                               , null)
+                                      $"{Model.UserName}"
+                                      , "ShowProfile"
+                                      , "Account"
+                                      , new { Id = Model.UserId }
+                                      , null)
                 </span>
             </div>
 
@@ -44,6 +44,10 @@
     </div>
 </div>
 
-<script>
-    CKEDITOR.replace("editor");
-</script>
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}
+

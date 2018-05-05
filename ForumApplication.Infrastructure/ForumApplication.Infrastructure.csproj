@@ -115,7 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IoC\OwinStart.cs" />
+    <Compile Include="Consts\ErrorConstans.cs" />
+    <Compile Include="Consts\RoleConsts.cs" />
+    <Compile Include="Consts\TempDataIndexConsts.cs" />
     <Compile Include="IoC\OwinStartup.cs" />
     <Compile Include="IoC\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

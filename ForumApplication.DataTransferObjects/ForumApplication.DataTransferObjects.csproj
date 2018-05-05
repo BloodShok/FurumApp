@@ -60,31 +60,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DisplayDto\BaseForumContainerInfoDto.cs" />
-    <Compile Include="DisplayDto\TableAccountInfoDto.cs" />
-    <Compile Include="DisplayDto\LastUpdateTopicInfoDto.cs" />
-    <Compile Include="DisplayDto\LoginModelDto.cs" />
-    <Compile Include="DisplayDto\NestedContainerElementsInfoDto.cs" />
-    <Compile Include="DisplayDto\PostInfoDto.cs" />
-    <Compile Include="DisplayDto\UserPostInfoDto.cs" />
-    <Compile Include="DisplayDto\UserRoleInfoDto.cs" />
-    <Compile Include="DisplayDto\UserAccountInfoDto.cs" />
-    <Compile Include="DisplayDto\UserNameIdDto.cs" />
-    <Compile Include="DisplayDto\UserProfileInfoDto.cs" />
+    <Compile Include="BaseDtoItems\BaseForumContainerInfoDto.cs" />
+    <Compile Include="AccountDto\TableAccountInfoDto.cs" />
+    <Compile Include="ForumDto\UpdateForumDto.cs" />
+    <Compile Include="SectionDto\CreateSectionDto.cs" />
+    <Compile Include="TopicDto\LastUpdateTopicInfoDto.cs" />
+    <Compile Include="AccountDto\LoginModelDto.cs" />
+    <Compile Include="BaseDtoItems\NestedContainerElementsInfoDto.cs" />
+    <Compile Include="PostDto\PostInfoDto.cs" />
+    <Compile Include="PostDto\UserPostInfoDto.cs" />
+    <Compile Include="AccountDto\UserAccountInfoDto.cs" />
+    <Compile Include="BaseDtoItems\UserNameIdDto.cs" />
+    <Compile Include="AccountDto\UserProfileInfoDto.cs" />
     <Compile Include="PostDto\CreatePostDto.cs" />
     <Compile Include="Profile\BaseForumContainerProfile.cs" />
     <Compile Include="Profile\CreateUpdateProfile.cs" />
     <Compile Include="Profile\NestedContainerElementsInfoProfile.cs" />
     <Compile Include="Profile\UserAccountProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DisplayDto\TopicInfoDto.cs" />
-    <Compile Include="UpdateAndCreateDto\BasePropertysForCreateDto.cs" />
-    <Compile Include="UpdateAndCreateDto\CreateAccountDto.cs" />
-    <Compile Include="UpdateAndCreateDto\CreateSectionListDto.cs" />
-    <Compile Include="UpdateAndCreateDto\CreateTopicDto.cs" />
-    <Compile Include="UpdateAndCreateDto\TableCreateAccountDto.cs" />
-    <Compile Include="UpdateAndCreateDto\TableUpdateAccountDto.cs" />
-    <Compile Include="UpdateAndCreateDto\UpdateUserProfileDto.cs" />
+    <Compile Include="TopicDto\TopicInfoDto.cs" />
+    <Compile Include="BaseDtoItems\BasePropertysForCreateDto.cs" />
+    <Compile Include="AccountDto\CreateAccountDto.cs" />
+    <Compile Include="SectionListDto\CreateSectionListDto.cs" />
+    <Compile Include="TopicDto\CreateTopicDto.cs" />
+    <Compile Include="AccountDto\TableCreateAccountDto.cs" />
+    <Compile Include="AccountDto\TableUpdateAccountDto.cs" />
+    <Compile Include="AccountDto\UpdateUserProfileDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

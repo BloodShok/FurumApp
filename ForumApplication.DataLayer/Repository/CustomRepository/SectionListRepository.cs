@@ -21,8 +21,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         {
             List<SectionList> ListofSectionList = DbSet.Include(sl => sl.Sections
            .Select(s => s.Topics
-           .Select(t => t.Posts)
-           ))
+           .Select(t => t.Posts)))
             .Include(u => u.User.UserAccount)
             .ToList();
 
@@ -54,6 +53,6 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return SectionListElement;
         }
 
-        
+
     }
 }

@@ -1,24 +1,24 @@
-﻿@model ForumApplication.WEB.Models.PostInfoViewModel
+﻿@model ForumApplication.WEB.Models.TopicViewModel.PostInfoViewModel
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="row mt-3">
-<div style="width:160px;" class="col-lg-2">
-    <div class="card" style="width:160px;">
-        <img class="card-img-top" src="~/Content/Pictures/UserPictures/@Model.UserPostInfo.Image" alt="Card image" style="width:100%">
-         <div class="card-body pt-1 pb-1" style="background-color:#9bf1ff;">
-             <span>
-             @Html.ActionLink(
-            $"{Model.UserPostInfo.UserName}"
-            ,"ShowProfile"
-            ,"Account"
-            ,new { Id = Model.UserPostInfo.Id}
-            ,null)
-             </span><br />
-             <span class="small">In Forum: @Model.UserPostInfo.DateRegestration</span>
-         </div>
+    <div class="col-lg-2 user-card-width">
+        <div class="card user-card-width">
+            <img class="card-img-top user-card-image-width" src="~/Content/Pictures/UserPictures/@Model.UserPostInfo.Image" alt="Acc image">
+            <div class="card-body pt-1 pb-1 user-card-description">
+                <span>
+                    @Html.ActionLink(
+                        $"{Model.UserPostInfo.UserName}"
+                        , "ShowProfile"
+                        , "Account"
+                        , new { Id = Model.UserPostInfo.UserId }
+                        , null)
+                </span><br />
+                <span class="small">Joined:: @Model.UserPostInfo.DateRegestration</span>
+            </div>
+        </div>
     </div>
-</div>
     <div class="col-sm-8 border bg-white border-warning p-3" id="post-message">
         @Html.Raw(Model.MessageStringContent)
     </div>

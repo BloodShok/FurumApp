@@ -11,6 +11,10 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using System.IO;
 using System;
+using ForumApplication.WEB.Models.AccountViewModel;
+using ForumApplication.WEB.Models.AdministratorViewModel;
+using ForumApplication.DataTransferObjects.AccountDto;
+using ForumApplication.Infrastructure.Consts;
 
 namespace ForumApplication.WEB.Controllers
 {
@@ -46,7 +50,6 @@ namespace ForumApplication.WEB.Controllers
                 {
                     ModelState.AddModelError("", item);
                 }
-                
 
                 return View();
             }
@@ -56,27 +59,23 @@ namespace ForumApplication.WEB.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel loginModel)
         {
-            const string Erroros = "Erroros";
-            const string status = "status";
-
             if (ModelState.IsValid)
             {
                 var LoginDto = Mapper.Map<LoginModelDto>(loginModel);
 
                 if (!_accountService.CheckUser(LoginDto))
                 {
-                    ModelState.AddModelError("", "Login or Password Incorect");
+                    ModelState.AddModelError("", ErrorConstans.LoginPasswdError);
 
-                    TempData[Erroros] = "Login or Password Incorect";
+                    TempData[TempDataIndexConsts.Error] = ErrorConstans.LoginPasswdError;
                     return RedirectPermanent(Request.UrlReferrer.ToString());
                 }
 
                 if(!_accountService.IsAccountActive(LoginDto))
                 {
-                    TempData[status] = "Sorry but your account was deleted";
+                    TempData[TempDataIndexConsts.Status] = ErrorConstans.DeleteAccountError;
                     return RedirectPermanent(Request.UrlReferrer.ToString());
                 }
-
 
 
                 var CliemIdentity = _accountService.GetClaimIdentity(LoginDto);

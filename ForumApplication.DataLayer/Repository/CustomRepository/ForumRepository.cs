@@ -8,6 +8,7 @@ using ForumApplication.DataLayer.DataContext;
 using System.Data.Entity;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.ForumDto;
 
 namespace ForumApplication.DataLayer.Repository.CustomRepository
 {
@@ -15,7 +16,6 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
     {
         public ForumRepository(DbContext context) : base(context)
         {
-
         }
 
         public IList<Forum> GetAllIncludeReferences(int pageNumber, int pageSize)
@@ -48,6 +48,13 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
                 .SingleOrDefault(forum => forum.Id.Equals(id));
 
             return ForumElement;
+        }
+
+        public void Update(UpdateForumDto updForumDto)
+        {
+            Forum forumForUpdate = DbSet.Find(updForumDto.ForumId);
+            forumForUpdate.Title = updForumDto.Title;
+            Context.SaveChanges();
         }
     }
 }

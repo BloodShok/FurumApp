@@ -30,6 +30,7 @@ namespace ForumApplication.DataLayer.DataContext
         }
 
         public static ForumContext Create()
+
         {
             return new ForumContext();
         }

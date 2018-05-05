@@ -101,19 +101,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountService\AccountService.cs" />
-    <Compile Include="AccountService\IAccountService.cs" />
-    <Compile Include="ForumService\ForumService.cs" />
-    <Compile Include="ForumService\IForumService.cs" />
-    <Compile Include="PostService\IPostService.cs" />
-    <Compile Include="PostService\PostService.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Interfaces\IAccountService.cs" />
+    <Compile Include="Services\ForumService.cs" />
+    <Compile Include="Interfaces\IForumService.cs" />
+    <Compile Include="Interfaces\IPostService.cs" />
+    <Compile Include="Services\PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SectionListService\ISectionListService.cs" />
-    <Compile Include="SectionListService\SectionListService.cs" />
-    <Compile Include="SectionService\ISectionService.cs" />
-    <Compile Include="SectionService\SectionService.cs" />
-    <Compile Include="TopicService\ITopicService.cs" />
-    <Compile Include="TopicService\TopicService.cs" />
+    <Compile Include="Interfaces\ISectionListService.cs" />
+    <Compile Include="Services\SectionListService.cs" />
+    <Compile Include="Interfaces\ISectionService.cs" />
+    <Compile Include="Services\SectionService.cs" />
+    <Compile Include="Interfaces\ITopicService.cs" />
+    <Compile Include="Services\TopicService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -12,8 +12,5 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<Post> GetAllIncludeReferences();
         IList<Post> GetAllIncludeReferences(int pageNumber, int pageSize);
         Post GetByIDIncludeReferences(int id);
-        Post GetLastCreatedPostBySectionListId(int sectionListId);
-        Post GetLastCreatedPostBySectionId(int sectionId);
-        Post GetLastCreatedPostByTopicId(int sectionId);
     }
 }

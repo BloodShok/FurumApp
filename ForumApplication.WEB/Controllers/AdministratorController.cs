@@ -8,6 +8,9 @@ using System.Web.Mvc;
 using ForumApplication.WEB.Models;
 using AutoMapper;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.WEB.Models.AdministratorViewModel;
+using ForumApplication.DataTransferObjects.AccountDto;
+using ForumApplication.Infrastructure.Consts;
 
 namespace ForumApplication.WEB.Controllers
 {
@@ -55,7 +58,7 @@ namespace ForumApplication.WEB.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again" });
+                return Json(new { Result = "ERROR", Message = ErrorConstans.ValidationError });
             }
 
                 switch (newAccountViewModel.RoleName)
@@ -93,7 +96,7 @@ namespace ForumApplication.WEB.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again" });
+                return Json(new { Result = "ERROR", Message = ErrorConstans.ValidationError });
             }
 
 

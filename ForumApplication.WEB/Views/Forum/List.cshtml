@@ -1,18 +1,66 @@
-﻿@model List<ForumApplication.WEB.Models.BaseForumContainerViewModel>
+﻿@using ForumApplication.Infrastructure.Consts
+@using Microsoft.AspNet.Identity
+@model List<ForumApplication.WEB.Models.BaseViewModelItems.BaseForumContainerViewModel>
 
 @{
     ViewBag.Title = "Index";
-
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container-fluid mt-5 ">
-    <div class="border-warning border p-2 border rounded" style="background-color:#313131d9;">
+    <div class="border-warning border p-2 border rounded container-for-card">
         @Html.DisplayForModel(Model)
+        <div class="card ml-2 mr-2">
+            <div class="card-header ">
+                @if (User.IsInRole(RoleConsts.Administrator))
+                {
+                    <buton class="btn-outline-dark btn" id="new-forum-btn">Create New Forum</buton>
+                }
+                else
+                {
+                    <span class="small text-info">
+                        (You have insufficient privileges to post here.)
+                    </span>
+                }
+            </div>
+        </div>
     </div>
-         
 </div>
-    
 
+<div class="modal fade" id="create-forum-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create Forum</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            @using (Html.BeginForm("Create", "Forum", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="LabelTitle">Forum Title: </label>
+                        <input type="text" id="LabelTitle" class="form-control" placeholder="Enter Title of Forum" name="Title" data-val="true" data-val-required="Titile is Required" />
+                        <span class="field-validation-valid" data-valmsg-for="LabelTitle" data-valmsg-replace="true"></span>
+                    </div>
+                    <input type="hidden" value="@User.Identity.GetUserId()" name="UserAccountId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Create new Forum" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#new-forum-btn").click(function () {
+        $("#create-forum-modal").modal();
+    });
+</script>

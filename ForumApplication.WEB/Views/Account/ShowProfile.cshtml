@@ -1,11 +1,10 @@
-﻿@model ForumApplication.WEB.Models.UserAccountsInfoViewModel
+﻿@model ForumApplication.WEB.Models.AccountViewModel.UserAccountsInfoViewModel
 @using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "ShowProfile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="container border border-warning rounded" id="profile-container">
 
@@ -15,7 +14,7 @@
             <div class="row mt-4 ml-1"><p>Status: @Model.RoleName</p></div>
         </div>
         <div class="col-sm-6">
-            <div class="row"><img class="border ml-3 mb-2" src="@Model.Image" /></div>
+            <div class="row"><img class="border ml-3 mb-2" src="~/Content/Pictures/UserPictures/@Model.Image"/> </div>
         </div>
     </div>
     <div class="row border-bottom mt-4 border-primary form-group">
@@ -54,7 +53,8 @@
     @if (Model.Id.Equals(User.Identity.GetUserId()))
     {
         <div class="row justify-content-center mt-5">
-            <button id="update-profile-btn" type="submit" class="btn btn-outline-warning " onclick="location.href='@Url.Action("UpdateProfile", "Account")'"><h5>Update</h5></button>
+            <button id="update-profile-btn" type="submit" class="btn btn-outline-warning"
+                    onclick="location.href='@Url.Action("UpdateProfile", "Account")'"><h5>Update</h5></button>
         </div>
     }
 

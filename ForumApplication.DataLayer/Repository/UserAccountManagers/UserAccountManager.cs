@@ -98,7 +98,7 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
         {
             var users = this.Users
                 .Include(x => x.UserProfile)
-                .OrderBy(x => x.UserProfile.DateRegistration)
+                .OrderByDescending(x => x.UserProfile.DateRegistration)
                 .Page(startPage, size)
                 .ToList();
 
@@ -130,8 +130,6 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
         {
             var accountUser = this.FindByName(login);
             return accountUser.IsActive;
-
-
         }
 
         public void DisableAccount(string Id)
@@ -159,8 +157,6 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
             account.UserName = updateUserAccount.UserName;
             UpdateProfileFilds(account.UserProfile, updateUserAccount.UserProfile);
             this.Update(account);
-            
-
         }
 
         private static void UpdateProfileFilds(UserProfile profileForUpdate, UserProfile profileWithUpdateData)

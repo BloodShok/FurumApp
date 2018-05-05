@@ -173,3 +173,34 @@ body {
 #post-message {
     margin-left: 3%;
 }
+
+.url-cursor {
+    cursor: pointer;
+}
+
+.margin-left-40 {
+    margin-left: 40%;
+}
+
+.user-card-description {
+    background-color: #9bf1ff;
+}
+
+.user-card-image-width {
+    width: 100%;
+}
+.user-card-width {
+    width: 160px;
+}
+
+.forum-card-header {
+    background-color: #fcf8e3;
+}
+
+.container-for-card {
+    background-color: #313131d9;
+}
+
+.font-size-19 {
+    font-size: 19px;
+}
