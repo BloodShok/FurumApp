@@ -14,12 +14,12 @@ namespace ForumApplication.ServiceLayer.ForumService
 {
     public class ForumService : IForumService
     {
-        IForumRepository _repo;
+        IForumRepository _forumRepo;
         IUserProfileRepository _accRepo;
         IPostRepository _postRepo;
         public ForumService(IForumRepository repository, IUserProfileRepository accRepo, IPostRepository postRepo)
         {
-            _repo = repository;
+            _forumRepo = repository;
             _accRepo = accRepo;
             _postRepo = postRepo;
         }
@@ -33,17 +33,19 @@ namespace ForumApplication.ServiceLayer.ForumService
             newForum.DateUpdate = DateTime.Now;
             newForum.UserId = profId;
 
-            _repo.AddNewItem(newForum);
+            _forumRepo.AddNewItem(newForum);
+            _forumRepo.SaveChanges();
         }
 
         public void DeleteElement(int id)
         {
-            _repo.DeleteItemById(id);
+            _forumRepo.DeleteItemById(id);
+            _forumRepo.SaveChanges();
         }
 
         public IList<BaseForumContainerInfoDto> GetAllElements()
         {
-            var forumList = _repo.GetAllIncludeReferences();
+            var forumList = _forumRepo.GetAllIncludeReferences();
             var forumListInfoDto = Mapper.Map<IList<BaseForumContainerInfoDto>>(forumList);
             InsertLastUpdateTopic(forumListInfoDto);
 
@@ -53,14 +55,18 @@ namespace ForumApplication.ServiceLayer.ForumService
         public BaseForumContainerInfoDto GetElement(int id)
         {
             
-            var Forumitem = _repo.GetByIDIncludeReferences(id);
+            var Forumitem = _forumRepo.GetByIDIncludeReferences(id);
+
+            if (Forumitem == null)
+                throw new NullReferenceException();
 
             return Mapper.Map<BaseForumContainerInfoDto>(Forumitem);
         }
 
         public void UpdateForum(UpdateForumDto updForumDto)
         {
-            _repo.Update(updForumDto);
+            _forumRepo.Update(updForumDto);
+            _forumRepo.SaveChanges();
         }
 
 

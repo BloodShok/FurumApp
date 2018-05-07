@@ -22,8 +22,8 @@
             Password: {
                 title: 'Password',
                 list: false,
-                create: true,
-                edit: false
+                edit: false,
+                create: true
             },
             Email: {
                 title: 'Email',

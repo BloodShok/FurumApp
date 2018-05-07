@@ -42,6 +42,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="LabelTitle">Forum Title: </label>
+                        <span class="text-danger">@TempData[TempDataIndexConsts.CreateError]</span>
                         <input type="text" id="LabelTitle" class="form-control" placeholder="Enter Title of Forum" name="Title" data-val="true" data-val-required="Titile is Required" />
                         <span class="field-validation-valid" data-valmsg-for="LabelTitle" data-valmsg-replace="true"></span>
                     </div>
@@ -64,3 +65,10 @@
         $("#create-forum-modal").modal();
     });
 </script>
+
+@if (TempData[TempDataIndexConsts.CreateError] != null)
+{
+    <script>
+        $('#create-forum-modal').modal();
+    </script>
+}

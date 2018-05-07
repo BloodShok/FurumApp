@@ -14,8 +14,6 @@ namespace ForumApplication.ServiceLayer.SectionListService
         BaseForumContainerInfoDto GetElement(int id);
         IList<BaseForumContainerInfoDto> GetAllElements();
         void CreateSectionList(CreateSectionListDto sectionList);
-        //void DeleteSectionList(int id);
-        //void UpdateSectionList(UpdateBaseForumDto updateSection);
-
+        void UpdateSectionList(UpdateSectionListDto newSectionListDto);
     }
 }

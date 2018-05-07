@@ -13,5 +13,6 @@ namespace ForumApplication.DataTransferObjects.BaseDtoItems
         public IList<NestedContainerElementsInfoDto> NestedItemListInfo { get; set; }
         public string UserId { get; set; }
         public string UserName { get; set; }
+        public int ParrentId { get; set; }
     }
 }

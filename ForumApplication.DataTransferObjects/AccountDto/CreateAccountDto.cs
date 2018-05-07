@@ -16,5 +16,6 @@ namespace ForumApplication.DataTransferObjects.AccountDto
         public string Email { get; set; }
 
         public string RoleName { get; set; }
+        public string Image { get; set; }
     }
 }

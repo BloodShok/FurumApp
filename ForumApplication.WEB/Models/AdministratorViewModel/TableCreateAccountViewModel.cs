@@ -11,16 +11,12 @@ namespace ForumApplication.WEB.Models.AdministratorViewModel
     public class TableCreateAccountViewModel
     {
         [Required(ErrorMessage ="Please enter Email")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter UserName")]
         [StringLength(30, MinimumLength = 5, ErrorMessage = "Name must have minimum 5 characters")]
         public string UserName { get; set; }
-
-        [Required(ErrorMessage = "Please enter Password")]
         public string Password { get; set; }
-
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
         public string Location { get; set; }

@@ -14,5 +14,6 @@ namespace ForumApplication.ServiceLayer.SectionService
         BaseForumContainerInfoDto GetElement(int id);
         IList<BaseForumContainerInfoDto> GetAllElements();
         void CreateSection(CreateSectionDto createSectionDto);
+        void UpdateSection(UpdateSectionDto updateSectionDto);
     }
 }

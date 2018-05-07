@@ -6,6 +6,7 @@ using ForumApplication.ServiceLayer.SectionListService;
 using ForumApplication.WEB.Models;
 using ForumApplication.WEB.Models.BaseViewModelItems;
 using ForumApplication.WEB.Models.SectionListViewModel;
+using ForumApplication.Infrastructure.Consts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,17 @@ namespace ForumApplication.WEB.Controllers
 
             _sectionListService.CreateSectionList(newForumDataDto);
 
-            return RedirectToAction("List");
+            return RedirectToAction("List","Forum");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator,Moderator")]
+        public ActionResult Update(UpdateSectionListViewModel updateSectionList)
+        {
+            var newSectionListDto = Mapper.Map<UpdateSectionListDto>(updateSectionList);
+            _sectionListService.UpdateSectionList(newSectionListDto);
+
+            return RedirectToAction("Item", new { Id = updateSectionList.SectionListId });
         }
     }
 }

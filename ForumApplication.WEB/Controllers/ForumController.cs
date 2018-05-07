@@ -2,6 +2,7 @@
 using ForumApplication.DataTransferObjects;
 using ForumApplication.DataTransferObjects.BaseDtoItems;
 using ForumApplication.DataTransferObjects.ForumDto;
+using ForumApplication.Infrastructure.Consts;
 using ForumApplication.ServiceLayer.ForumService;
 using ForumApplication.WEB.Models;
 using ForumApplication.WEB.Models.BaseViewModelItems;
@@ -14,6 +15,7 @@ using System.Web.Mvc;
 
 namespace ForumApplication.WEB.Controllers
 {
+
     public class ForumController : Controller
     {
         // GET: Forum
@@ -22,6 +24,7 @@ namespace ForumApplication.WEB.Controllers
         {
             _forumService = service;
         }
+        
         public ActionResult List()
         {
             var listofForumsDto = _forumService.GetAllElements();
@@ -33,13 +36,9 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult Item(int id)
         {
             var forumItem = _forumService.GetElement(id);
-
-            if (forumItem == null)
-                return HttpNotFound();
-
-            var ForumViewModelItem = Mapper.Map<BaseForumContainerViewModel>(forumItem);
-
             
+            var ForumViewModelItem = Mapper.Map<BaseForumContainerViewModel>(forumItem);
+       
             return View(ForumViewModelItem);
         }
 
@@ -70,6 +69,11 @@ namespace ForumApplication.WEB.Controllers
         [HttpPost]
         public ActionResult Create(BasePropertysForCreateViewModel newForumData)
         {
+            if(!ModelState.IsValid)
+            {
+                TempData[TempDataIndexConsts.CreateError] = ErrorConstans.Required;
+                return RedirectToAction("List");
+            }
             var newForumDataDto = Mapper.Map<BasePropertisForCreateDto>(newForumData);
 
             _forumService.CreateForum(newForumDataDto);
@@ -77,6 +81,8 @@ namespace ForumApplication.WEB.Controllers
             return RedirectToAction("List");
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Update(UpdateForumViewModel updateData)
         {
             var newForumDataDto = Mapper.Map<UpdateForumDto>(updateData);

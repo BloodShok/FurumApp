@@ -12,5 +12,10 @@ namespace ForumApplication.ServiceLayer.TopicService
     {
         TopicInfoDto GetElement(int id);
         void CreateTopic(CreateTopicDto newCreateTopicData);
+        void UpdateTopic(UpdateTopicDto updateTopicDto);
+        TopicInfoDto GetElement(int id, int page, int pageSize);
+        int GetCountOfPostByTopicId(int id);
+        void DeleteTopic(int id);
+        int GetSectionIdBTopicId(int Id);
     }
 }

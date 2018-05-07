@@ -37,9 +37,13 @@ namespace ForumApplication.WEB.Controllers
             return RedirectToAction("Item","SectionList", new { Id = createSection.SectionListId });
         }
 
+        [HttpPost]
         public ActionResult Update(UpdateSectionViewModel updateSectionView)
         {
-            return View();
+            var updateSectionDto = Mapper.Map<UpdateSectionDto>(updateSectionView);
+            _sectionService.UpdateSection(updateSectionDto);
+
+            return RedirectToAction("Item", "Section", new { Id = updateSectionView.SectionId });
         }
     }
 }

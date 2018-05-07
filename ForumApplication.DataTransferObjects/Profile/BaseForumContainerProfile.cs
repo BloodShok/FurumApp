@@ -31,6 +31,8 @@ namespace ForumApplication.DataTransferObjects.Profile
                             opt => opt.MapFrom(secList => Mapper.Map<IList<NestedContainerElementsInfoDto>>(secList.Sections)))
                     .ForMember(mainDto => mainDto.UserId,
                            opt => opt.MapFrom(forum => forum.User.UserAccount.Id))
+                    .ForMember(mainDto => mainDto.ParrentId,
+                           opt => opt.MapFrom(secList => secList.ForumId))
                     .ForMember(mainDto => mainDto.UserName,
                            opt => opt.MapFrom(forum => forum.User.UserAccount.UserName));
 
@@ -39,6 +41,8 @@ namespace ForumApplication.DataTransferObjects.Profile
                             opt => opt.MapFrom(sec => Mapper.Map<IList<NestedContainerElementsInfoDto>>(sec.Topics)))
                     .ForMember(mainDto => mainDto.UserId,
                            opt => opt.MapFrom(forum => forum.User.UserAccount.Id))
+                    .ForMember(mainDto => mainDto.ParrentId,
+                           opt => opt.MapFrom(secList => secList.SectionListId))
                     .ForMember(mainDto => mainDto.UserName,
                            opt => opt.MapFrom(forum => forum.User.UserAccount.UserName));
 
@@ -69,7 +73,8 @@ namespace ForumApplication.DataTransferObjects.Profile
 
             CreateMap<Topic, TopicInfoDto>()
                 .ForMember(topDto => topDto.PostDto, opt => opt.MapFrom(top => top.Posts))
-
+                .ForMember(topDto => topDto.SectionId,
+                           opt => opt.MapFrom(top => top.SectionId))
                 .ForMember(mainDto => mainDto.UserId,
                            opt => opt.MapFrom(forum => forum.User.UserAccount.Id))
                 .ForMember(mainDto => mainDto.UserName,

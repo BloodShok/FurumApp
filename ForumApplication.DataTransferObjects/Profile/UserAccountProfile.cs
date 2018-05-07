@@ -25,7 +25,8 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForMember(x => x.IsActive, opt => opt.UseValue(true))
                 .ForPath(x => x.UserProfile, opt => opt.MapFrom(x => new UserProfile()))
                 .ForPath(x => x.UserProfile.BirthDay, opt => opt.MapFrom(x => new DateTime(2000, 1, 1)))
-                .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(x => DateTime.Now));
+                .ForPath(x => x.UserProfile.DateRegistration, opt => opt.MapFrom(x => DateTime.Now))
+                .ForPath(x => x.UserProfile.Image, opt => opt.MapFrom(x =>x.Image));
             
 
             CreateMap<UserAccount, UserNameIdDto>();

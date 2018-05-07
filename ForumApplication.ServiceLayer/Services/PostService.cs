@@ -27,7 +27,13 @@ namespace ForumApplication.ServiceLayer.PostService
             postItem.UserId = _profileRepo.GetProfileIdByAccountId(createPostDto.UserId);
 
             _postRepo.AddNewItem(postItem);
-            
+            _postRepo.SaveChanges();
+        }
+
+        public void DeletePost(int id)
+        {
+            _postRepo.DeleteItemById(id);
+            _postRepo.SaveChanges();
         }
 
         public IList<PostInfoDto> GetAllElements()
@@ -44,6 +50,22 @@ namespace ForumApplication.ServiceLayer.PostService
             return Mapper.Map<PostInfoDto>(Post);
         }
 
-        
+        public UpdatePostDto GetPostForUpdate(int id)
+        {
+            var postForUpdate = _postRepo.GetByID(id);
+
+            return Mapper.Map<UpdatePostDto>(postForUpdate);
+        }
+
+        public int GetTopicIdByPostId(int postId)
+        {
+            return _postRepo.GetTopicId(postId);
+        }
+
+        public void UpdatePost(UpdatePostDto postDto)
+        {
+            _postRepo.Update(postDto);
+            _postRepo.SaveChanges();
+        }
     }
 }

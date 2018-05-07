@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.SectionDto;
 using ForumApplication.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,11 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return Section;
         }
 
-        
+        public void Update(UpdateSectionDto updateSectionDto)
+        {
+            Section sectionForUpdate = DbSet.Find(updateSectionDto.SectionId);
+            sectionForUpdate.Title = updateSectionDto.Title;
+            sectionForUpdate.DateUpdate = DateTime.Now;
+        }
     }
 }

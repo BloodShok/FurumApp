@@ -25,6 +25,8 @@ namespace ForumApplication.WEB.Models.Profile
                 .ForMember(pdto => pdto.MessageStringContent, opt => opt.MapFrom(vm => vm.MessageStringContent));
 
             CreateMap<UpdateForumViewModel, UpdateForumDto>();
+
+            CreateMap<UpdatePostDto, UpdatePostViewModel>();
         }
     }
 }

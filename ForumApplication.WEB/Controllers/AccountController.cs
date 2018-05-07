@@ -29,8 +29,9 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpGet]
-        public ActionResult SignUp()
+        public ActionResult SignUp(string ReturnUrl)
         {
+            TempData[TempDataIndexConsts.ReturnUrl] = ReturnUrl;
             return View();
         }
 
@@ -38,6 +39,7 @@ namespace ForumApplication.WEB.Controllers
         public ActionResult SignUp(CreateAccountViewModel createAccountView)
         {
             var createAccountDto = Mapper.Map<CreateAccountDto>(createAccountView);
+            createAccountDto.Image = UserImages.User;
             var statusCreated = _accountService.CreateUserAccount(createAccountDto);
 
             if (statusCreated.Succeeded)
@@ -57,10 +59,13 @@ namespace ForumApplication.WEB.Controllers
 
 
         [HttpPost]
-        public ActionResult Login(LoginViewModel loginModel)
+        public ActionResult Login(LoginViewModel loginModel, string ReturnUrl)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+
                 var LoginDto = Mapper.Map<LoginModelDto>(loginModel);
 
                 if (!_accountService.CheckUser(LoginDto))
@@ -88,10 +93,15 @@ namespace ForumApplication.WEB.Controllers
 
                     }, CliemIdentity);
 
+                if(ReturnUrl != "")
+                {
+                    return Redirect(ReturnUrl);
+                }
+
                 return Redirect(Request.UrlReferrer.ToString());
-            }
-            return Redirect(Request.UrlReferrer.ToString());
         }
+           
+        
 
         [HttpGet]
         public ActionResult LogOut()
@@ -127,7 +137,16 @@ namespace ForumApplication.WEB.Controllers
         [Authorize]
         public ActionResult ShowProfile(string Id)
         {
-            var userAccountInfoDto = _accountService.GetUserAccountInfo(Id);
+            UserAccountInfoDto userAccountInfoDto;
+            if (Id == null)
+            {
+                userAccountInfoDto = _accountService.GetUserAccountInfo(User.Identity.GetUserId());
+            }
+            else
+            {
+                userAccountInfoDto = _accountService.GetUserAccountInfo(Id);
+            }
+            
             var UserAccountInfoViewModel = Mapper.Map<UserAccountsInfoViewModel>(userAccountInfoDto);
             return View(UserAccountInfoViewModel);
         }

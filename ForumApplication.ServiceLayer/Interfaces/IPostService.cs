@@ -13,5 +13,9 @@ namespace ForumApplication.ServiceLayer.PostService
         IList<PostInfoDto> GetAllElements();
         PostInfoDto GetElement(int id);
         void CreateNewPost(CreatePostDto createPostDto);
+        void UpdatePost(UpdatePostDto postDto);
+        UpdatePostDto GetPostForUpdate(int id);
+        int GetTopicIdByPostId(int postId);
+        void DeletePost(int id);
     }
 }

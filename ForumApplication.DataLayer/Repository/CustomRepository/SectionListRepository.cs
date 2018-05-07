@@ -1,5 +1,6 @@
 ﻿using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
+using ForumApplication.DataTransferObjects.SectionListDto;
 using ForumApplication.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,11 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return SectionListElement;
         }
 
-
+        public void Update(UpdateSectionListDto newSectionListDto)
+        {
+            SectionList sectionListForUpdate = DbSet.Find(newSectionListDto.SectionListId);
+            sectionListForUpdate.Title = newSectionListDto.Title;
+            sectionListForUpdate.DateUpdate = DateTime.Now;
+        }
     }
 }

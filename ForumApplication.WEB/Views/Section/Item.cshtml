@@ -13,6 +13,14 @@
     <div class="border-warning border p-2 border rounded container-for-card">
         <div class="card bg-light text-dark mt-2 mb-2 ml-2 mr-2">
             <div class="card-header forum-card-header">
+                <h6 class="float-right">
+                    @Html.ActionLink(
+                     "Back to SectionList"
+                     , "Item"
+                     , "SectionList"
+                     , new {Id = Model.ParrentId}
+                     , null)
+                </h6>
                 <h5>
                     @Html.ActionLink($"{Model.Title}", "item", new { Id = Model.Id }, new { @class = "url-cursor" })
                 </h5>
@@ -39,12 +47,12 @@
                                                 <span>
                                                     <span class="text-info">Last Active User:</span>
                                                     @Html.ActionLink(
-                                                                                        $"{@nestedItem.LastUpdateTopic.UserName}"
-                                                                                        , "ShowProfile"
-                                                                                        , "Account"
-                                                                                        , new { Id = nestedItem.LastUpdateTopic.UserId }
-                                                                                        , null
-                                                                                        )
+                                                                                             $"{@nestedItem.LastUpdateTopic.UserName}"
+                                                                                             , "ShowProfile"
+                                                                                             , "Account"
+                                                                                             , new { Id = nestedItem.LastUpdateTopic.UserId }
+                                                                                             , null
+                                                                                             )
                                                     <br />
                                                     <span class="text-info">Date:</span>
                                                     <span>@nestedItem.LastUpdateTopic.UpdateTime</span>
@@ -70,7 +78,7 @@
                 @if (User.IsInRole(RoleConsts.Administrator) || User.IsInRole(RoleConsts.Moderator))
                 {
                     <buton class="btn-outline-dark btn" id="new-forum-btn">Create New Topic</buton>
-                    <buton class="btn-outline-dark btn" id="update-forum-btn">Update SectionList</buton>
+                    <buton class="btn-outline-dark btn" id="update-forum-btn">Update Section</buton>
                 }
                 else if (User.Identity.IsAuthenticated)
                 {
@@ -102,12 +110,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="LabelTitle">Section Title: </label>
-                        <input type="text" id="LabelTitle" class="form-control" placeholder="Enter Title of SectionList" name="Title" data-val="true" data-val-required="Titile is Required" />
+                        <input type="text" id="LabelTitle" class="form-control" placeholder="Enter Title of Topic" name="Title" data-val="true" data-val-required="Titile is Required" />
                         <span class="field-validation-valid" data-valmsg-for="LabelTitle" data-valmsg-replace="true"></span>
                     </div>
                     <input type="hidden" value="@User.Identity.GetUserId()" name="UserAccountId" />
-                    <input type="submit" class="btn btn-outline-primary" value="Create new Section" />
                     <input type="hidden" value="@Model.Id" name="SectionId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Create new Topic" />
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -133,8 +142,8 @@
                     <div class="form-group">
                         <textarea class="form-control" id="exampleTextarea" rows="3" name="Title" data-val="true" data-val-required="Titile is Required">@Model.Title</textarea>
                     </div>
-                    <input type="hidden" value="@Model.Id" name="ForumId" />
-                    <input type="submit" class="btn btn-outline-primary" value="Update SectionList Title" />
+                    <input type="hidden" value="@Model.Id" name="SectionId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Update Section Title" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>

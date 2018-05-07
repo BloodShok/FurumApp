@@ -1,0 +1,36 @@
+﻿
+@model ForumApplication.WEB.Models.PostViewModel.UpdatePostViewModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="card-body bg-light">
+        @using (Html.BeginForm("Update", "Post", FormMethod.Post))
+        {
+            @Html.TextArea("MessageStringContent", Model.MessageStringContent, new { @id = "editor" })
+            <input type="hidden" name="PostId" value="@Model.PostId"/>
+            <input type="submit" class="btn btn-outline-dark" value="Update"/>
+        }
+    </div>
+}
+else
+{
+    <div class="card-body bg-light">
+        <span class="small text-info">
+            (You have insufficient privileges to post here, please authorize.)
+        </span>
+    </div>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
@@ -32,6 +33,7 @@ namespace ForumApplication.ServiceLayer.SectionListService
 
             newSectionList.UserId = _accRepo.GetProfileIdByAccountId(sectionList.UserAccountId);
             _sectionListRepo.AddNewItem(newSectionList);
+            _sectionListRepo.SaveChanges();
         }
 
         public IList<BaseForumContainerInfoDto> GetAllElements()
@@ -47,9 +49,19 @@ namespace ForumApplication.ServiceLayer.SectionListService
         {
             var SectionListElement = _sectionListRepo.GetByIDIncludeReferences(id);
 
+            if (SectionListElement == null)
+                throw new NullReferenceException();
+
             var sectionlistDto = Mapper.Map<BaseForumContainerInfoDto>(SectionListElement);
             InsertLastUpdateTopic(sectionlistDto);
             return sectionlistDto;
+            
+        }
+
+        public void UpdateSectionList(UpdateSectionListDto newSectionListDto)
+        {
+            _sectionListRepo.Update(newSectionListDto);
+            _sectionListRepo.SaveChanges();
         }
 
         private void InsertLastUpdateTopic(BaseForumContainerInfoDto sectionList)

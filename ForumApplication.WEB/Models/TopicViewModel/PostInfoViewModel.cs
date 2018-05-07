@@ -8,7 +8,7 @@ namespace ForumApplication.WEB.Models.TopicViewModel
     public class PostInfoViewModel
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+      //  public int UserId { get; set; }
         public string MessageStringContent { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdate { get; set; }

@@ -114,7 +114,6 @@ namespace ForumApplication.ServiceLayer.AccountService
         public IdentityResult CreateUserAccount(TableCreateAccountDto jTableCreatUserAccountDto)
         {
             var newAccount = Mapper.Map<UserAccount>(jTableCreatUserAccountDto);
-
             IdentityResult CreateIdentityReuslt = _userManager.CreateUserAccount(newAccount, jTableCreatUserAccountDto.Password);
 
             if (CreateIdentityReuslt.Succeeded)
@@ -128,8 +127,8 @@ namespace ForumApplication.ServiceLayer.AccountService
         public void UpdateUserProfile(TableUpdateAccountDto jTableUpdateAccountDto)
         {
             var updateUserAccount = Mapper.Map<UserAccount>(jTableUpdateAccountDto);
-
             _userManager.UpdateAccount(updateUserAccount);
+            _userManager.AddUserToRole(jTableUpdateAccountDto.UserName, jTableUpdateAccountDto.RoleName);
         }
     }
 }

@@ -54,6 +54,7 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
         {
             Forum forumForUpdate = DbSet.Find(updForumDto.ForumId);
             forumForUpdate.Title = updForumDto.Title;
+            forumForUpdate.DateUpdate = DateTime.Now;
             Context.SaveChanges();
         }
     }

@@ -10,5 +10,7 @@ namespace ForumApplication.Infrastructure.Consts
     {
         public const string Error = "Erroros";
         public const string Status = "status";
+        public const string CreateError = "CreateError";
+        public const string ReturnUrl = "ReturnUrl";
     }
 }

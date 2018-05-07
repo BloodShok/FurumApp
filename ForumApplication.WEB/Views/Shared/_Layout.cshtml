@@ -21,10 +21,7 @@
                     <a class="nav-link url-cursor" onclick="location.href='@Url.Action("List", "Forum")'">Go To Forum</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link url-cursor" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link url-cursor" href="#">FAQ</a>
+                    <a class="nav-link url-cursor" onclick="location.href='@Url.Action("FAQ", "Home")'">FAQ</a>
                 </li>
             </ul>
 
@@ -85,7 +82,7 @@
                                     <input type="password" class="form-control" id="LabelPass" placeholder="Password" name="Password" data-val="true" data-val-required="pss" />
                                     <span class="field-validation-valid" data-valmsg-for="LabelPass" data-valmsg-replace="true"></span>
                                 </div>
-
+                                <input type="hidden" value="@TempData[TempDataIndexConsts.ReturnUrl]" name="ReturnUrl"/>
                                 <input type="submit" class="btn btn-primary" value="Login" />
                             }
                         </div>
@@ -145,8 +142,6 @@
             $('#AccountStatus').modal();
         </script>
     }
-
-
 </body>
 </html>
 

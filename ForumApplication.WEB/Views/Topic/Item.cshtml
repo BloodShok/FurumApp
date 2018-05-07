@@ -1,5 +1,6 @@
-﻿@model ForumApplication.WEB.Models.TopicViewModel.TopicInfoViewModel
+﻿@model ForumApplication.WEB.Models.TopicViewModel.TopicPageViewModel
 @using Microsoft.AspNet.Identity
+@using ForumApplication.Infrastructure.Consts
 
 @{
     ViewBag.Title = "Index";
@@ -7,42 +8,172 @@
 }
 
 <script src="~/Content/ckeditor/ckeditor.js"></script>
+
+<style>
+    blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+    }
+
+        blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+
+        blockquote p {
+            display: inline;
+        }
+</style>
+
 <div class="container-fluid mt-5 ">
-    <div class="border-warning border p-2 border rounded" style="background-color:#313131d9;">
+    <div class="border-warning border p-2 border rounded topic-bg" >
         <div class="card bg-light text-dark mt-2 mb-2 ml-2 mr-2">
             <div class="card-header" style="background-color:#fcf8e3">
-                <span>@Model.Title</span>
+                <h6 class="float-right">
+                    @Html.ActionLink(
+                     "Back to Section"
+                     , "Item"
+                     , "Section"
+                     , new {Id = Model.TopicInfoView.SectionId}
+                     , null)
+                </h6>
+                <span>@Model.TopicInfoView.Title</span>
                 <br />
                 <span class="small">
                     @Html.ActionLink(
-                                      $"{Model.UserName}"
-                                      , "ShowProfile"
-                                      , "Account"
-                                      , new { Id = Model.UserId }
-                                      , null)
+                                              $"{Model.TopicInfoView.UserName}"
+                                              , "ShowProfile"
+                                              , "Account"
+                                              , new { Id = Model.TopicInfoView.UserId }
+                                              , null)
                 </span>
             </div>
 
             <div class="card-body bg-light">
-                @Html.DisplayFor(x => x.PostViewModel)
+                @Html.DisplayFor(x => x.TopicInfoView.PostViewModel)
             </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 0; i <= Model.PageInfo.CountOfPage; i++)
+                        {
+                            if (Model.PageInfo.CurrentPage != i)
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink($"{i + 1}", "Item", new { Id = Model.TopicInfoView.Id, page = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item active">
+                                    @Html.ActionLink($"{i + 1}", "Item", new { Id = Model.TopicInfoView.Id, page = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+
             @if (User.Identity.IsAuthenticated)
             {
                 <div class="card-body bg-light">
                     @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
                     {
-                        @Html.TextArea("MessageStringContent", new { @id = "editor" })
+                        @Html.TextArea("MessageStringContent", new { @id = "editor"})
                         <input type="hidden" value="@User.Identity.GetUserId()" name="UserId" />
-                        <input type="hidden" value="@Model.Id" name="TopicId" />
-
+                        <input type="hidden" value="@Model.TopicInfoView.Id" name="TopicId" />
                         <input type="submit" class="btn btn-outline-info mt-2 font-weight-bold" />
                     }
                 </div>
             }
+            else
+            {
+                <div class="card-body bg-light">
+                    <span class="small text-info">
+                        (You have insufficient privileges to post here, please authorize.)
+                    </span>
+                </div>
+            }
+        </div>
+
+        <div class="card ml-2 mr-2">
+            <div class="card-header ">
+                @if (User.IsInRole(RoleConsts.Administrator) || User.IsInRole(RoleConsts.Moderator))
+                {
+                    <buton class="btn-outline-dark btn" id="update-forum-btn">Update Topic</buton>
+                    <buton class="btn-outline-dark btn" id="delete-topic-btn">Delete Topic</buton>
+                }
+                else
+                {
+                    <span class="small text-info">
+                        (You have insufficient privileges to update this Topic.)
+                    </span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="update-forum">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Update Title</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            @using (Html.BeginForm("Update", "Topic", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" rows="3" name="Title" data-val="true" data-val-required="Titile is Required">@Model.TopicInfoView.Title</textarea>
+                    </div>
+                    <input type="hidden" value="@Model.TopicInfoView.Id" name="TopicId" />
+                    <input type="submit" class="btn btn-outline-primary" value="Update Topic Title" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-topic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure to delete this topic?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h5 class="text-danger text-center">@Model.TopicInfoView.Title</h5>
+                <h6 class="text-info text-center">Note, all post will be deleted, too</h6>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn mr-auto btn-outline-danger float-left mb-2 mt-1 mr-2" onclick="location.href='@Url.Action("Delete", "Topic", new { Id = Model.TopicInfoView.Id })'">Delete Topic</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
 
         </div>
     </div>
 </div>
+
+
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -51,3 +182,12 @@
     </script>
 }
 
+<script>
+    $("#update-forum-btn").click(function () {
+        $("#update-forum").modal();
+    });
+
+    $("#delete-topic-btn").click(function () {
+        $("#delete-topic").modal();
+    });
+</script>

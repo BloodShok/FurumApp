@@ -1,4 +1,5 @@
 ﻿using ForumApplication.DataLayer.Interfaces;
+using ForumApplication.DataTransferObjects.PostDto;
 using ForumApplication.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,34 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
                 .Include(item => item.User.UserAccount)
                 .FirstOrDefault(item => item.Id.Equals(id));
             return post;
+        }
+
+        public int GetCountOfPosts(int id)
+        {
+            return DbSet.Where(x => x.TopicId == id).Count();
+        }
+
+        public List<Post> GetPostByTopicIdPagination(int id, int page, int pageSize)
+        {
+            List<Post> posts = DbSet
+                .Where(x => x.TopicId == id)
+                .Include(x => x.User.UserAccount)
+                .OrderBy(x => x.DateCreated)
+                .Page(page, pageSize)
+                .ToList();
+            return posts;
+        }
+
+        public int GetTopicId(int postId)
+        {
+            return DbSet.Find(postId).TopicId;
+        }
+
+        public void Update(UpdatePostDto postDto)
+        {
+            Post postForUpdate = DbSet.Find(postDto.PostId);
+            postForUpdate.MessageStringContent = postDto.MessageStringContent;
+            postForUpdate.DateUpdate = DateTime.Now;
         }
     }
 }

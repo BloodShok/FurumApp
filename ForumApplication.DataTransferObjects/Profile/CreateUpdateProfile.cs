@@ -37,6 +37,9 @@ namespace ForumApplication.DataTransferObjects.Profile
                 .ForMember(pDto => pDto.DateCreated, opt => opt.UseValue(DateTime.Now))
                 .ForMember(pDto => pDto.DateUpdate, opt => opt.UseValue(DateTime.Now))
                 .ForMember(pDto => pDto.UserId, opt => opt.Ignore());
+
+            CreateMap<Post, UpdatePostDto>()
+                .ForMember(pDto => pDto.PostId, opt => opt.MapFrom(p => p.Id));
         }
     }
 }

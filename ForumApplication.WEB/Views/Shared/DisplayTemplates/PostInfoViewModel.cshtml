@@ -1,4 +1,6 @@
-﻿@model ForumApplication.WEB.Models.TopicViewModel.PostInfoViewModel
+﻿@using Microsoft.AspNet.Identity
+@using ForumApplication.Infrastructure.Consts
+@model ForumApplication.WEB.Models.TopicViewModel.PostInfoViewModel
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,18 +11,34 @@
             <div class="card-body pt-1 pb-1 user-card-description">
                 <span>
                     @Html.ActionLink(
-                        $"{Model.UserPostInfo.UserName}"
-                        , "ShowProfile"
-                        , "Account"
-                        , new { Id = Model.UserPostInfo.UserId }
-                        , null)
+                                                 $"{Model.UserPostInfo.UserName}"
+                                                 , "ShowProfile"
+                                                 , "Account"
+                                                 , new { Id = Model.UserPostInfo.UserId }
+                                                 , null)
                 </span><br />
                 <span class="small">Joined:: @Model.UserPostInfo.DateRegestration</span>
             </div>
         </div>
     </div>
-    <div class="col-sm-8 border bg-white border-warning p-3" id="post-message">
-        @Html.Raw(Model.MessageStringContent)
+    <div class="col-sm-8 border bg-white border-warning border-bottom-0 p-3" id="post-message">
+        <span>@Html.Raw(Model.MessageStringContent)</span><br />
     </div>
 </div>
 
+
+<div class="row">
+    <div class="col-lg-2 user-card-width"></div>
+    <div class="col-sm-8 border border-warning border-top-0" id="post-message">
+        @if (User.IsInRole(RoleConsts.Moderator) ||
+         User.IsInRole(RoleConsts.Administrator) ||
+         Model.UserPostInfo.UserId.Equals(User.Identity.GetUserId()))
+        {
+            <button class="btn btn-outline-dark float-right mb-2 mt-1" onclick="location.href='@Url.Action("Update", "Post", new { Id = Model.Id })'">Update</button>
+        }
+        @if (User.IsInRole(RoleConsts.Moderator) || User.IsInRole(RoleConsts.Administrator))
+        {
+            <button class="btn btn-outline-danger float-right mb-2 mt-1 mr-2" onclick="location.href='@Url.Action("Delete", "Post", new { Id = Model.Id })'">Delete</button>
+        }
+    </div>
+</div>

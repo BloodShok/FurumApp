@@ -63,7 +63,10 @@
     <Compile Include="BaseDtoItems\BaseForumContainerInfoDto.cs" />
     <Compile Include="AccountDto\TableAccountInfoDto.cs" />
     <Compile Include="ForumDto\UpdateForumDto.cs" />
+    <Compile Include="PostDto\UpdatePostDto.cs" />
     <Compile Include="SectionDto\CreateSectionDto.cs" />
+    <Compile Include="SectionDto\UpdateSectionDto.cs" />
+    <Compile Include="SectionListDto\UpdateSectionListDto.cs" />
     <Compile Include="TopicDto\LastUpdateTopicInfoDto.cs" />
     <Compile Include="AccountDto\LoginModelDto.cs" />
     <Compile Include="BaseDtoItems\NestedContainerElementsInfoDto.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="AccountDto\TableCreateAccountDto.cs" />
     <Compile Include="AccountDto\TableUpdateAccountDto.cs" />
     <Compile Include="AccountDto\UpdateUserProfileDto.cs" />
+    <Compile Include="TopicDto\UpdateTopicDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

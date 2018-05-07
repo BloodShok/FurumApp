@@ -156,13 +156,14 @@ namespace ForumApplication.DataLayer.Repository.UserAccountManagers
             account.IsActive = updateUserAccount.IsActive;
             account.UserName = updateUserAccount.UserName;
             UpdateProfileFilds(account.UserProfile, updateUserAccount.UserProfile);
+
             this.Update(account);
+  
         }
 
         private static void UpdateProfileFilds(UserProfile profileForUpdate, UserProfile profileWithUpdateData)
         {
             profileForUpdate.BirthDay = profileWithUpdateData.BirthDay;
-            profileForUpdate.DateRegistration = profileWithUpdateData.DateRegistration;
             profileForUpdate.Gender = profileWithUpdateData.Gender;
             profileForUpdate.Image = profileWithUpdateData.Image;
             profileForUpdate.Location = profileWithUpdateData.Location;

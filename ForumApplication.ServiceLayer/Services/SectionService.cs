@@ -32,6 +32,7 @@ namespace ForumApplication.ServiceLayer.SectionService
             var newSection = Mapper.Map<Section>(createSectionDto);
             newSection.UserId = _accRepo.GetProfileIdByAccountId(createSectionDto.UserAccountId);
             _sectionRepo.AddNewItem(newSection);
+            _sectionRepo.SaveChanges();
         }
 
         public IList<BaseForumContainerInfoDto> GetAllElements()
@@ -46,10 +47,20 @@ namespace ForumApplication.ServiceLayer.SectionService
         {
             
             var SectionElement = _sectionRepo.GetByIDIncludeReferences(id);
+
+            if (SectionElement == null)
+                throw new NullReferenceException();
+
             var sectionElementDto = Mapper.Map<BaseForumContainerInfoDto>(SectionElement);
             InsertLastUpdateTopic(sectionElementDto);
 
             return sectionElementDto;
+        }
+
+        public void UpdateSection(UpdateSectionDto updateSectionDto)
+        {
+            _sectionRepo.Update(updateSectionDto);
+            _sectionRepo.SaveChanges();
         }
 
         private void InsertLastUpdateTopic(BaseForumContainerInfoDto section)
