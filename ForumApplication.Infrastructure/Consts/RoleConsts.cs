@@ -10,5 +10,6 @@ namespace ForumApplication.Infrastructure.Consts
     {
         public const string Administrator = "Administrator";
         public const string Moderator = "Moderator";
+        public const string User = "User";
     }
 }

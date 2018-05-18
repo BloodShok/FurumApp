@@ -1,5 +1,6 @@
 ﻿@using ForumApplication.Infrastructure.Consts
 @using Microsoft.AspNet.Identity
+@using ForumApplication.DataTransferObjects.BaseDtoItems
 @model ForumApplication.WEB.Models.BaseViewModelItems.BaseForumContainerViewModel
 
 @{
@@ -13,22 +14,23 @@
             <div class="card-header forum-card-header">
                 <h6 class="float-right">
                     @Html.ActionLink(
-                            "Back to Forum List"
-                            ,"List"
-                            ,"Forum"
-                            ,null
-                            ,null)
+                                 "Back to Forum List"
+                                 , "List"
+                                 , "Forum"
+                                 , null
+                                 , null)
                 </h6>
+                
                 <h5>
                     @Html.ActionLink($"{Model.Title}", "item", new { Id = Model.Id }, new { @class = "url-cursor" })
                 </h5>
                 <p class="small">
                     Creator: @Html.ActionLink(
-                        $"{Model.UserName}"
-                        , "ShowProfile"
-                        , "Account"
-                        , new { Id = Model.UserId }
-                        , null)
+                    $"{Model.UserName}"
+                    , "ShowProfile"
+                    , "Account"
+                    , new { Id = Model.UserId }
+                    , null)
                 </p>
             </div>
             <div class="card-body">
@@ -52,24 +54,24 @@
                                                 <span>
                                                     <span class="text-info">Last Update Topic:</span>
                                                     @Html.ActionLink(
-                                                                                 $"{@nestedItem.LastUpdateTopic.Title}"
-                                                                                 , "Item"
-                                                                                 , "Topic"
-                                                                                 , new { Id = nestedItem.LastUpdateTopic.Id }
-                                                                                 , null
-                                                                                 )
+                                                                                      $"{@nestedItem.LastUpdateTopic.Title}"
+                                                                                      , "Item"
+                                                                                      , "Topic"
+                                                                                      , new { Id = nestedItem.LastUpdateTopic.Id }
+                                                                                      , null
+                                                                                      )
                                                 </span>
                                             </div>
                                             <div class="row small">
                                                 <span>
                                                     <span class="text-info">User:</span>
                                                     @Html.ActionLink(
-                                                                          $"{@nestedItem.LastUpdateTopic.UserName}"
-                                                                          , "ShowProfile"
-                                                                          , "Account"
-                                                                          , new { Id = nestedItem.LastUpdateTopic.UserId }
-                                                                          , null
-                                                                          )
+                                                                               $"{@nestedItem.LastUpdateTopic.UserName}"
+                                                                               , "ShowProfile"
+                                                                               , "Account"
+                                                                               , new { Id = nestedItem.LastUpdateTopic.UserId }
+                                                                               , null
+                                                                               )
                                                     <span class="text-info">Date:</span>
                                                     <span>@nestedItem.LastUpdateTopic.UpdateTime</span>
                                                 </span>

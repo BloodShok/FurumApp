@@ -6,6 +6,7 @@ using ForumApplication.DataLayer.Repository.UserAccountManagers;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 [assembly: OwinStartup(typeof(ForumApplication.Infrastructure.IoC.OwinStartup))]
@@ -23,7 +24,15 @@ namespace ForumApplication.Infrastructure.IoC
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/SignUp"),
+                LoginPath = new PathString("/Account/SignUp")
+                //AuthenticationMode = Microsoft.Owin.Security.AuthenticationMode.Passive
+            });
+
+            app.UseOAuthBearerTokens(new OAuthAuthorizationServerOptions
+            {
+                Provider = new UserAuthProviderApi(),
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/api/ForumApp/Authenticate")
             });
         }
     }

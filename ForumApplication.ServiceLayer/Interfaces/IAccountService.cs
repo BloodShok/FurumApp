@@ -23,6 +23,7 @@ namespace ForumApplication.ServiceLayer.AccountService
         void UpdateUserProfile(UpdateUserProfileDto updateUserProfileDto);
         bool IsAccountActive(LoginModelDto loginDto);
         void DisableAccount(string Id);
+        UserAccountInfoDto GetUserAccountInfoByName(string userName);
         void EnableAccount(string Id);
         IdentityResult CreateUserAccount(TableCreateAccountDto jTableCreatUserAccountDto);
         void UpdateUserProfile(TableUpdateAccountDto jTableUpdateAccountDto);

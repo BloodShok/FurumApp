@@ -57,6 +57,7 @@ namespace ForumApplication.DataTransferObjects.Profile
                .ForMember(x => x.UpdateTime, opt => opt.MapFrom(pt => pt.DateUpdate));
 
             CreateMap<BaseForumContainerInfoDto, Forum>();
+
             #endregion
 
 

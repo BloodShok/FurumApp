@@ -28,7 +28,9 @@ namespace ForumApplication.WEB.Controllers
         [ValidateInput(false)]
         public ActionResult CreatePost(CreatePostViewModel createPostView)
         {
+            var validationText = createPostView.MessageStringContent.Replace("script", "scriрt");
             var createPostDto = Mapper.Map<CreatePostDto>(createPostView);
+            createPostDto.MessageStringContent = validationText; 
             _postService.CreateNewPost(createPostDto);
             return Redirect(Request.UrlReferrer.ToString());
         }
@@ -47,8 +49,10 @@ namespace ForumApplication.WEB.Controllers
         [Authorize]
         public ActionResult Update(UpdatePostViewModel modelForUpdate)
         {
+            var validationText = modelForUpdate.MessageStringContent.Replace("script>", "text>");
             var postDto = Mapper.Map<UpdatePostDto>(modelForUpdate);
 
+            postDto.MessageStringContent = validationText;
             _postService.UpdatePost(postDto);
             var topicId = _postService.GetTopicIdByPostId(modelForUpdate.PostId);
 

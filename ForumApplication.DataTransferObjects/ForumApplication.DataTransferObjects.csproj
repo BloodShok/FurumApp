@@ -60,9 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiDto\ProfileInfoApiDto.cs" />
     <Compile Include="BaseDtoItems\BaseForumContainerInfoDto.cs" />
     <Compile Include="AccountDto\TableAccountInfoDto.cs" />
     <Compile Include="ForumDto\UpdateForumDto.cs" />
+    <Compile Include="PostDto\PostApiDto.cs" />
     <Compile Include="PostDto\UpdatePostDto.cs" />
     <Compile Include="SectionDto\CreateSectionDto.cs" />
     <Compile Include="SectionDto\UpdateSectionDto.cs" />

@@ -15,6 +15,5 @@ namespace ForumApplication.WEB.Models.AccountViewModel
         [Required]
         public string Email { get; set; }
 
-        public string RoleName { get; set; }
     }
 }

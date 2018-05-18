@@ -46,6 +46,7 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult DeleteAccount(string Id)
         {
             _accountService.DisableAccount(Id);
@@ -54,6 +55,7 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult CreateAccount(TableCreateAccountViewModel newAccountViewModel)
         {
             if (!ModelState.IsValid)
@@ -81,6 +83,7 @@ namespace ForumApplication.WEB.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult UpdateAccount(TableUpdateAccountViewModel updateAccountViewModel)
         {
             if (!ModelState.IsValid)

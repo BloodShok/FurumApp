@@ -59,8 +59,8 @@ namespace ForumApplication.WEB.Controllers
             return RedirectToAction("List");
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();

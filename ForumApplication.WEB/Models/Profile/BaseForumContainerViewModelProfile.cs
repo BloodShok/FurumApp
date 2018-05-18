@@ -2,8 +2,12 @@
 using ForumApplication.DataTransferObjects;
 using ForumApplication.DataTransferObjects.BaseDtoItems;
 using ForumApplication.DataTransferObjects.PostDto;
+using ForumApplication.DataTransferObjects.SectionDto;
+using ForumApplication.DataTransferObjects.SectionListDto;
 using ForumApplication.DataTransferObjects.TopicDto;
 using ForumApplication.WEB.Models.BaseViewModelItems;
+using ForumApplication.WEB.Models.SectionListViewModel;
+using ForumApplication.WEB.Models.SectionViewModel;
 using ForumApplication.WEB.Models.TopicViewModel;
 using System;
 using System.Collections.Generic;
@@ -27,6 +31,9 @@ namespace ForumApplication.WEB.Models.Profile
             CreateMap<LastUpdateTopicInfoDto, LastUpdateTopicInfoViewModel>();
 
             CreateMap<UserPostInfoDto, UserPostInfoViewModel>();
+
+            CreateMap<CreateSectionListViewModel, CreateSectionListDto>();
+            CreateMap<CreateSectionViewModel, CreateSectionDto>();
         }
     }
 }

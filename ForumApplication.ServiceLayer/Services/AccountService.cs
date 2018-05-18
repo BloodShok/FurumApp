@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 
 using Microsoft.AspNet.Identity.Owin;
 using ForumApplication.DataTransferObjects.AccountDto;
+using System.Web.Routing;
 
 namespace ForumApplication.ServiceLayer.AccountService
 {
@@ -129,6 +130,11 @@ namespace ForumApplication.ServiceLayer.AccountService
             var updateUserAccount = Mapper.Map<UserAccount>(jTableUpdateAccountDto);
             _userManager.UpdateAccount(updateUserAccount);
             _userManager.AddUserToRole(jTableUpdateAccountDto.UserName, jTableUpdateAccountDto.RoleName);
+        }
+
+        public UserAccountInfoDto GetUserAccountInfoByName(string userName)
+        {
+            return null;
         }
     }
 }

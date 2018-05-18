@@ -119,6 +119,7 @@
     <Compile Include="Repository\Pagination.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Repository\UserAccountManagers\UserAuthProviderApi.cs" />
     <Compile Include="Repository\UserAccountManagers\UserRoleManager.cs" />
   </ItemGroup>
   <ItemGroup>

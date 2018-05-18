@@ -30,6 +30,8 @@ namespace ForumApplication.WEB.Controllers
             return View(SectionView);
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Create(CreateSectionViewModel createSection)
         {
             var createSectionDto = Mapper.Map<CreateSectionDto>(createSection);
@@ -38,6 +40,7 @@ namespace ForumApplication.WEB.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Update(UpdateSectionViewModel updateSectionView)
         {
             var updateSectionDto = Mapper.Map<UpdateSectionDto>(updateSectionView);

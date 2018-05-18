@@ -8,6 +8,15 @@ using ForumApplication.DataTransferObjects.Profile;
 using ForumApplication.WEB.Models.Profile;
 using ForumApplication.WEB.App_Start;
 using System.Web.Optimization;
+using System.Web.Http;
+using Autofac.Integration.WebApi;
+using ForumApplication.ServiceLayer.PostService;
+using System.Reflection;
+using Autofac;
+using ForumApplication.ServiceLayer.ApiService;
+using ForumApplication.ServiceLayer.ApiService.Interfaces;
+using ForumApplication.WEB.API.Controllers;
+using ForumApplication.WEB.Attributes;
 
 namespace ForumApplication.WEB
 {
@@ -15,10 +24,15 @@ namespace ForumApplication.WEB
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            DependencyResolver.SetResolver(new ServiceLocator(new StandardKernel()));
 
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            AutofacForWebApi.Initialize();
+            
+           // DependencyResolver.SetResolver(new ServiceLocator(new StandardKernel()));
+            
             Mapper.Initialize(conf =>
                             {
 
@@ -36,6 +50,7 @@ namespace ForumApplication.WEB
 
                             });
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+   
         }
     }
 }

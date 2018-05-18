@@ -1,16 +1,8 @@
 ﻿using AutoMapper;
-using ForumApplication.DataTransferObjects;
 using ForumApplication.ServiceLayer.AccountService;
-using ForumApplication.WEB.Models;
-using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Web;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Security.Claims;
-using System.IO;
-using System;
 using ForumApplication.WEB.Models.AccountViewModel;
 using ForumApplication.WEB.Models.AdministratorViewModel;
 using ForumApplication.DataTransferObjects.AccountDto;
@@ -40,6 +32,7 @@ namespace ForumApplication.WEB.Controllers
         {
             var createAccountDto = Mapper.Map<CreateAccountDto>(createAccountView);
             createAccountDto.Image = UserImages.User;
+            createAccountDto.RoleName = RoleConsts.User;
             var statusCreated = _accountService.CreateUserAccount(createAccountDto);
 
             if (statusCreated.Succeeded)

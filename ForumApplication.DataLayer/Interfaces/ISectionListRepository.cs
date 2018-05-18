@@ -15,5 +15,6 @@ namespace ForumApplication.DataLayer.Interfaces
         IList<SectionList> GetAllIncludeReferences(int pageNumber, int pageSize);
         SectionList GetByIDIncludeReferences(int id);
         void Update(UpdateSectionListDto newSectionListDto);
+        SectionList GetOllParents(int id);
     }
 }

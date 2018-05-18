@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 using AutoMapper;
 using ForumApplication.DataLayer.Interfaces;
 using ForumApplication.DataTransferObjects;
@@ -26,7 +27,7 @@ namespace ForumApplication.ServiceLayer.SectionListService
             _postRepo = postRepo;
             _accRepo = profileRepository;
         }
-
+        [Authorize]
         public void CreateSectionList(CreateSectionListDto sectionList)
         {
             var newSectionList = Mapper.Map<SectionList>(sectionList);
@@ -58,6 +59,8 @@ namespace ForumApplication.ServiceLayer.SectionListService
             
         }
 
+        
+        [Authorize]
         public void UpdateSectionList(UpdateSectionListDto newSectionListDto)
         {
             _sectionListRepo.Update(newSectionListDto);

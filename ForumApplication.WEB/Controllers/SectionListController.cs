@@ -30,7 +30,8 @@ namespace ForumApplication.WEB.Controllers
 
             return View(SecListItemVieweModel);
         }
-
+        [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Create(CreateSectionListViewModel createSectionList)
         {
             var newForumDataDto = Mapper.Map<CreateSectionListDto>(createSectionList);

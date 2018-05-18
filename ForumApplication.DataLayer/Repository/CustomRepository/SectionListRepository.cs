@@ -54,6 +54,11 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return SectionListElement;
         }
 
+        public SectionList GetOllParents(int id)
+        {
+            return DbSet.Include(x => x.Forum).FirstOrDefault(x => x.Id == id);
+        }
+
         public void Update(UpdateSectionListDto newSectionListDto)
         {
             SectionList sectionListForUpdate = DbSet.Find(newSectionListDto.SectionListId);

@@ -101,6 +101,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiService\IProfileApiService.cs" />
+    <Compile Include="ApiService\PostApiService.cs" />
+    <Compile Include="ApiService\Interfaces\IPostApiService.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Interfaces\IAccountService.cs" />
     <Compile Include="Services\ForumService.cs" />

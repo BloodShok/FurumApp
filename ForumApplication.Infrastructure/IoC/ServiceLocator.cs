@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Web;
+using System.Web.Http.Dependencies;
 using System.Web.Mvc;
 using ForumApplication.DataLayer.DataContext;
 using ForumApplication.DataLayer.Interfaces;
@@ -22,7 +23,7 @@ using Ninject.Web.Common;
 
 namespace ForumApplication.Infrastructure.IoC
 {
-   public class ServiceLocator : IDependencyResolver
+   public class ServiceLocator : System.Web.Mvc.IDependencyResolver
     {
         IKernel _kernel;
         public ServiceLocator(IKernel kernel)
@@ -73,5 +74,6 @@ namespace ForumApplication.Infrastructure.IoC
 
 
         }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ForumApplication.DataTransferObjects.AccountDto;
+using ForumApplication.DataTransferObjects.ApiDto;
 using ForumApplication.DataTransferObjects.BaseDtoItems;
 using ForumApplication.Domain.Entitys;
 
@@ -55,7 +56,8 @@ namespace ForumApplication.DataTransferObjects.Profile
 
             CreateMap<UpdateUserProfileDto, UserProfile>();
 
-
+            CreateMap<UserAccount, ProfileInfoApiDto>()
+                .ForMember(x => x.UserProfile,opt => opt.MapFrom(x => x.UserProfile));
 
         }
     }
