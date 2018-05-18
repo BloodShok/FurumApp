@@ -18,5 +18,6 @@ namespace ForumApplication.DataLayer.Interfaces
         int GetCountOfPosts(int id);
         void Update(UpdatePostDto postDto);
         int GetTopicId(int postId);
+        List<Post> GetPostByTopicId(int id);
     }
 }

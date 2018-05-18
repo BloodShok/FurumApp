@@ -43,10 +43,9 @@ namespace ForumApplication.DataLayer.Repository
             return DbSet.Find(id);
         }
 
-        public IList<TEntity> GetAll(int pagenumber, int pageSize)
+        public IList<TEntity> GetAll()
         {
             return DbSet.Select(x => x)
-                .Page(pagenumber,pageSize)
                 .ToList();
         }
 

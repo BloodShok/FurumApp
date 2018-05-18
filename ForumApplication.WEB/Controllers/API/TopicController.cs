@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using ForumApplication.DataTransferObjects.TopicDto;
+using ForumApplication.ServiceLayer.TopicService;
+using ForumApplication.WEB.Models.TopicViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,31 +13,46 @@ namespace ForumApplication.WEB.Controllers.API
 {
     public class TopicController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        ITopicService _topicService;
+        public TopicController(ITopicService service)
         {
-            return new string[] { "value1", "value2" };
+            _topicService = service;
+        }
+        // GET api/<controller>
+        public List<TopicInfoApiViewModel> Get()
+        {
+            var listOfTopics = _topicService.GetListOfTopics();
+
+            return AutoMapper.Mapper.Map<List<TopicInfoApiViewModel>>(listOfTopics);
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public TopicInfoViewModel Get(int id)
         {
-            return "value";
+            var topicDto = _topicService.GetElement(id);
+            return Mapper.Map<TopicInfoViewModel>(topicDto);
+
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post(CreateTopicViewModel createTopicView)
         {
+            var createTopicDto = Mapper.Map<CreateTopicDto>(createTopicView);
+            _topicService.CreateTopic(createTopicDto);
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(UpdateTopicViewModel updateTopicView)
         {
+            var updateTopicDto = Mapper.Map<UpdateTopicDto>(updateTopicView);
+            _topicService.UpdateTopic(updateTopicDto);
         }
 
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+            var sectionIdForReidirect = _topicService.GetSectionIdBTopicId(id);
+            _topicService.DeleteTopic(id);
         }
     }
 }

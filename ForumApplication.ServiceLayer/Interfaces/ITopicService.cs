@@ -16,6 +16,7 @@ namespace ForumApplication.ServiceLayer.TopicService
         TopicInfoDto GetElement(int id, int page, int pageSize);
         int GetCountOfPostByTopicId(int id);
         void DeleteTopic(int id);
+        List<TopicInfoDto> GetListOfTopics();
         int GetSectionIdBTopicId(int Id);
     }
 }

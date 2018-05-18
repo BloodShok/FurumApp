@@ -180,6 +180,7 @@ namespace ForumApplication.WEB
                         //
                         //c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
                         c.DocumentFilter<AuthTokenOperation>();
+                        
                     })
                 .EnableSwaggerUi(c =>
                     {

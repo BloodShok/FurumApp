@@ -50,6 +50,16 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return DbSet.Where(x => x.TopicId == id).Count();
         }
 
+        public List<Post> GetPostByTopicId(int id)
+        {
+            List<Post> posts = DbSet
+                .Where(x => x.TopicId == id)
+                .Include(x => x.User.UserAccount)
+                .OrderBy(x => x.DateCreated)
+                .ToList();
+            return posts;
+        }
+
         public List<Post> GetPostByTopicIdPagination(int id, int page, int pageSize)
         {
             List<Post> posts = DbSet

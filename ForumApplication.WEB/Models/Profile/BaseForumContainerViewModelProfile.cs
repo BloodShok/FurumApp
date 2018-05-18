@@ -26,6 +26,8 @@ namespace ForumApplication.WEB.Models.Profile
                 .ForMember(topicView => topicView.PostViewModel,
                             opt => opt.MapFrom(topDto => Mapper.Map<IList<PostInfoViewModel>>(topDto.PostDto)));
 
+            CreateMap<TopicInfoDto, TopicInfoApiViewModel>();
+
             CreateMap<PostInfoDto, PostInfoViewModel>();
 
             CreateMap<LastUpdateTopicInfoDto, LastUpdateTopicInfoViewModel>();

@@ -13,7 +13,7 @@ namespace ForumApplication.DataLayer.Interfaces
         DbContext Context { get; set; }
         DbSet<TEntity> DbSet { get; set; }
         TEntity GetByID(object id);                               
-        IList<TEntity> GetAll(int pagenumber, int pageSize);     
+        IList<TEntity> GetAll();     
         void AddNewItem(TEntity entity);
         void DeleteItem(TEntity entity);                          
         void DeleteItemById(object id);

@@ -40,6 +40,14 @@ namespace ForumApplication.DataLayer.Repository.CustomRepository
             return ListOfTopics;
         }
 
+        public List<Topic> GetAllTopicsIncludeUsers()
+        {
+            List<Topic> Topic = DbSet
+                 .Include(topic => topic.User.UserAccount).ToList();
+
+            return Topic;
+        }
+
         public Topic GetByIDIncludeReferences(int id)
         {
             Topic Topic = DbSet

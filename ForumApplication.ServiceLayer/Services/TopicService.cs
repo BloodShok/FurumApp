@@ -46,6 +46,8 @@ namespace ForumApplication.ServiceLayer.TopicService
         public TopicInfoDto GetElement(int id)
         {
             var TopicElement = _topicRepo.GetByIDIncludeReferences(id);
+            TopicElement.Posts = _postRepo.GetPostByTopicId(id);
+
             var topicElementDto = Mapper.Map<TopicInfoDto>(TopicElement);
             return topicElementDto;
         }
@@ -60,6 +62,14 @@ namespace ForumApplication.ServiceLayer.TopicService
             var topicElementDto = Mapper.Map<TopicInfoDto>(topicElement);
 
             return topicElementDto;
+        }
+
+        public List<TopicInfoDto> GetListOfTopics()
+        {
+            var listOfTopic = _topicRepo.GetAllTopicsIncludeUsers();
+            var listOfTopicDto = Mapper.Map<List<TopicInfoDto>>(listOfTopic);
+
+            return listOfTopicDto;
         }
 
         public int GetSectionIdBTopicId(int Id)

@@ -734,7 +734,10 @@
     <Compile Include="Attributes\ApiAuthorizationAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\API\ForumController.cs" />
     <Compile Include="Controllers\API\ProfileController.cs" />
+    <Compile Include="Controllers\API\SectionController.cs" />
+    <Compile Include="Controllers\API\SectionListController.cs" />
     <Compile Include="Controllers\API\TopicController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
@@ -759,6 +762,7 @@
     <Compile Include="Models\TopicViewModel\LastUpdateTopicInfoViewModel.cs" />
     <Compile Include="Models\AccountViewModel\LoginViewModel.cs" />
     <Compile Include="Models\AccountViewModel\UserAccountsInfoViewModel.cs" />
+    <Compile Include="Models\TopicViewModel\TopicInfoApiViewModel.cs" />
     <Compile Include="Models\TopicViewModel\TopicPageViewModel.cs" />
     <Compile Include="Models\TopicViewModel\UpdateTopicViewModel.cs" />
     <Compile Include="Models\TopicViewModel\UserPostInfoViewModel.cs" />

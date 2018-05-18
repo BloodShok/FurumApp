@@ -15,5 +15,6 @@ namespace ForumApplication.DataLayer.Interfaces
         Topic GetByIDIncludeReferences(int id);
         void Update(UpdateTopicDto updateTopicDto);
         int GetSectionId(int id);
+        List<Topic> GetAllTopicsIncludeUsers();
     }
 }

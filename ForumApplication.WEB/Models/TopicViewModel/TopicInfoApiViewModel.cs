@@ -1,12 +1,11 @@
-﻿using ForumApplication.WEB.Models.BaseViewModelItems;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace ForumApplication.WEB.Models.TopicViewModel
 {
-    public class TopicInfoViewModel
+    public class TopicInfoApiViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -15,7 +14,5 @@ namespace ForumApplication.WEB.Models.TopicViewModel
         public string UserId { get; set; }
         public string UserName { get; set; }
         public string SectionId { get; set; }
-        public IList<PostInfoViewModel> PostViewModel { get; set; }
-     
     }
 }

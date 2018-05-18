@@ -37,10 +37,14 @@ namespace ForumApplication.ServiceLayer.SectionService
 
         public IList<BaseForumContainerInfoDto> GetAllElements()
         {
-           
             var SectionList = _sectionRepo.GetAllIncludeReferences();
+            var sectionElementsDto =  Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionList);
 
-            return Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionList);
+            foreach (var item in sectionElementsDto)
+            {
+                InsertLastUpdateTopic(item);
+            }
+            return sectionElementsDto;
         }
 
         public BaseForumContainerInfoDto GetElement(int id)

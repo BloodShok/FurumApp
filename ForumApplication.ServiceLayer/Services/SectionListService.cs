@@ -27,7 +27,6 @@ namespace ForumApplication.ServiceLayer.SectionListService
             _postRepo = postRepo;
             _accRepo = profileRepository;
         }
-        [Authorize]
         public void CreateSectionList(CreateSectionListDto sectionList)
         {
             var newSectionList = Mapper.Map<SectionList>(sectionList);
@@ -41,7 +40,10 @@ namespace ForumApplication.ServiceLayer.SectionListService
         {
             var SectionListElements = _sectionListRepo.GetAllIncludeReferences();
             var SectionListElementsDto = Mapper.Map<IList<BaseForumContainerInfoDto>>(SectionListElements);
-
+            foreach (var item in SectionListElementsDto)
+            {
+                InsertLastUpdateTopic(item);
+            }
 
             return SectionListElementsDto;
         }

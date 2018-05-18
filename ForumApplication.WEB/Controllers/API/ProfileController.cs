@@ -8,6 +8,8 @@ using ForumApplication.Infrastructure.Consts;
 using ForumApplication.DataTransferObjects.AccountDto;
 using Microsoft.AspNet.Identity;
 using System.Xml.Linq;
+using System.Web.Http.Description;
+using ForumApplication.WEB.Attributes;
 
 namespace ForumApplication.WEB.Controllers.API
 {
@@ -19,8 +21,7 @@ namespace ForumApplication.WEB.Controllers.API
             _accountService = accountService;
         }
 
-        [Authorize(Roles = "Administrator")]
-        // GET api/<controller>
+        [ApiAuthorization]
         public List<UserAccountsInfoViewModel> Get()
         {
             var userProfileDtoList = _accountService.GetUserAccountsList();
@@ -28,14 +29,16 @@ namespace ForumApplication.WEB.Controllers.API
         }
 
 
-        // GET api/<controller>/5
+        [ApiAuthorization]
         public UserAccountsInfoViewModel Get(string id)
         {
             var userProfileDto = _accountService.GetUserAccountInfo(id);
             return Mapper.Map<UserAccountsInfoViewModel>(userProfileDto);
         }
 
-        // POST api/<controller>
+        
+        [ApiAuthorization]
+        [ResponseType(typeof(string))]
         public IHttpActionResult Post(CreateAccountViewModel account)
         {
             var newAccDto = Mapper.Map<CreateAccountDto>(account);
@@ -43,41 +46,35 @@ namespace ForumApplication.WEB.Controllers.API
             newAccDto.Image = RoleConsts.User;
             var result = _accountService.CreateUserAccount(newAccDto);
 
-            if (result.Succeeded)
-            {
+            if(result.Succeeded)
                 return Ok(new { Message = "User was created" });
-            }
-            else
-            {
-                return Content(HttpStatusCode.BadRequest, new { Message = result.Errors });
-            }
+
+            return Content(HttpStatusCode.BadRequest, new { Message = result.Errors });
+            
         }
 
-        // PUT api/<controller>/5
+        [ApiAuthorization]
+        [ResponseType(typeof(string))]
         public IHttpActionResult Put(UpdateUserProfileDto updateProfile)
         {
             if (updateProfile.AccountId.Equals(RequestContext.Principal.Identity.GetUserId()))
             {
                 _accountService.UpdateUserProfile(updateProfile);
                 return Ok(new { Message = "Account was update succes" });
-
             }
-            else
-                return Content(HttpStatusCode.Forbidden, new { Message = "Execute access forbidden" });
+
+            return Content(HttpStatusCode.Forbidden, new { Message = "Execute access forbidden" });
         }
 
 
         [HttpGet]
         [Route("api/ForumApp/me")]
-        [Authorize]
+        [ApiAuthorization]
         public UserAccountsInfoViewModel GetUser()
         {
             var currentUserId = RequestContext.Principal.Identity.GetUserId();
             var currentUser = _accountService.GetUserAccountInfo(currentUserId);
-           
-                return Mapper.Map<UserAccountsInfoViewModel>(currentUser);
-
-
+            return Mapper.Map<UserAccountsInfoViewModel>(currentUser);
         }
     }
 }
