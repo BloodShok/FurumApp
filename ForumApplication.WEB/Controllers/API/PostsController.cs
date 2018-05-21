@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ForumApplication.DataTransferObjects.PostDto;
 using ForumApplication.ServiceLayer.ApiService.Interfaces;
+using ForumApplication.WEB.Attributes;
 using ForumApplication.WEB.Models.PostViewModel;
 using ForumApplication.WEB.Models.TopicViewModel;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace ForumApplication.WEB.API.Controllers
             _postService.UpdatePost(postUpdate);
         }
 
-        // DELETE: api/Values/5
+        [ApiAuthorization]
         public void Delete(int id)
         {
             _postService.DeletePost(id);
